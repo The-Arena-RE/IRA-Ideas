@@ -44,13 +44,13 @@ const heroBgImg = await getImage({ src: heroBg, width: 1920, format: 'webp' });
         </div>
       </div>
 
-      <div class="relative hidden self-end lg:block">
+      <div class="relative hidden justify-center self-end lg:flex">
         <Image
           src={tim}
           alt="Tim Berry, self-directed IRA and 401(k) attorney"
-          widths={[400, 600, 800]}
-          sizes="(min-width: 1024px) 480px, 0px"
-          class="mx-auto h-auto w-full max-w-[480px]"
+          widths={[600, 800, 1024]}
+          sizes="(min-width: 1024px) 720px, 0px"
+          class="h-auto w-[118%] max-w-[720px] shrink-0"
           loading="eager"
           fetchpriority="high"
         />
