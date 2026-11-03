@@ -1,0 +1,19 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "ira-ideas",
+  "main": "worker/index.ts",
+  "compatibility_date": "2026-10-01",
+  "assets": {
+    "directory": "./dist",
+    "binding": "ASSETS",
+    "not_found_handling": "404-page",
+    // Only API routes run the Worker; everything else is served as static files.
+    "run_worker_first": ["/api/*"]
+  },
+  "vars": {
+    // n8n webhook that receives contact-form submissions (Quick Contact + Contact page).
+    // Set to your real webhook URL, e.g. https://n8n.coreautomations.org/webhook/website-contact
+    "CONTACT_WEBHOOK_URL": ""
+  },
+  "observability": { "enabled": true }
+}

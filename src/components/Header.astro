@@ -1,0 +1,92 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/img/logo.png';
+import { nav, BOOKING_URL } from '../data/site';
+
+const path = Astro.url.pathname;
+const isActive = (href: string) => (href === '/' ? path === '/' : !href.includes('#') && path.startsWith(href));
+---
+
+<header class="sticky top-0 z-40 bg-teal-950 text-white shadow-[0_1px_0_rgba(255,255,255,0.06)]">
+  <div class="mx-auto flex h-[72px] max-w-[1390px] items-center justify-between pl-5 lg:h-[91px] lg:pl-8">
+    <a href="/" class="shrink-0" aria-label="IRA Ideas LLC — home">
+      <Image src={logo} alt="IRA Ideas LLC" width={170} class="h-auto w-[130px] lg:w-[160px]" loading="eager" />
+    </a>
+
+    <nav aria-label="Main" class="hidden lg:block">
+      <ul class="flex items-center gap-10 font-nav text-[15px] font-bold uppercase">
+        {
+          nav.map((item) => (
+            <li>
+              <a
+                href={item.href}
+                class:list={['transition-colors hover:text-amber-500', isActive(item.href) && 'text-amber-500']}
+                aria-current={isActive(item.href) ? 'page' : undefined}
+              >
+                {item.label}
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </nav>
+
+    <div class="flex h-full items-center">
+      <a
+        href={BOOKING_URL}
+        class="hidden h-full items-center bg-amber-500 px-7 font-nav text-[15px] font-bold uppercase transition-colors hover:bg-amber-600 lg:flex"
+      >
+        Book An Appointment
+      </a>
+      <button
+        type="button"
+        class="mr-3 grid size-11 place-items-center lg:hidden"
+        aria-controls="mobile-menu"
+        aria-expanded="false"
+        aria-label="Open menu"
+        data-menu-toggle
+      >
+        <svg class="size-7" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true">
+          <path d="M3 6h18M3 12h18M3 18h18" stroke-linecap="round"></path>
+        </svg>
+      </button>
+    </div>
+  </div>
+
+  <div id="mobile-menu" class="hidden border-t border-white/10 bg-teal-950 lg:hidden" data-menu>
+    <ul class="container-site flex flex-col py-4 font-nav text-base font-bold uppercase">
+      {
+        nav.map((item) => (
+          <li>
+            <a
+              href={item.href}
+              class:list={['block py-3 hover:text-amber-500', isActive(item.href) && 'text-amber-500']}
+            >
+              {item.label}
+            </a>
+          </li>
+        ))
+      }
+      <li class="pt-3">
+        <a href={BOOKING_URL} class="btn w-full justify-center font-nav font-bold uppercase">Book An Appointment</a>
+      </li>
+    </ul>
+  </div>
+</header>
+
+<script>
+  const toggle = document.querySelector<HTMLButtonElement>('[data-menu-toggle]');
+  const menu = document.querySelector<HTMLElement>('[data-menu]');
+  toggle?.addEventListener('click', () => {
+    const open = toggle.getAttribute('aria-expanded') === 'true';
+    toggle.setAttribute('aria-expanded', String(!open));
+    toggle.setAttribute('aria-label', open ? 'Open menu' : 'Close menu');
+    menu?.classList.toggle('hidden', open);
+  });
+  menu?.querySelectorAll('a').forEach((a) =>
+    a.addEventListener('click', () => {
+      menu.classList.add('hidden');
+      toggle?.setAttribute('aria-expanded', 'false');
+    }),
+  );
+</script>

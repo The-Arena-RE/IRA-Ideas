@@ -1,0 +1,54 @@
+---
+// Lightweight YouTube embed: shows the thumbnail and only loads the player when clicked.
+import Icon from './Icon.astro';
+
+interface Props {
+  id: string;
+  title: string;
+  author?: string;
+}
+const { id, title, author } = Astro.props;
+const watchUrl = `https://www.youtube.com/watch?v=${id}`;
+---
+
+<article class="flex flex-col overflow-hidden bg-navy-950 text-white shadow-lg">
+  <div class="relative aspect-video bg-black" data-yt={id} data-title={title}>
+    <button type="button" class="group absolute inset-0 h-full w-full" aria-label={`Play video: ${title}`}>
+      <img
+        src={`https://i.ytimg.com/vi/${id}/hqdefault.jpg`}
+        alt=""
+        loading="lazy"
+        decoding="async"
+        width="480"
+        height="360"
+        class="h-full w-full object-cover opacity-90 transition group-hover:opacity-100"
+      />
+      <span class="absolute inset-0 grid place-items-center">
+        <span class="grid size-16 place-items-center rounded-full bg-amber-500 text-white shadow-xl transition group-hover:scale-110">
+          <Icon name="play" class="ml-1 size-7" />
+        </span>
+      </span>
+    </button>
+  </div>
+  <div class="flex flex-1 flex-col items-start gap-3 border-t border-white/15 p-5">
+    {author && <p class="text-xs text-white/70">{author}</p>}
+    <h3 class="font-sans text-[15px] leading-snug font-semibold text-white">{title}</h3>
+    <a href={watchUrl} target="_blank" rel="noopener" class="mt-auto bg-amber-500 px-2.5 py-1 text-[11px] font-medium hover:bg-amber-600">
+      Watch Full Video
+    </a>
+  </div>
+</article>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-yt]').forEach((el) => {
+    el.querySelector('button')?.addEventListener('click', () => {
+      const iframe = document.createElement('iframe');
+      iframe.src = `https://www.youtube-nocookie.com/embed/${el.dataset.yt}?autoplay=1&rel=0`;
+      iframe.title = el.dataset.title ?? 'YouTube video';
+      iframe.allow = 'accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture';
+      iframe.allowFullscreen = true;
+      iframe.className = 'absolute inset-0 h-full w-full';
+      el.replaceChildren(iframe);
+    }, { once: true });
+  });
+</script>

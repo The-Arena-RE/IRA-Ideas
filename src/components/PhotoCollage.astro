@@ -1,0 +1,22 @@
+---
+import { Image } from 'astro:assets';
+import advisor from '../assets/img/financial-advisor.jpg';
+import couple from '../assets/img/couple-agent.jpg';
+---
+
+<div class="relative mx-auto aspect-[5/4] w-full max-w-[560px]">
+  <Image
+    src={advisor}
+    alt="Smiling financial advisor in a client meeting"
+    widths={[320, 480, 640]}
+    sizes="(min-width: 1024px) 280px, 55vw"
+    class="absolute top-0 left-0 h-full w-[55%] border-[6px] border-white object-cover shadow-xl"
+  />
+  <Image
+    src={couple}
+    alt="Couple reviewing documents with an advisor"
+    widths={[400, 640, 900]}
+    sizes="(min-width: 1024px) 300px, 55vw"
+    class="absolute top-[24%] right-0 h-[52%] w-[55%] border-[6px] border-white object-cover shadow-xl"
+  />
+</div>

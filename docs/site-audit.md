@@ -165,7 +165,7 @@ In all, the site loads **6 font families at every weight (100–900, italics inc
 2. **Font bloat.** 6 families at every weight. Trim to two or three families with only the weights used.
 3. **Georgia falls back to sans-serif** on devices without it (Android, Linux), so the headline font varies by device.
 4. **Blog and old pages are off-brand** (default Blocksy blue).
-5. On the home page, two sections (videos/testimonials) rendered **blank** in an automated browser, and "Services" is an anchor link with no services page.
+5. "Services" is an anchor link with no services page. (Videos looked blank during the audit only because YouTube was blocked in the audit sandbox.)
 6. **Many test, duplicate and empty pages** are still published and indexed.
 7. **Square sandbox** script is still loaded next to Stripe on booking pages.
 8. **Heavy plugin JS/CSS**: about 45 stylesheets on the home page.

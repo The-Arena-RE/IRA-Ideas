@@ -1,0 +1,8 @@
+# Old / duplicate WordPress URLs → their current equivalents.
+# (Booking & funnel pages are still served by WordPress — see README.)
+/home/                        /                                   301
+/homev2/                      /                                   301
+/about-us/                    /about-tim-berry/                   301
+/tim-berry/                   /about-tim-berry/                   301
+/contact-me/                  /get-in-touch-ira-401k-attorney/    301
+/videos-2/                    /videos-ira-401k/                   301

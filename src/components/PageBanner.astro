@@ -1,0 +1,21 @@
+---
+import { getImage } from 'astro:assets';
+import type { ImageMetadata } from 'astro';
+
+interface Props {
+  title: string;
+  image: ImageMetadata;
+  position?: string;
+}
+const { title, image, position = 'center' } = Astro.props;
+const bg = await getImage({ src: image, width: 1920, format: 'webp' });
+---
+
+<section
+  class="edge-angle relative grid min-h-[320px] place-items-center bg-teal-950 bg-cover md:min-h-[480px]"
+  style={`background-image: linear-gradient(rgba(0,0,0,.55), rgba(0,0,0,.55)), url(${bg.src}); background-position: ${position};`}
+>
+  <h1 class="bg-white/25 px-3 py-1 font-sans text-3xl font-bold tracking-wide text-white uppercase backdrop-blur-sm md:text-[40px]">
+    {title}
+  </h1>
+</section>

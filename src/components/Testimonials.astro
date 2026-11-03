@@ -1,0 +1,97 @@
+---
+import { getImage } from 'astro:assets';
+import bg from '../assets/img/testimonial-bg.jpg';
+import { testimonials } from '../data/site';
+import Icon from './Icon.astro';
+
+const bgImg = await getImage({ src: bg, width: 1920, format: 'webp' });
+---
+
+<section
+  class="relative bg-black bg-cover bg-right py-20 text-white md:py-24"
+  style={`background-image: linear-gradient(90deg, rgba(0,0,0,.92) 0%, rgba(0,0,0,.75) 45%, rgba(0,0,0,.1) 100%), url(${bgImg.src});`}
+  aria-labelledby="testimonials-heading"
+  data-slider
+>
+  <div class="container-site">
+    <div class="max-w-xl">
+      <h2 id="testimonials-heading" class="text-4xl font-normal text-white md:text-[48px]">
+        What <span class="text-amber-500">People Say</span>
+      </h2>
+
+      <div class="relative mt-8">
+        {
+          testimonials.map((t, i) => (
+            <figure class:list={['transition-opacity duration-500', i !== 0 && 'hidden']} data-slide aria-hidden={i !== 0 ? 'true' : undefined}>
+              <h3 class="font-sans text-lg font-bold text-white">{t.title}</h3>
+              <blockquote class="mt-4 text-[15px] leading-relaxed text-white/90">{t.body}</blockquote>
+              <figcaption class="mt-5">
+                <span class="font-semibold">{t.name}</span>
+                <span class="mt-1 flex gap-0.5 text-amber-500" aria-label="5 out of 5 stars">
+                  {Array.from({ length: 5 }).map(() => <Icon name="star" class="size-4" />)}
+                </span>
+              </figcaption>
+            </figure>
+          ))
+        }
+      </div>
+
+      <div class="mt-8 flex items-center gap-5">
+        <button type="button" class="grid size-9 place-items-center rounded-full border border-white/40 hover:border-amber-500 hover:text-amber-500" data-prev aria-label="Previous testimonial">
+          <Icon name="arrow-left" class="size-4" />
+        </button>
+        <div class="flex gap-2" role="tablist" aria-label="Testimonials">
+          {
+            testimonials.map((t, i) => (
+              <button
+                type="button"
+                class:list={['size-2.5 rounded-full bg-white/60 transition', i === 0 && '!bg-amber-500']}
+                data-dot={i}
+                role="tab"
+                aria-selected={i === 0 ? 'true' : 'false'}
+                aria-label={`Testimonial ${i + 1}: ${t.title}`}
+              />
+            ))
+          }
+        </div>
+        <button type="button" class="grid size-9 place-items-center rounded-full border border-white/40 hover:border-amber-500 hover:text-amber-500" data-next aria-label="Next testimonial">
+          <Icon name="arrow-right" class="size-4" />
+        </button>
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+  document.querySelectorAll<HTMLElement>('[data-slider]').forEach((root) => {
+    const slides = [...root.querySelectorAll<HTMLElement>('[data-slide]')];
+    const dots = [...root.querySelectorAll<HTMLButtonElement>('[data-dot]')];
+    let current = 0;
+    let timer: number | undefined;
+
+    const show = (n: number) => {
+      current = (n + slides.length) % slides.length;
+      slides.forEach((s, i) => {
+        s.classList.toggle('hidden', i !== current);
+        s.toggleAttribute('aria-hidden', i !== current);
+      });
+      dots.forEach((d, i) => {
+        d.classList.toggle('!bg-amber-500', i === current);
+        d.setAttribute('aria-selected', String(i === current));
+      });
+    };
+    const restart = () => {
+      window.clearInterval(timer);
+      if (!window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+        timer = window.setInterval(() => show(current + 1), 8000);
+      }
+    };
+
+    root.querySelector('[data-prev]')?.addEventListener('click', () => (show(current - 1), restart()));
+    root.querySelector('[data-next]')?.addEventListener('click', () => (show(current + 1), restart()));
+    dots.forEach((d, i) => d.addEventListener('click', () => (show(i), restart())));
+    root.addEventListener('mouseenter', () => window.clearInterval(timer));
+    root.addEventListener('mouseleave', restart);
+    restart();
+  });
+</script>

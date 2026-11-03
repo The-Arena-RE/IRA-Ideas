@@ -1,0 +1,51 @@
+---
+import Base from '../layouts/Base.astro';
+import PageBanner from '../components/PageBanner.astro';
+import ContactForm from '../components/ContactForm.astro';
+import Icon from '../components/Icon.astro';
+import banner from '../assets/img/contact-banner.jpg';
+import { site } from '../data/site';
+---
+
+<Base
+  title="Contact – Self-Directed IRA & 401(k) Attorney Tim Berry | IRA Ideas LLC"
+  description="Contact self-directed IRA and 401(k) attorney Tim Berry. Call 602-900-1855, email tim@iraideas.com, or send a message and get help quickly."
+>
+  <PageBanner title="Contact" image={banner} position="center 30%" />
+
+  <section class="py-16 md:py-24">
+    <div class="container-site grid items-start gap-12 lg:grid-cols-2">
+      <div class="lg:pt-6">
+        <h2 class="font-sans text-5xl font-bold md:text-[56px]">GET IN <span class="text-amber-500">TOUCH</span></h2>
+        <p class="mt-6 text-body">This isn’t my first rodeo. Chances are we can figure out a solution for you quickly.</p>
+
+        <ul class="mt-10 space-y-8 text-ink">
+          <li class="flex items-center gap-5">
+            <span class="grid size-14 shrink-0 place-items-center rounded-full bg-amber-500 text-white">
+              <Icon name="location" class="size-6" />
+            </span>
+            <address class="text-[17px] font-medium not-italic">
+              {site.addressLines[0]}<br />{site.addressLines[1]}
+            </address>
+          </li>
+          <li class="flex items-center gap-5">
+            <span class="grid size-14 shrink-0 place-items-center rounded-full bg-amber-500 text-white">
+              <Icon name="phone" class="size-6" />
+            </span>
+            <div class="text-[17px] font-medium">
+              <a href={`mailto:${site.email}`} class="block hover:text-amber-600">{site.email}</a>
+              <a href={site.phoneHref} class="block hover:text-amber-600">{site.phone}</a>
+            </div>
+          </li>
+        </ul>
+      </div>
+
+      <div class="rounded-2xl bg-[#f4f7fc] p-7 md:p-10">
+        <h2 class="font-sans text-2xl font-medium text-ink">Send Us Your Query</h2>
+        <div class="mt-7">
+          <ContactForm variant="full" />
+        </div>
+      </div>
+    </div>
+  </section>
+</Base>

@@ -1,0 +1,120 @@
+---
+// Posts to /api/contact (worker/index.ts), which forwards to the n8n webhook.
+import { TURNSTILE_SITE_KEY } from '../data/site';
+
+interface Props {
+  variant: 'quick' | 'full';
+  /** Visual theme: dark (on teal card) or light (on soft card). */
+  theme?: 'dark' | 'light';
+}
+const { variant, theme = variant === 'quick' ? 'dark' : 'light' } = Astro.props;
+const source = variant === 'quick' ? 'home-quick-contact' : 'contact-page';
+const dark = theme === 'dark';
+
+const label = dark ? 'block text-[14px] font-medium text-white' : 'sr-only';
+const field = dark
+  ? 'mt-1.5 w-full bg-white px-3 py-2.5 text-ink outline-none focus:ring-2 focus:ring-amber-500'
+  : 'w-full rounded-lg border border-line bg-white px-4 py-3 text-ink outline-none placeholder:text-muted focus:border-amber-500 focus:ring-2 focus:ring-amber-500/30';
+---
+
+<form class="contact-form space-y-5" data-contact-form novalidate>
+  <input type="hidden" name="source" value={source} />
+  {/* Honeypot — real visitors never see or fill this. */}
+  <div class="hidden" aria-hidden="true">
+    <label>Leave this empty <input type="text" name="company_website" tabindex="-1" autocomplete="off" /></label>
+  </div>
+
+  {
+    variant === 'full' && (
+      <div class="grid gap-5 sm:grid-cols-2">
+        <div>
+          <label class={label} for={`${source}-name`}>Name</label>
+          <input class={field} id={`${source}-name`} name="name" type="text" placeholder="Name" autocomplete="name" required />
+        </div>
+        <div>
+          <label class={label} for={`${source}-phone`}>Phone Number</label>
+          <input class={field} id={`${source}-phone`} name="phone" type="tel" placeholder="Phone Number" autocomplete="tel" />
+        </div>
+      </div>
+    )
+  }
+
+  <div>
+    <label class={label} for={`${source}-email`}>Email Address {dark && <span class="text-amber-500">*</span>}</label>
+    <input class={field} id={`${source}-email`} name="email" type="email" placeholder={dark ? '' : 'Email Address'} autocomplete="email" required />
+  </div>
+
+  <div>
+    <div class="flex items-end justify-between">
+      <label class={label} for={`${source}-message`}>{dark ? 'Message' : 'Describe about your project'}</label>
+      {variant === 'full' && <span class="ml-auto text-xs text-muted" data-counter>0 / 180</span>}
+    </div>
+    <textarea
+      class:list={[field, 'mt-1.5 min-h-[100px] resize-y', variant === 'full' && 'min-h-[140px]']}
+      id={`${source}-message`}
+      name="message"
+      rows="4"
+      maxlength={variant === 'full' ? 180 : 2000}
+      placeholder={dark ? '' : 'Describe about your project'}
+      required></textarea>
+  </div>
+
+  {TURNSTILE_SITE_KEY && <div class="cf-turnstile" data-sitekey={TURNSTILE_SITE_KEY} data-theme={dark ? 'dark' : 'light'} />}
+
+  <div class="flex flex-wrap items-center gap-4">
+    <button
+      type="submit"
+      class:list={[
+        'px-5 py-2.5 text-[14px] font-medium text-white transition disabled:opacity-60',
+        dark ? 'bg-teal-600 hover:bg-teal-700' : 'rounded-lg bg-amber-500 px-6 py-3 hover:bg-amber-600',
+      ]}
+    >
+      {variant === 'quick' ? 'Send Now' : 'Send Message'}
+    </button>
+    <p class:list={['text-sm', dark ? 'text-white' : 'text-body']} role="status" aria-live="polite" data-status></p>
+  </div>
+</form>
+
+{TURNSTILE_SITE_KEY && <script is:inline src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>}
+
+<script>
+  document.querySelectorAll<HTMLFormElement>('[data-contact-form]').forEach((form) => {
+    const status = form.querySelector<HTMLElement>('[data-status]')!;
+    const button = form.querySelector<HTMLButtonElement>('button[type="submit"]')!;
+    const message = form.querySelector<HTMLTextAreaElement>('textarea[name="message"]')!;
+    const counter = form.querySelector<HTMLElement>('[data-counter]');
+
+    message.addEventListener('input', () => {
+      if (counter) counter.textContent = `${message.value.length} / ${message.maxLength}`;
+    });
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      if (!form.reportValidity()) return;
+
+      const data = Object.fromEntries(new FormData(form).entries());
+      data.page = location.href;
+      button.disabled = true;
+      status.textContent = 'Sending…';
+
+      try {
+        const res = await fetch('/api/contact', {
+          method: 'POST',
+          headers: { 'Content-Type': 'application/json' },
+          body: JSON.stringify(data),
+        });
+        const body = (await res.json().catch(() => ({}))) as { error?: string };
+        if (!res.ok) throw new Error(body.error || 'Something went wrong.');
+        form.reset();
+        if (counter) counter.textContent = `0 / ${message.maxLength}`;
+        status.textContent = 'Thanks! Your message has been sent — we’ll be in touch shortly.';
+        (window as any).fbq?.('track', 'Contact');
+      } catch (err) {
+        status.textContent = `${(err as Error).message} You can also email tim@iraideas.com.`;
+      } finally {
+        button.disabled = false;
+        (window as any).turnstile?.reset();
+      }
+    });
+  });
+</script>

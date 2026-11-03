@@ -1,0 +1,104 @@
+@import 'tailwindcss';
+
+/* Self-hosted fonts — only the weights the design uses (latin subset). */
+@import '@fontsource/roboto/latin-400.css';
+@import '@fontsource/roboto/latin-500.css';
+@import '@fontsource/roboto/latin-600.css';
+@import '@fontsource/roboto/latin-700.css';
+@import '@fontsource/roboto/latin-900.css';
+@import '@fontsource/roboto-condensed/latin-700.css';
+@import '@fontsource/inter/latin-800.css';
+/* Gelasio is metric-compatible with Georgia. It only downloads on devices that
+   don't have Georgia installed (Android, Linux), so headings look the same everywhere. */
+@import '@fontsource/gelasio/latin-400.css';
+@import '@fontsource/gelasio/latin-600.css';
+@import '@fontsource/gelasio/latin-700.css';
+
+/* ── Design tokens (from the site audit, docs/site-audit.md §4–5) ─────────── */
+@theme {
+  --color-teal-950: #003a3a; /* header, hero */
+  --color-teal-900: #0c4342; /* cards, FAQ, quick contact */
+  --color-teal-700: #166863; /* eyebrow labels */
+  --color-teal-600: #256b64;
+  --color-teal-400: #489b9b;
+
+  --color-amber-500: #ffb400; /* primary accent */
+  --color-amber-600: #e6a200; /* hover */
+  --color-amber-700: #c47a00;
+
+  --color-navy-950: #0b1b23; /* footer */
+  --color-slate-900: #16262d; /* "specialize" section */
+  --color-charcoal: #333333; /* CTA band */
+
+  --color-ink: #000000;
+  --color-body: #494949;
+  --color-muted: #7a7a7a;
+  --color-card: #e7e7e7;
+  --color-line: #e2e5e9;
+  --color-soft: #f5f6f8;
+
+  --font-sans: 'Roboto', ui-sans-serif, system-ui, sans-serif;
+  --font-serif: Georgia, 'Gelasio', 'Times New Roman', serif;
+  --font-nav: 'Roboto Condensed', 'Roboto', sans-serif;
+  --font-display: 'Inter', 'Roboto', sans-serif;
+
+  --container-site: 1140px;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 6rem;
+  }
+  body {
+    @apply bg-white font-sans text-base leading-[1.65] text-muted antialiased;
+  }
+  h1,
+  h2,
+  h3,
+  h4 {
+    @apply font-serif text-ink;
+    line-height: 1.15;
+  }
+  ::selection {
+    @apply bg-amber-500 text-white;
+  }
+  :focus-visible {
+    outline: 3px solid var(--color-amber-500);
+    outline-offset: 2px;
+  }
+}
+
+@layer components {
+  .container-site {
+    @apply mx-auto w-full max-w-(--container-site) px-5;
+  }
+  .btn {
+    @apply inline-flex items-center gap-2 bg-amber-500 px-5 py-3 text-[15px] font-medium text-white transition hover:bg-amber-600 hover:-translate-y-0.5;
+  }
+  .eyebrow {
+    @apply text-[14px] font-semibold tracking-wide text-teal-700 uppercase;
+  }
+  /* Angled bottom edge used on hero + banners */
+  .edge-angle {
+    clip-path: polygon(0 0, 100% 0, 100% 88%, 55% 100%, 0 92%);
+  }
+  .prose-legal {
+    @apply text-body;
+  }
+  .prose-legal p {
+    @apply my-4;
+  }
+  .prose-legal ul {
+    @apply my-4 list-disc pl-6;
+  }
+  .prose-legal li {
+    @apply my-1;
+  }
+  .prose-legal strong {
+    @apply text-ink;
+  }
+  .prose-legal a {
+    @apply text-teal-700 underline hover:text-amber-600;
+  }
+}

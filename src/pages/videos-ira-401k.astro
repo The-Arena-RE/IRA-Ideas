@@ -1,0 +1,25 @@
+---
+import Base from '../layouts/Base.astro';
+import PageBanner from '../components/PageBanner.astro';
+import VideoCard from '../components/VideoCard.astro';
+import banner from '../assets/img/colleagues-applauding.jpg';
+import { videos, site } from '../data/site';
+---
+
+<Base
+  title="Videos – Self-Directed IRA & 401(k) Education | IRA Ideas LLC"
+  description="Watch Tim Berry explain self-directed IRAs, self-directed 401(k)s, rollovers, IRA LLCs, real estate in retirement accounts, and how to stay compliant."
+>
+  <PageBanner title="Videos" image={banner} />
+
+  <section class="py-16 md:py-20">
+    <div class="container-site">
+      <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {videos.map((v) => <li class="flex"><VideoCard {...v} /></li>)}
+      </ul>
+      <p class="mt-12 text-center">
+        <a href={site.youtube} target="_blank" rel="noopener" class="btn">More on YouTube <span aria-hidden="true">→</span></a>
+      </p>
+    </div>
+  </section>
+</Base>
