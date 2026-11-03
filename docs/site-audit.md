@@ -171,6 +171,33 @@ In all, the site loads **6 font families at every weight (100–900, italics inc
 8. **Heavy plugin JS/CSS**: about 45 stylesheets on the home page.
 9. "Reporting Error **Connection**" should probably read "Correction".
 
+## 7b. Integrations: n8n + GoHighLevel (keep as-is)
+
+Booking, payments and automations run in **n8n** (`n8n.coreautomations.org`) and **GoHighLevel**.
+The WordPress pages are only front ends: hand-coded HTML/JS that calls n8n webhooks directly from the browser.
+The rebuild keeps **every webhook contract unchanged**, so no n8n or GHL changes are needed.
+
+| Page | n8n webhooks called | Payment |
+|---|---|---|
+| `/retirement-certainty-session/` ($125) | `get-slots-ghl` (POST `{from_time, to_time, timezone:"America/Chicago"}` → `availableSlots`), `booking-ghl` | Stripe Elements (`pk_live_…`), `createPaymentMethod` in the browser, then charged in n8n |
+| `/private-strategy-session/` ($950) | `pss-booking`, `pss-express`, `pss-verify-membership` | Stripe (live) |
+| `/implementation-check-in/` | `checkin-slots`, `checkin-book` | — |
+| `/private-planning-priority-list/` | `priority-list-signup` | — |
+| `/register-pay-advanced-401k-planning-session/` | `35963c3b-…` | QuickBooks Payments (Intuit tokenization) |
+| `/ira-plan/` | `71e92b34-…` | Square **sandbox** (test mode?) |
+| `/self-directed-401k/` | `244c6d6b-…` | Square **sandbox** (test mode?) |
+| `/live/` | `WEBHOOK_URL = "PASTE_YOUR_WEBHOOK_URL_HERE"` (**not wired up**) | — |
+| `/test/`, `/quickbooks-payment-test/` | test webhooks | test |
+| `/sessions-dashboard/`, `/manage-booking/` | rendered client-side (no static content) | — |
+
+Booking rules hard-coded on the Retirement Certainty page: available days Mon/Tue/Thu, 9:30–15:00
+(America/Chicago), 15-minute slots.
+
+Tracking: **Meta (Facebook) Pixel** `1412106300370234` on pages. The domain is already proxied through Cloudflare
+(email-obfuscation script present).
+
+Open items: three payment processors are in use (Stripe, QuickBooks, Square sandbox). Confirm which are live.
+
 ## 8. Recommended rebuild approach (for Cloudflare)
 
 - **Astro** static site → **Cloudflare Workers / Pages** (fast, cheap, good SEO)
