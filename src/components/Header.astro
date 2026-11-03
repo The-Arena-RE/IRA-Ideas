@@ -8,7 +8,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : !href.includes
 ---
 
 <header class="sticky top-0 z-40 bg-teal-950 text-white shadow-[0_1px_0_rgba(255,255,255,0.06)]">
-  <div class="mx-auto flex h-[72px] max-w-[1390px] items-center justify-between pl-5 lg:h-[91px] lg:pl-8">
+  <div class="container-site flex h-[72px] items-center justify-between lg:h-[91px]">
     <a href="/" class="shrink-0" aria-label="IRA Ideas LLC — home">
       <Image src={logo} alt="IRA Ideas LLC" width={170} class="h-auto w-[130px] lg:w-[160px]" loading="eager" />
     </a>
@@ -40,7 +40,7 @@ const isActive = (href: string) => (href === '/' ? path === '/' : !href.includes
       </a>
       <button
         type="button"
-        class="mr-3 grid size-11 place-items-center lg:hidden"
+        class="-mr-2 grid size-11 place-items-center lg:hidden"
         aria-controls="mobile-menu"
         aria-expanded="false"
         aria-label="Open menu"

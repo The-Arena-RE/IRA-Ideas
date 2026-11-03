@@ -42,7 +42,8 @@
   --font-nav: 'Roboto Condensed', 'Roboto', sans-serif;
   --font-display: 'Inter', 'Roboto', sans-serif;
 
-  --container-site: 1140px;
+  /* Blocksy theme: max 1390px, 90vw edge spacing on desktop, 88vw on mobile */
+  --container-site: 1390px;
 }
 
 @layer base {
@@ -71,7 +72,13 @@
 
 @layer components {
   .container-site {
-    @apply mx-auto w-full max-w-(--container-site) px-5;
+    margin-inline: auto;
+    width: min(var(--container-site), 88vw);
+  }
+  @media (min-width: 690px) {
+    .container-site {
+      width: min(var(--container-site), 90vw);
+    }
   }
   .btn {
     @apply inline-flex items-center gap-2 bg-amber-500 px-5 py-3 text-[15px] font-medium text-white transition hover:bg-amber-600 hover:-translate-y-0.5;
