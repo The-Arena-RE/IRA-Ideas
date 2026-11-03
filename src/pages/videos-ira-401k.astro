@@ -15,7 +15,7 @@ import { videos, site } from '../data/site';
   <section class="py-16 md:py-20">
     <div class="container-site">
       <ul class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        {videos.map((v) => <li class="flex"><VideoCard {...v} /></li>)}
+        {videos.map((v) => <li><VideoCard {...v} /></li>)}
       </ul>
       <p class="mt-12 text-center">
         <a href={site.youtube} target="_blank" rel="noopener" class="btn">More on YouTube <span aria-hidden="true">→</span></a>
