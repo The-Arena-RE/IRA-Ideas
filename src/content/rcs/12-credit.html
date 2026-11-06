@@ -1,0 +1,359 @@
+<style>
+.credit-section {
+  background: #F5F6F8;
+  padding: 50px 0;
+  font-family: 'Inter', sans-serif;
+}
+.credit-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+.credit-head {
+  max-width: 760px;
+  margin: 0 auto 36px;
+  text-align: center;
+}
+.credit-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFB400;
+  margin-bottom: 12px;
+}
+.credit-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.2vw, 42px);
+  font-weight: 700;
+  color: #1A2A31;
+  line-height: 1.15;
+  margin: 0 0 14px;
+}
+.credit-divider {
+  width: 52px;
+  height: 3px;
+  background: #FFB400;
+  border-radius: 2px;
+  margin: 0 auto 18px;
+}
+.credit-intro {
+  font-size: 15.5px;
+  line-height: 1.75;
+  color: #6B7880;
+  margin: 0 0 10px;
+}
+.credit-how {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #003A3A;
+  text-align: center;
+  margin: 0 0 20px;
+}
+
+/* Steps */
+.credit-steps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.credit-step {
+  background: #fff;
+  border: 1px solid #E2E5E9;
+  border-radius: 14px;
+  padding: 26px 24px 24px;
+  position: relative;
+  transition: box-shadow .25s, transform .25s;
+}
+.credit-step:hover {
+  box-shadow: 0 16px 40px rgba(0,0,0,0.08);
+  transform: translateY(-3px);
+}
+.credit-num {
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: #003A3A;
+  color: #FFB400;
+  font-family: 'Playfair Display', serif;
+  font-size: 17px;
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 14px rgba(0,58,58,0.25);
+  margin-bottom: 14px;
+}
+.credit-step-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A2A31;
+  margin: 0 0 6px;
+  line-height: 1.35;
+}
+.credit-step-desc {
+  font-size: 14px;
+  line-height: 1.7;
+  color: #6B7880;
+  margin: 0;
+}
+
+/* Price math */
+.credit-math {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+  margin-bottom: 24px;
+}
+.credit-math-card {
+  background: linear-gradient(135deg, #003A3A 0%, #1A2A31 100%);
+  border-radius: 14px;
+  padding: 24px 28px;
+  color: #fff;
+}
+.credit-math-card.is-standard {
+  background: #fff;
+  border: 1px solid #E2E5E9;
+  color: #1A2A31;
+}
+.credit-math-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #FFB400;
+  margin-bottom: 14px;
+}
+.credit-math-card.is-standard .credit-math-label { color: #C47A00; }
+.credit-row {
+  display: flex;
+  justify-content: space-between;
+  gap: 16px;
+  font-size: 14.5px;
+  padding: 7px 0;
+  border-bottom: 1px solid rgba(255,255,255,0.12);
+}
+.credit-math-card.is-standard .credit-row { border-bottom-color: #E9ECEF; }
+.credit-row span:last-child { font-weight: 600; white-space: nowrap; }
+.credit-row.is-total {
+  border-bottom: 0;
+  padding-top: 12px;
+  font-size: 16px;
+  font-weight: 700;
+}
+.credit-row.is-total span:last-child {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  color: #FFB400;
+}
+.credit-math-card.is-standard .credit-row.is-total span:last-child { color: #003A3A; }
+
+/* Swipe dots (mobile only) */
+.credit-dots { display: none; }
+
+/* Close + buttons */
+.credit-close {
+  background: #fff;
+  border: 1px solid #E2E5E9;
+  border-left: 6px solid #FFB400;
+  border-radius: 12px;
+  padding: 22px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+}
+.credit-close-text {
+  font-size: 15.5px;
+  line-height: 1.65;
+  color: #1A2A31;
+  font-weight: 600;
+  max-width: 640px;
+  margin: 0;
+}
+.credit-btns {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+}
+.credit-btn {
+  display: inline-block;
+  text-align: center;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  text-decoration: none;
+  padding: 15px 26px;
+  border-radius: 7px;
+  transition: background .2s, color .2s, transform .15s;
+}
+.credit-btn:hover { transform: translateY(-1px); }
+.credit-btn-primary {
+  background: #FFB400;
+  color: #1A2A31 !important;
+  box-shadow: 0 6px 20px rgba(255,180,0,0.3);
+}
+.credit-btn-primary:hover { background: #e6a200; }
+.credit-btn-secondary {
+  background: transparent;
+  color: #1A2A31 !important;
+  border: 2px solid #1A2A31;
+  padding: 13px 24px;
+}
+.credit-btn-secondary:hover { background: #1A2A31; color: #fff !important; }
+
+@media(max-width: 900px) {
+  .credit-steps { grid-template-columns: 1fr; }
+  .credit-math { grid-template-columns: 1fr; }
+  .credit-close { flex-direction: column; align-items: flex-start; }
+}
+
+/* Mobile: swipeable cards */
+@media(max-width: 767px) {
+  .credit-container { padding: 0 20px; }
+  .credit-section { padding: 34px 0; }
+  .credit-head { text-align: left; margin-bottom: 24px; }
+  .credit-divider { margin-left: 0; }
+  .credit-how { text-align: left; font-size: 18px; margin-bottom: 8px; }
+
+  .credit-steps,
+  .credit-math {
+    display: flex;
+    gap: 12px;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+    scrollbar-width: none;
+    margin: 0 -20px;
+    padding: 8px 20px 14px;
+    scroll-padding: 0 20px;
+  }
+  .credit-steps::-webkit-scrollbar,
+  .credit-math::-webkit-scrollbar { display: none; }
+
+  .credit-step {
+    flex: 0 0 82%;
+    scroll-snap-align: center;
+    padding: 20px 18px;
+  }
+  .credit-step:hover { transform: none; box-shadow: none; }
+
+  .credit-math-card {
+    flex: 0 0 86%;
+    scroll-snap-align: center;
+    padding: 20px 20px;
+  }
+
+  .credit-dots {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    margin: 0 0 18px;
+  }
+  .credit-dots span {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    background: #D5DADF;
+    transition: all .25s ease;
+  }
+  .credit-dots span.is-active {
+    width: 22px;
+    border-radius: 6px;
+    background: #FFB400;
+  }
+
+  .credit-close { padding: 20px 18px; }
+  .credit-btns { width: 100%; flex-direction: column; }
+  .credit-btn { width: 100%; box-sizing: border-box; }
+}
+</style>
+
+<section class="credit-section" id="credit">
+  <div class="credit-container">
+
+    <div class="credit-head">
+      <span class="credit-eyebrow">Your First $125 Can Count Toward More</span>
+      <h2 class="credit-title">Start With One Question. Go Further Only If You Need To.</h2>
+      <div class="credit-divider"></div>
+      <p class="credit-intro">Some retirement-plan questions can be addressed in a short conversation. Others reveal issues that deserve more time and attention.</p>
+      <p class="credit-intro">That’s why we make it easy to start with a focused consultation and move into more extensive assistance when appropriate.</p>
+    </div>
+
+    <h3 class="credit-how">Here’s How It Works:</h3>
+
+    <div class="credit-steps" data-swipe="creditStepsDots">
+      <div class="credit-step">
+        <div class="credit-num">1</div>
+        <h4 class="credit-step-title">Book Your $125 Session</h4>
+        <p class="credit-step-desc">Spend up to 15 minutes discussing your primary question with Tim Berry.</p>
+      </div>
+      <div class="credit-step">
+        <div class="credit-num">2</div>
+        <h4 class="credit-step-title">Determine Whether More Help Is Needed</h4>
+        <p class="credit-step-desc">If your situation requires a more detailed discussion, Tim can explain how a Private Strategy Session may help.</p>
+      </div>
+      <div class="credit-step">
+        <div class="credit-num">3</div>
+        <h4 class="credit-step-title">Apply Your Full $125 Toward the Upgrade</h4>
+        <p class="credit-step-desc">Book a Private Strategy Session within 14 days of completing your original consultation, and your entire $125 payment will be credited toward the applicable price.</p>
+      </div>
+    </div>
+    <div class="credit-dots" id="creditStepsDots" aria-hidden="true"><span class="is-active"></span><span></span><span></span></div>
+
+    <div class="credit-math" data-swipe="creditMathDots">
+      <div class="credit-math-card">
+        <div class="credit-math-label">For Tax Academy Members</div>
+        <div class="credit-row"><span>Private Strategy Session</span><span>$950</span></div>
+        <div class="credit-row"><span>Previous consultation credit</span><span>− $125</span></div>
+        <div class="credit-row is-total"><span>Remaining balance</span><span>$825</span></div>
+      </div>
+      <div class="credit-math-card is-standard">
+        <div class="credit-math-label">For Nonmembers</div>
+        <div class="credit-row"><span>Private Strategy Session (standard rate)</span><span>$1,450</span></div>
+        <div class="credit-row"><span>Previous consultation credit</span><span>− $125</span></div>
+        <div class="credit-row is-total"><span>Remaining balance</span><span>$1,325</span></div>
+      </div>
+    </div>
+    <div class="credit-dots" id="creditMathDots" aria-hidden="true"><span class="is-active"></span><span></span></div>
+
+    <div class="credit-close">
+      <p class="credit-close-text">No obligation to upgrade. If the first consultation provides the direction you need, there’s nothing more to purchase.</p>
+      <div class="credit-btns">
+        <a href="#form" class="credit-btn credit-btn-primary">Book My $125 Consultation</a>
+        <a href="https://iraideas.com/private-strategy-session/" class="credit-btn credit-btn-secondary">Explore Private Strategy Session</a>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function () {
+  var tracks = document.querySelectorAll('.credit-section [data-swipe]');
+  tracks.forEach(function (track) {
+    var dotsWrap = document.getElementById(track.getAttribute('data-swipe'));
+    if (!dotsWrap) return;
+    var dots = dotsWrap.querySelectorAll('span');
+    function update() {
+      var cards = track.children, center = track.scrollLeft + track.clientWidth / 2, best = 0, bestDist = Infinity;
+      for (var i = 0; i < cards.length; i++) {
+        var c = cards[i].offsetLeft + cards[i].offsetWidth / 2, d = Math.abs(c - center);
+        if (d < bestDist) { bestDist = d; best = i; }
+      }
+      for (var j = 0; j < dots.length; j++) dots[j].classList.toggle('is-active', j === best);
+    }
+    track.addEventListener('scroll', function () { window.requestAnimationFrame(update); }, { passive: true });
+    update();
+  });
+})();
+</script>				</div>
+				</div>
+		<div class="elementor-element elementor-element-1a4c326 e-flex e-con-boxed e-con e-child" data-id="1a4c326" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;_ha_eqh_enable&quot;:false}">
+					<div class="e-con-inner">

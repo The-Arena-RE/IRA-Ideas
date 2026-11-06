@@ -1,0 +1,150 @@
+/* Base styles for standalone funnel / landing pages (no Tailwind preflight —
+   the page sections bring their own CSS, carried over from the WordPress page). */
+
+@font-face {
+  font-family: 'Inter';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 100 900;
+  src: url('@fontsource-variable/inter/files/inter-latin-wght-normal.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: normal;
+  font-display: swap;
+  font-weight: 400 900;
+  src: url('@fontsource-variable/playfair-display/files/playfair-display-latin-wght-normal.woff2') format('woff2-variations');
+}
+@font-face {
+  font-family: 'Playfair Display';
+  font-style: italic;
+  font-display: swap;
+  font-weight: 400 900;
+  src: url('@fontsource-variable/playfair-display/files/playfair-display-latin-wght-italic.woff2') format('woff2-variations');
+}
+
+/* ── Theme base (mirrors the Blocksy + Elementor defaults the WordPress page used) ── */
+:root {
+  --theme-font-stack-default: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+  --theme-text-color: #3a4f66;
+  --theme-headings-color: #192a3d;
+  --theme-border-color: #e1e8ed;
+  --theme-content-spacing: 1.5em;
+  --theme-list-indent: 2.5em;
+}
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+}
+html {
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+body,p,h1,h2,h3,h4,h5,h6,em,ol,ul,li,tr,th,td,dl,ins,sub,sup,big,cite,form,small,label,table,figure,button,legend,strike,address,caption,fieldset,blockquote {
+  margin: 0;
+  padding: 0;
+  border: none;
+  font: inherit;
+}
+input,select,textarea { margin: 0; }
+body {
+  font-family: var(--theme-font-stack-default);
+  font-size: 16px;
+  font-weight: 400;
+  line-height: 1.65;
+  color: var(--theme-text-color);
+  background: #fff;
+  overflow-x: hidden;
+  overflow-wrap: break-word;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+h1,h2,h3,h4,h5,h6 {
+  font-family: var(--theme-font-stack-default);
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--theme-headings-color);
+  margin-block-end: calc(.3em + 10px);
+}
+h1 { font-size: 40px; } h2 { font-size: 35px; } h3 { font-size: 30px; }
+h4 { font-size: 25px; } h5 { font-size: 20px; } h6 { font-size: 16px; }
+h1:where(:last-child),h2:where(:last-child),h3:where(:last-child),h4:where(:last-child),h5:where(:last-child),h6:where(:last-child) {
+  margin-block-end: 0;
+}
+p { margin-block-end: var(--theme-content-spacing); }
+ul,ol { padding-inline-start: var(--theme-list-indent); margin-block-end: var(--theme-content-spacing); }
+b,strong { font-weight: bold; }
+small { font-size: 80%; }
+figure,textarea { display: block; }
+a { color: #2872fa; text-decoration: none; }
+a:hover { color: #1559ed; }
+img { max-width: 100%; height: auto; border: none; }
+video,svg { max-width: 100%; }
+select,textarea,input:is([type=url],[type=tel],[type=text],[type=time],[type=date],[type=email],[type=number],[type=search],[type=password]) {
+  appearance: none;
+  width: 100%;
+  height: 40px;
+  padding: 0 15px;
+  font-family: inherit;
+  font-size: 16px;
+  color: var(--theme-text-color);
+  border: 1px solid var(--theme-border-color);
+  border-radius: 3px;
+  background-color: transparent;
+}
+select:focus,textarea:focus,input:is([type=url],[type=tel],[type=text],[type=email],[type=number],[type=search],[type=password]):focus {
+  border-color: #2872fa;
+  outline-color: #2872fa;
+}
+textarea { height: 170px; line-height: 1.5; resize: vertical; padding: 12px 15px; }
+select {
+  padding-inline-end: 25px;
+  background-image: url("data:image/svg+xml,%3Csvg width='21' height='13' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath d='M18.5.379L20.621 2.5 10.5 12.621.379 2.5 2.5.379l8 8z' fill='%234F5D6D' fill-rule='nonzero'/%3E%3C/svg%3E");
+  background-repeat: no-repeat;
+  background-size: 8px auto;
+  background-position: right 10px top 50%;
+}
+button { cursor: pointer; background: none; color: inherit; }
+:focus-visible {
+  outline: 2px solid #ffb400;
+  outline-offset: 2px;
+}
+
+/* Section wrapper that stands in for an Elementor boxed container (1300px). */
+.lp-box {
+  width: 100%;
+  max-width: 1320px; /* 1300px content + 10px padding each side */
+  margin: 0 auto;
+  padding: 10px;
+}
+
+/* Background video sections */
+.lp-video-bg {
+  position: relative;
+  overflow: hidden;
+}
+.lp-video-bg > video {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  z-index: 0;
+  pointer-events: none;
+}
+.lp-video-bg > .lp-video-overlay {
+  position: absolute;
+  inset: 0;
+  z-index: 1;
+  pointer-events: none;
+}
+.lp-video-bg > .lp-video-content {
+  position: relative;
+  z-index: 2;
+}
+@media (prefers-reduced-motion: reduce) {
+  .lp-video-bg > video {
+    display: none;
+  }
+}

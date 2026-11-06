@@ -1,7 +1,7 @@
 // Central site content & settings. Copy is carried over verbatim from iraideas.com.
 
-/** Booking funnel still lives on WordPress for now — change this when it's rebuilt. */
-export const BOOKING_URL = 'https://iraideas.com/retirement-certainty-session/';
+/** Main "Book An Appointment" destination: the Retirement Certainty Session page. */
+export const BOOKING_URL = '/retirement-certainty-session/';
 
 /** Cloudflare Turnstile site key (public). Leave empty to disable the widget. */
 export const TURNSTILE_SITE_KEY = '';

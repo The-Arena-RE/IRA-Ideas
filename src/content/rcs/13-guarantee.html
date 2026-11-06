@@ -1,0 +1,537 @@
+<style>
+.guarantee-section {
+  background: #Fff;
+  padding: 50px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.guarantee-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.guarantee-inner {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: stretch;
+}
+
+.guarantee-left {
+  display: flex;
+  flex-direction: column;
+}
+
+.guarantee-visual {
+  background: linear-gradient(150deg, #004545 0%, #1A2A31 100%);
+  border-radius: 20px;
+  padding: 52px 44px;
+  position: relative;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.guarantee-visual::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, #FFB400, transparent);
+}
+
+.gv-bg-circle {
+  position: absolute;
+  top: -120px; right: -120px;
+  width: 400px; height: 400px;
+  background: radial-gradient(circle, rgba(255,180,0,0.07) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.gv-bg-circle-2 {
+  position: absolute;
+  bottom: -80px; left: -80px;
+  width: 300px; height: 300px;
+  background: radial-gradient(circle, rgba(255,255,255,0.03) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.gv-top {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-bottom: 36px;
+  position: relative;
+}
+
+.gv-seal {
+  position: relative;
+  flex-shrink: 0;
+}
+
+.gv-seal-ring {
+  width: 110px;
+  height: 110px;
+  border-radius: 50%;
+  background: rgba(255,180,0,0.08);
+  border: 2px solid rgba(255,180,0,0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gv-seal-core {
+  width: 88px;
+  height: 88px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #FFB400 0%, #e6a200 100%);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 8px 28px rgba(255,180,0,0.45);
+}
+
+.gv-pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 30px;
+  font-weight: 700;
+  color: #1A2A31;
+  line-height: 1;
+  letter-spacing: -1px;
+}
+
+.gv-word {
+  font-size: 7px;
+  font-weight: 800;
+  color: rgba(26,42,49,0.6);
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  margin-top: 2px;
+}
+
+.gv-top-text {}
+
+.gv-top-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 6px;
+  line-height: 1.25;
+}
+
+.gv-top-sub {
+  font-size: 13px;
+  color: rgba(255,255,255,0.6);
+  line-height: 1.6;
+}
+
+.gv-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.07);
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.gv-quote {
+  background: rgba(255,180,0,0.07);
+  border-left: 3px solid #FFB400;
+  border-radius: 0 8px 8px 0;
+  padding: 18px 20px;
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.gv-quote-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 14px;
+  font-style: italic;
+  color: rgba(255,255,255,0.75);
+  line-height: 1.7;
+}
+
+.gv-points {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 36px;
+  flex-grow: 1;
+  position: relative;
+}
+
+.gv-point {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 8px;
+  padding: 14px 18px;
+  transition: background 0.2s, border-color 0.2s;
+}
+
+.gv-point:hover {
+  background: rgba(255,255,255,0.07);
+  border-color: rgba(255,180,0,0.2);
+}
+
+.gv-point-check {
+  width: 28px;
+  height: 28px;
+  min-width: 28px;
+  background: rgba(255,180,0,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.gv-point-check svg {
+  width: 13px;
+  height: 13px;
+  color: #FFB400;
+}
+
+.gv-point-text {
+  font-size: 13px;
+  font-weight: 500;
+  color: rgba(255,255,255,0.7);
+  line-height: 1.4;
+}
+
+.gv-stats-row {
+  display: grid;
+  grid-template-columns: repeat(3,1fr);
+  gap: 0;
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 10px;
+  overflow: hidden;
+  position: relative;
+}
+
+.gv-stat {
+  padding: 16px 12px;
+  text-align: center;
+  border-right: 1px solid rgba(255,255,255,0.07);
+}
+
+.gv-stat:last-child { border-right: none; }
+
+.gv-stat-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 22px;
+  font-weight: 700;
+  color: #FFB400;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.gv-stat-label {
+  font-size: 10px;
+  color: rgba(255,255,255,0.45);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.guarantee-right {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.guarantee-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFB400;
+  margin-bottom: 14px;
+}
+
+.guarantee-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(26px, 2.8vw, 36px);
+  font-weight: 700;
+  color: #1A2A31;
+  line-height: 1.2;
+  margin-bottom: 14px;
+}
+
+.guarantee-divider {
+  width: 52px;
+  height: 3px;
+  background: #FFB400;
+  border-radius: 2px;
+  margin-bottom: 24px;
+}
+
+.guarantee-copy {
+  font-size: 15px;
+  line-height: 1.85;
+  color: #6B7880;
+  margin-bottom: 28px;
+}
+
+.guarantee-highlight {
+  background: #ffffff;
+  border: 1px solid #E2E5E9;
+  border-left: 4px solid #FFB400;
+  border-radius: 0 10px 10px 0;
+  padding: 20px 24px;
+  margin-bottom: 28px;
+}
+
+.guarantee-highlight p {
+  font-size: 15px;
+  font-weight: 600;
+  color: #1A2A31;
+  line-height: 1.65;
+  margin: 0;
+}
+
+.guarantee-steps {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  margin-bottom: 28px;
+  background: #ffffff;
+  border: 1px solid #E2E5E9;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.gs-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 15px 20px;
+  border-bottom: 1px solid #F0F2F4;
+  transition: background 0.15s;
+}
+
+.gs-item:last-child { border-bottom: none; }
+.gs-item:hover { background: #F8F9FA; }
+
+.gs-num {
+  width: 26px;
+  height: 26px;
+  min-width: 26px;
+  background: #003A3A;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #FFB400;
+}
+
+.gs-text {
+  font-size: 13px;
+  color: #2D3A42;
+  line-height: 1.5;
+}
+
+.gs-text strong { color: #1A2A31; }
+
+.guarantee-clarify {
+  background: #ffffff;
+  border: 1px solid #E2E5E9;
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 28px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #55646c;
+}
+
+.guarantee-clarify strong {
+  display: block;
+  font-size: 12px;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #003A3A;
+  margin-bottom: 6px;
+}
+
+.guarantee-clarify ul {
+  margin: 0;
+  padding-left: 18px;
+}
+
+.guarantee-clarify li { margin-bottom: 4px; }
+.guarantee-clarify li:last-child { margin-bottom: 0; }
+
+.guarantee-cta-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+.guarantee-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFB400;
+  color: #1A2A31!important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 16px 32px;
+  border-radius: 7px;
+  text-decoration: none;
+  box-shadow: 0 6px 20px rgba(255,180,0,0.35);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.guarantee-btn:hover {
+  background: #e6a200!important;
+  transform: translateY(-1px);
+}
+
+.guarantee-note {
+  font-size: 12px;
+  color: #6B7880;
+  line-height: 1.6;
+}
+
+@media(max-width: 1024px) {
+  .guarantee-inner { grid-template-columns: 1fr; gap: 40px; }
+  .guarantee-left { max-width: 580px; margin: 0 auto; width: 100%; }
+}
+
+@media(max-width: 640px) {
+  .guarantee-container { padding: 0 20px; }
+  .guarantee-section { padding: 30px 0; }
+  .guarantee-visual { padding: 36px 28px; }
+  .gv-top { flex-direction: column; text-align: center; }
+}
+</style>
+
+<section class="guarantee-section" id="guarantee">
+  <div class="guarantee-container">
+    <div class="guarantee-inner">
+
+      <div class="guarantee-left">
+        <div class="guarantee-visual">
+          <div class="gv-bg-circle"></div>
+          <div class="gv-bg-circle-2"></div>
+
+          <div class="gv-top">
+            <div class="gv-seal">
+              <div class="gv-seal-ring">
+                <div class="gv-seal-core">
+                  <div class="gv-pct">400%</div>
+                  <div class="gv-word">Value Guar.</div>
+                </div>
+              </div>
+            </div>
+            <div class="gv-top-text">
+              <div class="gv-top-title">The 400% Value Guarantee</div>
+              <div class="gv-top-sub">Our commitment to the value of your consultation.</div>
+            </div>
+          </div>
+
+          <div class="gv-divider"></div>
+
+          <div class="gv-quote">
+            <div class="gv-quote-text">"If you don't feel you received at least four times the value of your investment, simply contact us within 7 days and we'll make it right. No hassle. No arguments."</div>
+          </div>
+
+          <div class="gv-points">
+            <div class="gv-point">
+              <div class="gv-point-check">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="gv-point-text">Full refund if the value isn't delivered</div>
+            </div>
+            <div class="gv-point">
+              <div class="gv-point-check">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="gv-point-text">7-day refund window — no questions asked</div>
+            </div>
+            <div class="gv-point">
+              <div class="gv-point-check">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="gv-point-text">Backed by 25+ years of specialist experience</div>
+            </div>
+            <div class="gv-point">
+              <div class="gv-point-check">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              <div class="gv-point-text">Refund issued to original payment method within 5–10 days</div>
+            </div>
+          </div>
+
+          <div class="gv-stats-row">
+            <div class="gv-stat">
+              <div class="gv-stat-num">$125</div>
+              <div class="gv-stat-label">Flat Fee</div>
+            </div>
+            <div class="gv-stat">
+              <div class="gv-stat-num">Up to 15</div>
+              <div class="gv-stat-label">Minutes</div>
+            </div>
+            <div class="gv-stat">
+              <div class="gv-stat-num">7</div>
+              <div class="gv-stat-label">Day Window</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="guarantee-right">
+        <span class="guarantee-eyebrow">Risk-Free</span>
+        <h2 class="guarantee-title">You Either Get the Clarity You Paid For Or You Get Your Money Back</h2>
+        <div class="guarantee-divider"></div>
+        <p class="guarantee-copy">We get it. Spending money on a consultation is easy when you know you're going to get value. It's a lot harder when you're not sure what you'll receive in return. That's exactly why we offer the 400% Value Guarantee, so you can book with complete confidence.</p>
+
+        <div class="guarantee-highlight">
+          <p>If you don't feel you received at least four times the value of your $125 investment, simply contact us within 7 days and we'll make it right. No hassle. No arguments.</p>
+        </div>
+
+        <div class="guarantee-steps">
+          <div class="gs-item">
+            <div class="gs-num">1</div>
+            <div class="gs-text"><strong>Complete your consultation</strong> — attend your session (up to 15 minutes)</div>
+          </div>
+          <div class="gs-item">
+            <div class="gs-num">2</div>
+            <div class="gs-text"><strong>Request within 7 days</strong> — email tim@iraideas.com if you're not satisfied</div>
+          </div>
+          <div class="gs-item">
+            <div class="gs-num">3</div>
+            <div class="gs-text"><strong>Full refund issued</strong> — returned to your original payment method within 5–10 business days</div>
+          </div>
+        </div>
+
+        <div class="guarantee-clarify">
+          <strong>How the guarantee and the upgrade credit differ</strong>
+          <ul>
+            <li>The guarantee concerns your satisfaction with the $125 consultation. It is not a promise of any particular legal, tax, financial, or IRS outcome.</li>
+            <li>The upgrade credit applies toward a Private Strategy Session booked within 14 days of completing your consultation.</li>
+            <li>Refunded consultation payments are not eligible for upgrade credit.</li>
+          </ul>
+        </div>
+
+        <div class="guarantee-cta-row">
+          <a href="#form" class="guarantee-btn">Book My Consultation | $125 →</a>
+          <div class="guarantee-note">Up to 15 minutes · Instant confirmation<br>Backed by the 400% Value Guarantee</div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

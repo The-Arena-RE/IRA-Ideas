@@ -1,0 +1,284 @@
+<section class="ira-choose" id="choose-session">
+  <div class="ira-choose-inner">
+
+    <header class="ira-choose-head">
+      <span class="ira-eyebrow">Choose Your Session</span>
+      <h2 class="ira-choose-title">Which Session Is Right for You?</h2>
+      <div class="ira-choose-divider"></div>
+      <p class="ira-choose-intro">Whether you have one straightforward question or a complicated retirement-plan situation, choose the level of assistance that fits your needs.</p>
+    </header>
+
+    <div class="ira-cards" id="iraCards">
+
+      <!-- Card 1: primary offer -->
+      <article class="ira-card ira-card-primary">
+        <div class="ira-card-top">
+          <h3>Retirement Certainty Session</h3>
+          <span class="ira-badge">Start Here</span>
+        </div>
+
+        <div class="ira-pricebox">
+          <span class="ira-price">$125</span>
+          <span class="ira-price-note">Up to 15 Minutes</span>
+        </div>
+
+        <p class="ira-best">Best for one specific question or concern.</p>
+
+        <p class="ira-examples-label">Examples</p>
+        <ul>
+          <li>Understanding a particular IRA or 401(k) rule.</li>
+          <li>Asking about a potential prohibited transaction.</li>
+          <li>Clarifying an investment or ownership question.</li>
+          <li>Getting direction before taking your next step.</li>
+        </ul>
+
+        <a class="ira-btn ira-btn-primary" href="#form">Book My $125 Consultation <span aria-hidden="true">→</span></a>
+      </article>
+
+      <!-- Card 2: advanced -->
+      <article class="ira-card ira-card-secondary">
+        <div class="ira-card-top">
+          <h3>Private Strategy Session</h3>
+          <span class="ira-badge ira-badge-ghost">For Complex Situations</span>
+        </div>
+
+        <div class="ira-pricebox">
+          <span class="ira-price ira-price-sm">$950</span>
+          <span class="ira-price-note">for Tax Academy Members</span>
+        </div>
+        <p class="ira-price-alt">$1,450 Standard Rate &nbsp;·&nbsp; Up to 45 Minutes</p>
+
+        <p class="ira-best">Best for complex situations that require a more detailed discussion and strategic planning.</p>
+
+        <p class="ira-examples-label">Examples</p>
+        <ul>
+          <li>Multiple transactions or interconnected compliance concerns.</li>
+          <li>Complex investment structures.</li>
+          <li>Prior transactions with potential problems.</li>
+          <li>Advanced retirement-plan strategies.</li>
+          <li>Situations involving relevant documents that Tim should consider before or during the discussion.</li>
+        </ul>
+
+        <a class="ira-btn ira-btn-secondary" href="https://iraideas.com/private-strategy-session/">Explore Private Strategy Session</a>
+      </article>
+
+    </div>
+
+    <div class="ira-dots" id="iraDots" aria-hidden="true"><span class="is-active"></span><span></span></div>
+
+    <div class="ira-startsmall">
+      <div class="ira-startsmall-icon" aria-hidden="true">
+  <svg viewBox="0 0 12 12" width="26" height="26" fill="none"><path d="M2.2 6.3l2.4 2.4 5.2-5.4" stroke="#2D3A42" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"/></svg>
+</div>
+      <div class="ira-startsmall-body">
+        <h3>Not Sure Which Session You Need? Start Small.</h3>
+        <p>Book the $125 Retirement Certainty Session first. If your situation requires a more comprehensive Private Strategy Session, we’ll apply your entire $125 payment toward the cost when you book within 14 days of completing your initial consultation.</p>
+        <p class="ira-startsmall-key">You won’t have to pay for that first consultation twice.</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<style>
+  .ira-choose {
+    --ira-ink: #2D3A42;
+    --ira-ink-soft: #55646c;
+    --ira-accent: #FFB400;
+    --ira-accent-dark: #e6a200;
+    --ira-soft: #F5F6F8;
+    --ira-line: #E2E5E9;
+    padding: 56px 40px;
+    color: var(--ira-ink);
+    background: #ffffff;
+    font-family: 'Inter', sans-serif;
+    box-sizing: border-box;
+  }
+  .ira-choose *, .ira-choose *::before, .ira-choose *::after { box-sizing: border-box; }
+  .ira-choose p, .ira-choose li, .ira-choose a, .ira-choose span { font-family: 'Inter', sans-serif; }
+  .ira-choose-title, .ira-card h3, .ira-startsmall h3, .ira-price { font-family: 'Playfair Display', Georgia, serif; }
+  .ira-choose-inner { max-width: 1300px; margin: 0 auto; }
+
+  /* Header */
+  .ira-choose-head { text-align: center; margin-bottom: 36px; }
+  .ira-eyebrow {
+    display: inline-block; font-size: 11px; font-weight: 700; letter-spacing: .16em;
+    text-transform: uppercase; color: var(--ira-accent); margin-bottom: 12px;
+  }
+  .ira-choose-title {
+    margin: 0 0 14px; color: #1A2A31; line-height: 1.15; font-weight: 700;
+    font-size: clamp(28px, 3.2vw, 42px);
+  }
+  .ira-choose-divider { width: 52px; height: 3px; background: var(--ira-accent); border-radius: 2px; margin: 0 auto 18px; }
+  .ira-choose-intro { max-width: 740px; margin: 0 auto; font-size: 17px; line-height: 1.65; color: var(--ira-ink-soft); }
+
+  /* Cards */
+  .ira-cards { display: grid; grid-template-columns: 1.1fr 1fr; gap: 28px; align-items: stretch; }
+  .ira-card {
+    position: relative; display: flex; flex-direction: column;
+    border-radius: 18px; padding: 34px 40px 34px;
+    transition: transform .25s ease, box-shadow .25s ease;
+  }
+  .ira-card:hover { transform: translateY(-4px); }
+  .ira-card-top { display: flex; align-items: center; justify-content: space-between; gap: 14px; margin-bottom: 18px; flex-wrap: wrap; }
+  .ira-card h3 { margin: 0; font-size: 26px; line-height: 1.2; font-weight: 700; }
+
+  .ira-pricebox { display: flex; flex-wrap: wrap; align-items: baseline; gap: 4px 14px; }
+  .ira-price { font-size: 52px; font-weight: 700; line-height: 1; letter-spacing: -.02em; }
+  .ira-price-sm { font-size: 40px; }
+  .ira-price-note { font-size: 16px; font-weight: 600; opacity: .92; }
+  .ira-price-alt { margin: 8px 0 0; font-size: 15px; font-weight: 600; opacity: .8; }
+
+  .ira-best {
+    margin: 22px 0 20px; padding-top: 20px;
+    border-top: 1px solid rgba(128,128,128,.28);
+    font-size: 17.5px; line-height: 1.55; font-weight: 500;
+  }
+  .ira-examples-label {
+    margin: 0 0 12px; font-size: 12px; font-weight: 700;
+    letter-spacing: .14em; text-transform: uppercase; opacity: .7;
+  }
+
+  .ira-card ul { list-style: none; margin: 0 0 28px; padding: 0; flex-grow: 1; }
+  .ira-card li { position: relative; padding-left: 32px; margin-bottom: 10px; line-height: 1.5; font-size: 16px; }
+.ira-card li::before {
+  content: "";
+  position: absolute; left: 0; top: 1px;
+  width: 21px; height: 21px; border-radius: 50%;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-size: 11px 11px;
+  background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 12 12' fill='none'%3E%3Cpath d='M2.2 6.3l2.4 2.4 5.2-5.4' stroke='%232D3A42' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'/%3E%3C/svg%3E");
+}
+  /* Primary card */
+  .ira-card-primary {
+    background: linear-gradient(155deg, #3a4d59 0%, var(--ira-ink) 62%, #243038 100%);
+    color: #fff; border: 2px solid var(--ira-accent);
+    box-shadow: 0 22px 48px rgba(45,58,66,.30), 0 0 0 6px rgba(255,180,0,.08);
+    overflow: hidden;
+  }
+  .ira-card-primary::before {
+    content: ""; position: absolute; top: -90px; right: -90px; width: 280px; height: 280px;
+    background: radial-gradient(circle, rgba(255,180,0,.16) 0%, transparent 65%); pointer-events: none;
+  }
+  .ira-card-primary > * { position: relative; }
+  .ira-card-primary h3 { color: #fff; }
+  .ira-card-primary .ira-price { color: var(--ira-accent); }
+  .ira-card-primary li::before { background: var(--ira-accent); color: var(--ira-ink); }
+  .ira-card-primary:hover { box-shadow: 0 28px 56px rgba(45,58,66,.36), 0 0 0 6px rgba(255,180,0,.12); }
+
+  /* Secondary card */
+  .ira-card-secondary {
+    background: var(--ira-soft); border: 1px solid var(--ira-line); color: var(--ira-ink);
+    box-shadow: 0 8px 24px rgba(45,58,66,.06);
+  }
+  .ira-card-secondary:hover { box-shadow: 0 16px 36px rgba(45,58,66,.12); }
+  .ira-card-secondary h3 { color: var(--ira-ink); }
+  .ira-card-secondary li::before { background: rgba(45,58,66,.10); color: var(--ira-ink); }
+
+  /* Badges */
+  .ira-badge {
+    flex: 0 0 auto; background: var(--ira-accent); color: var(--ira-ink);
+    font-size: 11px; font-weight: 800; letter-spacing: .1em; text-transform: uppercase;
+    padding: 6px 14px; border-radius: 999px;
+  }
+  .ira-badge-ghost { background: transparent; color: var(--ira-ink-soft); border: 1px solid #cfd4d9; }
+
+  /* Buttons */
+  .ira-btn {
+    display: block; text-align: center; text-decoration: none; font-weight: 700;
+    padding: 17px 24px; border-radius: 10px;
+    transition: transform .18s ease, background .18s ease, color .18s ease, box-shadow .18s ease;
+  }
+  .ira-btn:hover { transform: translateY(-2px); }
+  .ira-btn:focus-visible { outline: 3px solid var(--ira-accent); outline-offset: 3px; }
+  .ira-btn-primary { background: var(--ira-accent); color: var(--ira-ink) !important; font-size: 18px; box-shadow: 0 8px 22px rgba(255,180,0,.38); }
+  .ira-btn-primary:hover { background: var(--ira-accent-dark); }
+  .ira-btn-secondary { background: transparent; color: var(--ira-ink) !important; border: 2px solid var(--ira-ink); font-size: 16px; }
+  .ira-btn-secondary:hover { background: var(--ira-ink); color: #fff !important; }
+
+  /* Start small */
+  .ira-startsmall {
+    margin: 36px 0 0; display: flex; gap: 24px; align-items: center;
+    background: #fff; border: 1px solid var(--ira-line); border-left: 6px solid var(--ira-accent);
+    border-radius: 14px; padding: 28px 36px; box-shadow: 0 10px 28px rgba(45,58,66,.07);
+  }
+  .ira-startsmall-icon {
+    flex: 0 0 52px; height: 52px; border-radius: 50%; background: var(--ira-accent); color: var(--ira-ink);
+    font-size: 24px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+  }
+  .ira-startsmall h3 { margin: 0 0 8px; color: var(--ira-ink); font-size: 24px; line-height: 1.25; }
+  .ira-startsmall p { margin: 0 0 6px; line-height: 1.6; font-size: 16.5px; color: var(--ira-ink-soft); }
+  .ira-startsmall-key { color: var(--ira-ink) !important; font-weight: 700; margin-bottom: 0 !important; }
+
+  .ira-dots { display: none; }
+
+  @media (prefers-reduced-motion: reduce) {
+    .ira-card, .ira-btn { transition: none; }
+    .ira-card:hover, .ira-btn:hover { transform: none; }
+  }
+
+  /* Tablet */
+  @media (max-width: 1024px) {
+    .ira-choose { padding: 44px 24px; }
+    .ira-card { padding: 28px 28px; }
+    .ira-card h3 { font-size: 23px; }
+    .ira-price { font-size: 44px; }
+    .ira-price-sm { font-size: 36px; }
+  }
+
+  /* Mobile: swipeable cards */
+  @media (max-width: 767px) {
+    .ira-choose { padding: 36px 0; }
+    .ira-choose-head { padding: 0 20px; margin-bottom: 18px; }
+    .ira-choose-intro { font-size: 15.5px; }
+
+    .ira-cards {
+      display: flex; gap: 12px; margin: 0;
+      overflow-x: auto; scroll-snap-type: x mandatory; -webkit-overflow-scrolling: touch;
+      padding: 8px 20px 16px; scroll-padding: 0 20px; scrollbar-width: none;
+    }
+    .ira-cards::-webkit-scrollbar { display: none; }
+    .ira-card { flex: 0 0 85%; scroll-snap-align: center; padding: 22px 20px; }
+    .ira-card:hover { transform: none; }
+    .ira-card-top { margin-bottom: 12px; }
+    .ira-card h3 { font-size: 21px; }
+    .ira-price { font-size: 38px; }
+    .ira-price-sm { font-size: 32px; }
+    .ira-price-note { font-size: 14.5px; }
+    .ira-best { font-size: 15.5px; margin: 14px 0 12px; padding-top: 12px; }
+    .ira-card li { font-size: 14.5px; margin-bottom: 7px; padding-left: 28px; }
+    .ira-card ul { margin-bottom: 20px; }
+    .ira-btn { padding: 14px 18px; }
+    .ira-btn-primary { font-size: 16px; }
+
+    .ira-dots { display: flex; justify-content: center; gap: 8px; margin: 0; }
+    .ira-dots span { width: 8px; height: 8px; border-radius: 50%; background: var(--ira-line); transition: all .25s ease; }
+    .ira-dots span.is-active { width: 22px; border-radius: 6px; background: var(--ira-accent); }
+
+    .ira-startsmall { flex-direction: column; align-items: flex-start; gap: 12px; margin: 20px 20px 0; padding: 22px 20px; }
+    .ira-startsmall h3 { font-size: 20px; }
+    .ira-startsmall p { font-size: 15px; }
+    .ira-card li::before { width: 19px; height: 19px; background-size: 10px 10px; top: 2px; }
+.ira-startsmall-icon { flex: 0 0 40px; width: 40px; height: 40px; }
+.ira-startsmall-icon svg { width: 20px; height: 20px; }
+  }
+</style>
+
+<script>
+(function () {
+  var track = document.getElementById('iraCards');
+  var dots = document.querySelectorAll('#iraDots span');
+  if (!track || !dots.length) return;
+  function update() {
+    var cards = track.children, center = track.scrollLeft + track.clientWidth / 2, best = 0, bestDist = Infinity;
+    for (var i = 0; i < cards.length; i++) {
+      var c = cards[i].offsetLeft + cards[i].offsetWidth / 2, d = Math.abs(c - center);
+      if (d < bestDist) { bestDist = d; best = i; }
+    }
+    for (var j = 0; j < dots.length; j++) dots[j].classList.toggle('is-active', j === best);
+  }
+  track.addEventListener('scroll', function () { window.requestAnimationFrame(update); }, { passive: true });
+  update();
+})();
+</script>

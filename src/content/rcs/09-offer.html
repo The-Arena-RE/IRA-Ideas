@@ -1,0 +1,754 @@
+<style>
+.offer-section {
+  background: #fff;
+  padding: 40px 0;
+  font-family: 'Inter', sans-serif;
+}
+.offer-pss-link {
+  color: #003A3A;
+  font-weight: 700;
+  text-decoration: underline;
+  text-decoration-color: #FFB400;
+  text-underline-offset: 3px;
+  text-decoration-thickness: 2px;
+}
+.offer-pss-link:hover { color: #C47A00; }
+.offer-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.offer-inner {
+  display: grid;
+  grid-template-columns: 1fr 440px;
+  gap: 72px;
+  align-items: start;
+}
+
+.offer-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFB400;
+  margin-bottom: 14px;
+}
+
+.offer-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 46px);
+  font-weight: 700;
+  color: #1A2A31;
+  line-height: 1.12;
+  margin-bottom: 14px;
+}
+
+.offer-divider {
+  width: 52px;
+  height: 3px;
+  background: #FFB400;
+  border-radius: 2px;
+  margin-bottom: 28px;
+}
+
+.offer-desc {
+  font-size: 16px;
+  line-height: 1.85;
+  color: #6B7880;
+  margin-bottom: 48px;
+  max-width: 560px;
+}
+
+.offer-desc.offer-desc-first {
+  margin-bottom: 14px;
+}
+
+.offer-steps {
+  display: flex;
+  flex-direction: column;
+  position: relative;
+}
+
+.offer-steps::before {
+  content: '';
+  position: absolute;
+  left: 21px;
+  top: 44px;
+  bottom: 44px;
+  width: 2px;
+  background: linear-gradient(to bottom, #FFB400, rgba(255,180,0,0.1));
+  z-index: 0;
+}
+
+.offer-step {
+  display: flex;
+  gap: 24px;
+  position: relative;
+  z-index: 1;
+  padding-bottom: 36px;
+}
+
+.offer-step:last-child {
+  padding-bottom: 0;
+}
+
+.os-num {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: #003A3A;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #FFB400;
+  box-shadow: 0 4px 14px rgba(0,58,58,0.25);
+  position: relative;
+  z-index: 1;
+}
+
+.os-body {
+  padding-top: 8px;
+}
+
+.os-title {
+  font-size: 16px;
+  font-weight: 700;
+  color: #1A2A31;
+  margin-bottom: 6px;
+}
+
+.os-desc {
+  font-size: 14px;
+  line-height: 1.75;
+  color: #6B7880;
+}
+
+.offer-topics-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #003A3A;
+  margin: 40px 0 16px;
+}
+
+.offer-topics-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+}
+
+.offer-topic {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  background: #ffffff;
+  border: 1px solid #E2E5E9;
+  border-radius: 6px;
+  padding: 11px 16px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2D3A42;
+  transition: border-color 0.2s;
+}
+
+.offer-topic:hover {
+  border-color: #FFB400;
+}
+
+.ot-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FFB400;
+  flex-shrink: 0;
+}
+
+.offer-topics-note {
+  margin-top: 14px;
+  font-size: 13px;
+  line-height: 1.7;
+  color: #6B7880;
+  max-width: 620px;
+}
+
+.offer-card {
+  background: #ffffff;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.13), 0 0 0 1px rgba(0,0,0,0.05);
+  position: sticky;
+  top: 100px;
+}
+
+.offer-card-top {
+  background: linear-gradient(150deg, #004545 0%, #1A2A31 100%);
+  padding: 32px 36px 28px;
+  position: relative;
+  overflow: hidden;
+}
+
+.offer-card-top::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  right: -80px;
+  width: 280px;
+  height: 280px;
+  background: radial-gradient(circle, rgba(255,180,0,0.12) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.offer-card-top::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FFB400 0%, rgba(255,180,0,0.2) 100%);
+}
+
+.oct-badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+  background: rgba(255,180,0,0.12);
+  border: 1px solid rgba(255,180,0,0.28);
+  border-radius: 100px;
+  padding: 5px 14px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #FFB400;
+  letter-spacing: 0.04em;
+  margin-bottom: 18px;
+  position: relative;
+}
+
+.oct-badge-dot {
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: #FFB400;
+  animation: pulse 2s infinite;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.4; }
+}
+
+.oct-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 24px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+  position: relative;
+  line-height: 1.2;
+}
+
+.oct-subtitle {
+  font-size: 13px;
+  color: rgba(255,255,255,0.55);
+  margin-bottom: 28px;
+  position: relative;
+}
+
+.oct-price-block {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap:0;
+  margin-bottom: 6px;
+}
+
+.oct-currency {
+  font-family: 'Playfair Display', serif;
+  font-size: 26px;
+  font-weight: 700;
+  color: #FFB400;
+  line-height: 1;
+  align-self: flex-start;
+  margin-top: 10px;
+  margin-right: 2px;
+}
+
+.oct-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 72px;
+  font-weight: 700;
+  color: #FFB400;
+  line-height: 1;
+  letter-spacing: -2px;
+}
+
+.oct-price-right {
+  margin-left: 40px;
+  padding-bottom: 0px;
+  align-self: flex-end!important;
+}
+
+.oct-price-tag {
+  display: inline-block;
+  background: rgba(255,180,0,0.15);
+  border-radius: 4px;
+  padding: 3px 8px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #FFB400;
+  letter-spacing: 0.04em;
+  margin-bottom: 4px;
+}
+
+.oct-price-note {
+  font-size: 11px;
+  color: rgba(255,255,255,0.5);
+  line-height: 1.4;
+}
+
+.oct-separator {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin: 20px 0 16px;
+  position: relative;
+}
+
+.oct-meta-row {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  position: relative;
+}
+
+.oct-meta-item {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: rgba(255,255,255,0.55);
+}
+
+.oct-meta-icon {
+  width: 16px;
+  height: 16px;
+  opacity: 0.5;
+}
+
+.offer-card-features {
+  padding: 26px 36px 10px;
+}
+
+.ocf-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #8C959D;
+  margin-bottom: 16px;
+}
+
+.ocf-item {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-size: 14px;
+  color: #2D3A42;
+  line-height: 1.45;
+  padding: 11px 12px;
+  border-radius: 8px;
+  transition: background 0.15s;
+}
+
+.ocf-item:hover {
+  background: #F5F6F8;
+}
+
+.ocf-check {
+  width: 24px;
+  height: 24px;
+  min-width: 24px;
+  background: rgba(0,58,58,0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.ocf-check svg {
+  width: 11px;
+  height: 11px;
+}
+
+.offer-card-clarify {
+  margin: 8px 36px 18px;
+  padding: 14px 16px;
+  background: #F8F9FA;
+  border-left: 3px solid #FFB400;
+  border-radius: 6px;
+  font-size: 12px;
+  line-height: 1.65;
+  color: #55646c;
+}
+
+.offer-card-clarify p {
+  margin: 0 0 6px;
+}
+
+.offer-card-clarify p:last-child {
+  margin-bottom: 0;
+}
+
+.offer-card-cta {
+  padding: 4px 36px 24px;
+}
+
+.offer-credit-line {
+  text-align: center;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 1.5;
+  color: #003A3A;
+  margin: 0 0 12px;
+}
+
+.offer-book-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  background: #FFB400!important;
+  color: #1A2A31!important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 14px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 19px 24px;
+  border-radius: 8px;
+  text-decoration: none;
+  box-shadow: 0 8px 24px rgba(255,180,0,0.4);
+  transition: background 0.2s, transform 0.15s, box-shadow 0.2s;
+}
+
+.offer-book-btn:hover {
+  background: #e6a200;
+  transform: translateY(-2px);
+  box-shadow: 0 12px 32px rgba(255,180,0,0.5);
+}
+
+.offer-book-btn-arrow {
+  font-size: 18px;
+  line-height: 1;
+}
+
+.offer-card-guarantee {
+  margin: 0 36px 28px;
+  background: #F8F9FA;
+  border: 1px solid #E2E5E9;
+  border-radius: 10px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+}
+
+.ocg-seal {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  background: linear-gradient(135deg, #FFB400, #e6a200);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  box-shadow: 0 4px 12px rgba(255,180,0,0.35);
+}
+
+.ocg-seal-pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1A2A31;
+  line-height: 1;
+}
+
+.ocg-seal-word {
+  font-size: 6px;
+  font-weight: 700;
+  color: #1A2A31;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  line-height: 1.3;
+}
+
+.ocg-text strong {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A2A31;
+  display: block;
+  margin-bottom: 3px;
+}
+
+.ocg-text span {
+  font-size: 12px;
+  line-height: 1.6;
+  color: #6B7880;
+  display: block;
+}
+
+.ocg-text .ocg-note {
+  margin-top: 6px;
+  font-size: 11.5px;
+  color: #6B7880;
+}
+
+/* Collapsible guarantee details */
+.ocg-details {
+  margin-top: 6px;
+}
+
+.ocg-details summary {
+  list-style: none;
+  cursor: pointer;
+  font-size: 12px;
+  font-weight: 700;
+  color: #003A3A;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.ocg-details summary::-webkit-details-marker { display: none; }
+
+.ocg-details summary::after {
+  content: "+";
+  font-size: 15px;
+  line-height: 1;
+  color: #C47A00;
+}
+
+.ocg-details[open] summary::after { content: "–"; }
+
+.ocg-details .ocg-note { margin-top: 6px; }
+
+@media(max-width: 1024px) {
+  .offer-inner {
+    grid-template-columns: 1fr;
+    gap: 48px;
+  }
+  .offer-card {
+    position: static;
+    max-width: 520px;
+  }
+}
+
+@media(max-width: 640px) {
+  .offer-container { padding: 0 20px; }
+  .offer-section { padding: 10px 0 24px; }
+  .offer-topics-grid { grid-template-columns: 1fr; }
+
+  .offer-card { max-width: none; width: 100%; border-radius: 16px; }
+  .offer-card-top { padding: 22px 20px 18px; }
+  .oct-title { font-size: 22px; }
+  .oct-subtitle { margin-bottom: 18px; }
+  .oct-price { font-size: 56px; }
+  .oct-price-right { margin-left: 18px; }
+  .oct-meta-row { flex-wrap: wrap; gap: 8px 14px; }
+
+  .offer-card-features { padding: 18px 20px 6px; }
+  .ocf-item { padding: 9px 4px; gap: 12px; font-size: 13.5px; }
+  .offer-card-clarify { margin: 6px 20px 14px; padding: 12px 14px; font-size: 11.5px; }
+
+  .offer-card-cta { padding: 4px 20px 16px; }
+  .offer-credit-line { font-size: 12.5px; margin-bottom: 10px; }
+
+  /* Button: fits the card, wraps if needed */
+  .offer-book-btn {
+    padding: 15px 14px !important;
+    font-size: 15px;
+    letter-spacing: 0.01em;
+    text-transform: none;
+    gap: 8px;
+    text-align: center;
+    line-height: 1.3;
+    flex-wrap: wrap;
+  }
+  .offer-book-btn-arrow { font-size: 16px; }
+
+  /* Compact guarantee */
+  .offer-card-guarantee {
+    margin: 0 20px 20px;
+    padding: 12px 14px;
+    gap: 12px;
+    align-items: center;
+  }
+  .ocg-seal { width: 38px; height: 38px; min-width: 38px; }
+  .ocg-seal-pct { font-size: 11px; }
+  .ocg-text strong { font-size: 12.5px; margin-bottom: 2px; }
+  .ocg-text span { font-size: 11.5px; line-height: 1.5; }
+}
+</style>
+
+<section class="offer-section" id="offer">
+  <div class="offer-container">
+    <div class="offer-inner">
+
+      <div class="offer-left">
+        <span class="offer-eyebrow">The Solution</span>
+        <h2 class="offer-title">Introducing the Retirement Certainty Session</h2>
+        <div class="offer-divider"></div>
+        <p class="offer-desc offer-desc-first">The Retirement Certainty Session is a focused, up to 15-minute consultation designed to help you better understand one specific retirement-plan question, transaction, or concern.</p>
+        <p class="offer-desc">Not every question requires a lengthy engagement. Sometimes you just need the right experience applied to the right issue.</p>
+
+        <div class="offer-steps">
+          <div class="offer-step">
+            <div class="os-num">1</div>
+            <div class="os-body">
+              <div class="os-title">Bring Your Primary Question</div>
+              <div class="os-desc">Tell Tim what you're concerned about, what you've done, or what you're considering. Focus the discussion on your most important question.</div>
+            </div>
+          </div>
+          <div class="offer-step">
+            <div class="os-num">2</div>
+            <div class="os-body">
+              <div class="os-title">Understand the Relevant Rules and Considerations</div>
+              <div class="os-desc">Discuss how relevant retirement-plan rules may apply to your situation and identify potential concerns that deserve attention.</div>
+            </div>
+          </div>
+          <div class="offer-step">
+            <div class="os-num">3</div>
+            <div class="os-body">
+              <div class="os-title">Determine Your Next Step</div>
+              <div class="os-desc">Leave with a clearer understanding of the issue and what to consider next. If additional research, documentation, or more extensive analysis is needed, Tim can discuss the appropriate next step.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="offer-topics-label">Example Consultation Topics</div>
+        <div class="offer-topics-grid">
+          <div class="offer-topic"><span class="ot-dot"></span>Prohibited transaction concerns</div>
+          <div class="offer-topic"><span class="ot-dot"></span>IRA compliance questions</div>
+          <div class="offer-topic"><span class="ot-dot"></span>401(k) compliance questions</div>
+          <div class="offer-topic"><span class="ot-dot"></span>Checkbook LLC questions</div>
+          <div class="offer-topic"><span class="ot-dot"></span>Real estate transactions</div>
+          <div class="offer-topic"><span class="ot-dot"></span>Private lending questions</div>
+          <div class="offer-topic"><span class="ot-dot"></span>Asset titling questions</div>
+          <div class="offer-topic"><span class="ot-dot"></span>Past transaction concerns</div>
+        </div>
+        <p class="offer-topics-note">These are examples of subjects Tim can discuss. Each Retirement Certainty Session focuses on one primary question or concern. More complicated situations may benefit from a <a href="https://iraideas.com/private-strategy-session/" class="offer-pss-link">Private Strategy Session</a>.</p>
+      </div>
+
+      <div>
+        <div class="offer-card">
+
+          <div class="offer-card-top">
+            <div class="oct-badge">
+              <span class="oct-badge-dot"></span>
+              Up to 15-Minute Consultation
+            </div>
+            <div class="oct-title">Retirement Certainty Session</div>
+            <div class="oct-subtitle">One-on-one with Tim Berry · Secure online booking</div>
+
+            <div class="oct-price-block">
+              <div class="oct-currency">$</div>
+              <div class="oct-price">125</div>
+              <div class="oct-price-right">
+                <div class="oct-price-tag">One-Time Fee</div>
+                <div class="oct-price-note">No recurring charges.<br>No hidden fees.</div>
+              </div>
+            </div>
+
+            <div class="oct-separator"></div>
+
+            <div class="oct-meta-row">
+              <div class="oct-meta-item">
+                <svg class="oct-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Up to 15 minutes
+              </div>
+              <div class="oct-meta-item">
+                <svg class="oct-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+                Secure payment
+              </div>
+              <div class="oct-meta-item">
+                <svg class="oct-meta-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 01-2.18 2 19.79 19.79 0 01-8.63-3.07A19.5 19.5 0 013.07 9.81 19.79 19.79 0 01.01 1.18 2 2 0 012 0h3a2 2 0 012 1.72c.127.96.361 1.903.7 2.81a2 2 0 01-.45 2.11L6.09 7.91a16 16 0 006 6l1.27-1.27a2 2 0 012.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0122 14.92z"/></svg>
+                Instant confirm
+              </div>
+            </div>
+          </div>
+
+          <div class="offer-card-features">
+            <div class="ocf-label">What's included in your session</div>
+            <div class="ocf-item">
+              <div class="ocf-check">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#003A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Up to 15 minutes of one-on-one consultation with Tim Berry
+            </div>
+            <div class="ocf-item">
+              <div class="ocf-check">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#003A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Discussion of one primary retirement-plan question or concern
+            </div>
+            <div class="ocf-item">
+              <div class="ocf-check">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#003A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Guidance concerning relevant rules and potential issues
+            </div>
+            <div class="ocf-item">
+              <div class="ocf-check">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#003A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Discussion of practical next steps
+            </div>
+            <div class="ocf-item">
+              <div class="ocf-check">
+                <svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#003A3A" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+              </div>
+              Identification of whether additional assistance may be appropriate
+            </div>
+          </div>
+
+          <div class="offer-card-clarify">
+            <p><strong>This is a focused consultation, not a comprehensive compliance audit.</strong> Extensive document review, written opinions, custom document preparation, corrections, and implementation services are not included.</p>
+            <p>If additional work is needed, available services can be discussed and quoted separately.</p>
+          </div>
+
+          <div class="offer-card-cta">
+          <p class="offer-credit-line">Need additional help afterward? Your $125 can be credited toward a <a href="https://iraideas.com/private-strategy-session/" class="offer-pss-link">Private Strategy Session</a>.</p>
+            <a href="#form" class="offer-book-btn">
+              Book My Consultation | $125
+              <span class="offer-book-btn-arrow">→</span>
+            </a>
+          </div>
+
+          <div class="offer-card-guarantee">
+            <div class="ocg-seal">
+              <div class="ocg-seal-pct">400%</div>
+              <div class="ocg-seal-word">Value<br>Guar.</div>
+            </div>
+            <div class="ocg-text">
+              <strong>400% Value Guarantee</strong>
+              <span>If you don't receive at least 4× the value of your investment, contact us within 7 days for a full refund. No hassle, no arguments.</span>
+              <details class="ocg-details">
+                <summary>Guarantee &amp; credit details</summary>
+                <span class="ocg-note">This guarantee concerns your satisfaction with the $125 consultation and is not a promise of any particular legal, tax, financial, or IRS outcome. The upgrade credit applies only toward a Private Strategy Session. Refunded consultation payments are not eligible for the credit.</span>
+              </details>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>

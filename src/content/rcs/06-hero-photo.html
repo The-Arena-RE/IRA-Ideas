@@ -1,0 +1,194 @@
+<style>
+.hero-right-wrap {
+  position: relative;
+  max-width: 480px;
+  margin: 0 auto;
+}
+
+.hero-photo-card {
+  border-radius: 16px;
+  overflow: hidden;
+  position: relative;
+  box-shadow: 0 32px 80px rgba(0,0,0,0.2);
+}
+
+.hero-photo-card img {
+  width: 100%;
+  display: block;
+  object-fit: cover;
+  object-position: top center;
+}
+
+
+.hero-photo-overlay {
+  position: absolute;
+  bottom: 0; left: 0; right: 0;
+  background: linear-gradient(transparent, rgba(0,58,58,0.85));
+  padding: 40px 28px 28px;
+}
+
+.hero-photo-name {
+  font-family: 'Playfair Display', serif;
+  font-size: 20px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 4px;
+}
+
+.hero-photo-title {
+  font-size: 12px;
+  color: rgba(255,255,255,0.6);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+}
+
+
+.hf-card-1 {
+  position: absolute;
+  top: 28px;
+  right: -40px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  min-width: 150px;
+  z-index: 10;
+}
+
+.hf-bar {
+  height: 3px;
+  width: 36px;
+  background: #FFB400;
+  border-radius: 2px;
+  margin-bottom: 10px;
+}
+
+.hf-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #003A3A;
+  line-height: 1;
+}
+
+.hf-label {
+  font-size: 11px;
+  color: #8C959D;
+  margin-top: 4px;
+  line-height: 1.4;
+}
+
+
+.hf-card-2 {
+  position: absolute;
+  bottom: 140px;
+  left: -20px;
+  background: #ffffff;
+  border-radius: 12px;
+  padding: 16px 20px;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.12);
+  min-width: 160px;
+  z-index: 10;
+}
+
+
+.hero-cred-strip {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin-top: 16px;
+  justify-content: center;
+}
+
+.hero-cred-pill {
+  background: rgba(0,58,58,0.07);
+  border: 1px solid rgba(0,58,58,0.12);
+  border-radius: 100px;
+  padding: 6px;
+  font-size: 11px;
+  font-weight: 600;
+  color: #003A3A;
+  white-space: nowrap;
+
+}
+
+@media(max-width: 768px) {
+  .hf-card-1 { 
+    right: -10px; 
+    top: 10px; 
+    padding: 10px 14px;
+    min-width: 120px;
+  }
+  
+  .hf-card-2 { 
+    left: -10px; 
+    bottom: 160px;
+    padding: 8px 12px;
+    min-width: 130px;
+  }
+
+  .hf-num {
+    font-size: 20px;
+  }
+
+  .hf-label {
+    font-size: 10px;
+    line-height: 1.2;
+  }
+
+  .hf-bar {
+    height: 2px;
+    width: 24px;
+    margin-bottom: 6px;
+  }
+
+  .hero-photo-overlay {
+    padding: 60px 20px 20px;
+    z-index: 20;
+  }
+
+  .hero-photo-name {
+    font-size: 18px;
+  }
+
+  .hero-photo-title {
+    font-size: 10px;
+    line-height: 1.3;
+  }
+
+}
+</style>
+
+<div class="hero-right-wrap">
+
+
+  <div class="hf-card-1">
+    <div class="hf-bar"></div>
+    <div class="hf-num">25+</div>
+    <div class="hf-label">Years of Specialist Experience</div>
+  </div>
+
+
+  <div class="hero-photo-card">
+    <img decoding="async" src="/media/rcs/attorney.webp" alt="Self-Directed Retirement Plan Specialist" />
+    <div class="hero-photo-overlay">
+      <div class="hero-photo-name">TIM BERRY</div>
+      <div class="hero-photo-title">Self-Directed Retirement Plan Specialist</div>
+    </div>
+  </div>
+
+
+  <div class="hf-card-2">
+    <div class="hf-bar"></div>
+    <div class="hf-num">400%</div>
+    <div class="hf-label">Value Guarantee or full refund</div>
+  </div>
+
+ 
+  <div class="hero-cred-strip">
+    <div class="hero-cred-pill">Self-Directed IRA</div>
+    <div class="hero-cred-pill">Solo 401(k)</div>
+    <div class="hero-cred-pill">Prohibited Transactions</div>
+    <div class="hero-cred-pill">25+ Years Focus</div>
+  </div>
+</div>

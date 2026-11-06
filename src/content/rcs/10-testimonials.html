@@ -1,0 +1,583 @@
+<style>
+.testi-section {
+  padding: 50px 0;
+  font-family: 'Inter', sans-serif;
+  position: relative;
+  overflow: hidden;
+}
+
+.testi-section::before {
+  content: '';
+  position: absolute;
+  top: -150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 800px;
+  height: 500px;
+  background: radial-gradient(ellipse, rgba(255,180,0,0.05) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.testi-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+  position: relative;
+}
+
+.testi-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.testi-eyebrow {
+  display: inline-block;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFB400;
+  margin-bottom: 14px;
+}
+
+.testi-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(30px, 3.5vw, 44px);
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 16px;
+  line-height: 1.15;
+}
+
+.testi-divider {
+  width: 52px;
+  height: 3px;
+  background: #FFB400;
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.testi-subtitle {
+  font-size: 16px;
+  color: rgba(255,255,255,0.45);
+  max-width: 480px;
+  margin: 0 auto;
+  line-height: 1.7;
+}
+
+.testi-slider-wrap {
+  position: relative;
+}
+
+.testi-slider-viewport {
+  overflow: hidden;
+}
+
+.testi-slider-track {
+  display: flex;
+  gap: 24px;
+  transition: transform 0.55s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  will-change: transform;
+  align-items: stretch;
+}
+
+.testi-card {
+  flex: 0 0 calc(33.333% - 16px);
+  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+  padding: 36px 32px 28px;
+  display: flex;
+  flex-direction: column;
+  box-sizing: border-box;
+}
+
+.testi-card.testi-card-featured {
+  background: rgba(255,180,0,0.07);
+  border-color: rgba(255,180,0,0.25);
+}
+
+.testi-top-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 22px;
+}
+
+.testi-stars {
+  display: flex;
+  gap: 3px;
+}
+
+.testi-star {
+  color: #FFB400;
+  font-size: 15px;
+  line-height: 1;
+}
+
+.testi-quote-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(255,180,0,0.1);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.testi-quote-icon svg {
+  width: 16px;
+  height: 16px;
+  color: #FFB400;
+  opacity: 0.6;
+}
+
+.testi-text {
+  font-size: 15px;
+  line-height: 1.8;
+  color: rgba(255,255,255,0.75);
+  margin-bottom: 28px;
+  flex-grow: 1;
+  font-style: italic;
+}
+
+.testi-separator {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin-bottom: 22px;
+}
+
+.testi-author-row {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+}
+
+.testi-avatar {
+  width: 44px;
+  height: 44px;
+  min-width: 44px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.07);
+  border: 1px solid rgba(255,255,255,0.12);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.testi-avatar svg {
+  width: 22px;
+  height: 22px;
+  color: rgba(255,255,255,0.35);
+}
+
+.testi-name {
+  font-size: 14px;
+  font-weight: 700;
+  color: #ffffff;
+  margin-bottom: 3px;
+  line-height: 1.2;
+}
+
+.testi-role {
+  font-size: 11px;
+  color: rgba(255,255,255,0.35);
+  letter-spacing: 0.03em;
+}
+
+.testi-tag {
+  display: inline-block;
+  background: rgba(255,180,0,0.12);
+  border: 1px solid rgba(255,180,0,0.2);
+  border-radius: 4px;
+  padding: 3px 10px;
+  font-size: 10px;
+  font-weight: 600;
+  color: #FFB400;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  margin-left: auto;
+  align-self: center;
+  white-space: nowrap;
+}
+
+.testi-controls {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-top: 36px;
+}
+
+.testi-arrow {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.14);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: background 0.2s, border-color 0.2s, transform 0.15s;
+  flex-shrink: 0;
+}
+
+.testi-arrow:hover {
+  background: #FFB400;
+  border-color: #FFB400;
+  transform: scale(1.06);
+}
+
+.testi-arrow:hover svg { color: #1A2A31; }
+
+.testi-arrow svg {
+  width: 18px;
+  height: 18px;
+  color: rgba(255,255,255,0.65);
+  transition: color 0.2s;
+}
+
+.testi-dots {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+}
+
+.testi-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: rgba(255,255,255,0.2);
+  cursor: pointer;
+  transition: background 0.25s, width 0.3s;
+  border: none;
+  padding: 0;
+}
+
+.testi-dot.active {
+  background: #FFB400;
+  width: 24px;
+  border-radius: 4px;
+}
+
+.testi-bottom-strip {
+  background: rgba(255,255,255,0.03);
+  border: 1px solid rgba(255,255,255,0.07);
+  border-radius: 12px;
+  padding: 28px 40px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  flex-wrap: wrap;
+  margin-top: 40px;
+}
+
+.tbs-left {
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  flex-wrap: wrap;
+}
+
+.tbs-stat { text-align: center; }
+
+.tbs-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #FFB400;
+  line-height: 1;
+  margin-bottom: 4px;
+}
+
+.tbs-label {
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+}
+
+.tbs-divider {
+  width: 1px;
+  height: 40px;
+  background: rgba(255,255,255,0.08);
+}
+
+.tbs-text {
+  font-family: 'Playfair Display', serif;
+  font-size: 16px;
+  font-style: italic;
+  color: rgba(255,255,255,0.55);
+  line-height: 1.6;
+  max-width: 400px;
+}
+
+.tbs-cta {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: #FFB400;
+  color: #1A2A31 !important;
+  font-family: 'Inter', sans-serif;
+  font-weight: 700;
+  font-size: 13px;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  padding: 14px 28px;
+  border-radius: 6px;
+  text-decoration: none;
+  white-space: nowrap;
+  box-shadow: 0 6px 20px rgba(255,180,0,0.3);
+  transition: background 0.2s, transform 0.15s;
+}
+
+.tbs-cta:hover {
+  background: #e6a200 !important;
+  transform: translateY(-1px);
+}
+
+@media(max-width: 1024px) {
+  .testi-card { flex: 0 0 calc(50% - 12px); }
+}
+
+@media(max-width: 640px) {
+  .testi-container { padding: 0 20px; }
+  .testi-card { flex: 0 0 100%; padding: 28px 22px 22px; }
+  .testi-bottom-strip { padding: 24px; flex-direction: column; text-align: center; }
+  .tbs-left { justify-content: center; }
+}
+</style>
+
+<section class="testi-section">
+  <div class="testi-container">
+
+    <div class="testi-header">
+      <span class="testi-eyebrow">Client Feedback</span>
+      <h2 class="testi-title">What Investors Appreciate Most</h2>
+      <div class="testi-divider"></div>
+      <p class="testi-subtitle">Real feedback from self-directed retirement investors who got the clarity they needed.</p>
+    </div>
+
+    <div class="testi-slider-wrap">
+      <div class="testi-slider-viewport">
+        <div class="testi-slider-track" id="testiTrack">
+
+          <div class="testi-card">
+            <div class="testi-top-row">
+              <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+              <div class="testi-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+            </div>
+            <div class="testi-text">"Thanks very much for the thoughtful response. We are already more than pregnant with the structure, so really it is a matter of figuring out how best to minimize any risks at this juncture."</div>
+            <div class="testi-separator"></div>
+            <div class="testi-author-row">
+              <div class="testi-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><div class="testi-name">Self-Directed IRA Investor</div><div class="testi-role">Real Estate Structure Review</div></div>
+              <div class="testi-tag">IRA</div>
+            </div>
+          </div>
+
+          <div class="testi-card testi-card-featured">
+            <div class="testi-top-row">
+              <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+              <div class="testi-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+            </div>
+            <div class="testi-text">"Always an excellent experience working with you. The clarity I received gave me the confidence to move forward knowing my plan was fully compliant."</div>
+            <div class="testi-separator"></div>
+            <div class="testi-author-row">
+              <div class="testi-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><div class="testi-name">Solo 401(k) Plan Holder</div><div class="testi-role">Compliance Consultation</div></div>
+              <div class="testi-tag">401(k)</div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-top-row">
+              <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+              <div class="testi-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+            </div>
+            <div class="testi-text">"Thank you for spending the extra time with us. We definitely regret not knowing and having started our Roth's months ago, this was exactly the guidance we needed."</div>
+            <div class="testi-separator"></div>
+            <div class="testi-author-row">
+              <div class="testi-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><div class="testi-name">Retirement Account Investor</div><div class="testi-role">Roth IRA Structure Review</div></div>
+              <div class="testi-tag">Roth</div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-top-row">
+              <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+              <div class="testi-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+            </div>
+            <div class="testi-text">"Tim Berry is an attorney you need to work with! He is a good listener, accessible and respectful of your time. He has great knowledge with retirement planning and the many nuances involved. Tim is the whole package incredibly helpful. I highly recommend him."</div>
+            <div class="testi-separator"></div>
+            <div class="testi-author-row">
+              <div class="testi-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><div class="testi-name">Verified Client</div><div class="testi-role">Retirement Plan Consultation</div></div>
+              <div class="testi-tag">Verified</div>
+            </div>
+          </div>
+
+          <div class="testi-card testi-card-featured">
+            <div class="testi-top-row">
+              <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+              <div class="testi-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+            </div>
+            <div class="testi-text">"A man qualified to talk straight simple language to usually confused IRS agents. Not a 10-page response short, sweet, and to the point. Tim does not relent over $50k in penalties gone. And his fee is embarrassingly fair."</div>
+            <div class="testi-separator"></div>
+            <div class="testi-author-row">
+              <div class="testi-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><div class="testi-name">Verified Client</div><div class="testi-role">IRS Penalty Resolution</div></div>
+              <div class="testi-tag">$50k+ Saved</div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-top-row">
+              <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+              <div class="testi-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+            </div>
+            <div class="testi-text">"I was told: 'You ever hear of Batman living in a Batcave?' That's Tim, in a Batcave with IRS books all around him. He reads those books and he knows the law. He knows the law and it's huge."</div>
+            <div class="testi-separator"></div>
+            <div class="testi-author-row">
+              <div class="testi-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><div class="testi-name">Verified Client</div><div class="testi-role">IRS Compliance Review</div></div>
+              <div class="testi-tag">IRS Expert</div>
+            </div>
+          </div>
+
+          <div class="testi-card">
+            <div class="testi-top-row">
+              <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+              <div class="testi-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+            </div>
+            <div class="testi-text">"My whole goal is to pay the taxes I owe but not a penny more. Using legal strategies, because there are smarter people who make more money and pay less taxes. The tools and tips you offer are going to be instrumental."</div>
+            <div class="testi-separator"></div>
+            <div class="testi-author-row">
+              <div class="testi-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><div class="testi-name">Verified Client</div><div class="testi-role">Tax Strategy Consultation</div></div>
+              <div class="testi-tag">Tax Strategy</div>
+            </div>
+          </div>
+
+          <div class="testi-card testi-card-featured">
+            <div class="testi-top-row">
+              <div class="testi-stars"><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span><span class="testi-star">★</span></div>
+              <div class="testi-quote-icon"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M14.017 21v-7.391c0-5.704 3.731-9.57 8.983-10.609l.995 2.151c-2.432.917-3.995 3.638-3.995 5.849h4v10h-9.983zm-14.017 0v-7.391c0-5.704 3.748-9.57 9-10.609l.996 2.151c-2.433.917-3.996 3.638-3.996 5.849h3.983v10h-9.983z"/></svg></div>
+            </div>
+            <div class="testi-text">"Having access to this level of advanced information makes you feel lucky. Just knowing that we have access to it. I don't even think I can process yet just how powerful this has been."</div>
+            <div class="testi-separator"></div>
+            <div class="testi-author-row">
+              <div class="testi-avatar"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><div class="testi-name">Verified Client</div><div class="testi-role">Advanced Retirement Planning</div></div>
+              <div class="testi-tag">Planning</div>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="testi-controls">
+        <button class="testi-arrow" id="testiPrev" aria-label="Previous">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="15 18 9 12 15 6"/></svg>
+        </button>
+        <div class="testi-dots" id="testiDots"></div>
+        <button class="testi-arrow" id="testiNext" aria-label="Next">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        </button>
+      </div>
+    </div>
+
+    <div class="testi-bottom-strip">
+      <div class="tbs-left">
+        <div class="tbs-stat"><div class="tbs-num">25+</div><div class="tbs-label">Years Experience</div></div>
+        <div class="tbs-divider"></div>
+        <div class="tbs-stat"><div class="tbs-num">$125</div><div class="tbs-label">Flat Fee</div></div>
+        <div class="tbs-divider"></div>
+        <div class="tbs-stat"><div class="tbs-num">400%</div><div class="tbs-label">Value Guarantee</div></div>
+        <div class="tbs-divider"></div>
+        <div class="tbs-text">"Confidence isn't built on hope. It's built on knowing."</div>
+      </div>
+      <a href="#form" class="tbs-cta">Book My Consultation →</a>
+    </div>
+
+  </div>
+</section>
+
+<script>
+(function() {
+  var track = document.getElementById('testiTrack');
+  var dotsWrap = document.getElementById('testiDots');
+  var prevBtn = document.getElementById('testiPrev');
+  var nextBtn = document.getElementById('testiNext');
+  var cards = track.querySelectorAll('.testi-card');
+  var total = cards.length;
+  var current = 0;
+  var perPage = 3;
+  var gap = 24;
+  var autoTimer = null;
+
+  function pages() { return total - perPage + 1; }
+
+  function cardWidth() {
+    var vw = track.parentElement.offsetWidth;
+    return (vw - gap * (perPage - 1)) / perPage;
+  }
+
+  function setWidths() {
+    var cw = cardWidth();
+    cards.forEach(function(c) { c.style.flex = '0 0 ' + cw + 'px'; });
+    track.style.gap = gap + 'px';
+  }
+
+  function buildDots() {
+    dotsWrap.innerHTML = '';
+    for (var i = 0; i < pages(); i++) {
+      var d = document.createElement('button');
+      d.className = 'testi-dot' + (i === 0 ? ' active' : '');
+      d.setAttribute('aria-label', 'Slide ' + (i + 1));
+      (function(idx) { d.addEventListener('click', function() { stopAuto(); goTo(idx); startAuto(); }); })(i);
+      dotsWrap.appendChild(d);
+    }
+  }
+
+  function goTo(idx) {
+    current = Math.max(0, Math.min(idx, pages() - 1));
+    var offset = current * (cardWidth() + gap);
+    track.style.transform = 'translateX(-' + offset + 'px)';
+    dotsWrap.querySelectorAll('.testi-dot').forEach(function(d, i) {
+      d.classList.toggle('active', i === current);
+    });
+  }
+
+  function next() { goTo(current + 1 >= pages() ? 0 : current + 1); }
+  function prev() { goTo(current - 1 < 0 ? pages() - 1 : current - 1); }
+
+  function startAuto() { autoTimer = setInterval(next, 4500); }
+  function stopAuto() { clearInterval(autoTimer); }
+
+  nextBtn.addEventListener('click', function() { stopAuto(); next(); startAuto(); });
+  prevBtn.addEventListener('click', function() { stopAuto(); prev(); startAuto(); });
+  track.parentElement.addEventListener('mouseenter', stopAuto);
+  track.parentElement.addEventListener('mouseleave', startAuto);
+
+  function init() {
+    perPage = window.innerWidth <= 640 ? 1 : window.innerWidth <= 1024 ? 2 : 3;
+    setWidths();
+    buildDots();
+    goTo(0);
+  }
+
+  window.addEventListener('resize', init);
+  init();
+  startAuto();
+})();
+</script>				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-a89a6cb e-con-full e-flex e-con e-parent" data-id="a89a6cb" data-element_type="container" data-e-type="container" data-settings="{&quot;_ha_eqh_enable&quot;:false}">
+		<div class="elementor-element elementor-element-90ef26b e-flex e-con-boxed elementor-invisible e-con e-child" data-id="90ef26b" data-element_type="container" data-e-type="container" data-settings="{&quot;animation&quot;:&quot;slideInUp&quot;,&quot;_ha_eqh_enable&quot;:false}">
+					<div class="e-con-inner">

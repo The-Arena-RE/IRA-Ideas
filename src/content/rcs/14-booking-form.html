@@ -1,0 +1,1675 @@
+<script src="https://js.stripe.com/v3/"></script>
+<style>
+.cbf-section {
+   background: #F5F6F8;
+  padding: 50px 0;
+  font-family: 'Inter', sans-serif;
+}
+
+.cbf-container {
+  max-width: 1300px;
+  margin: 0 auto;
+  padding: 0 40px;
+}
+
+.cbf-header {
+  text-align: center;
+  margin-bottom: 56px;
+}
+
+.cbf-eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: #FFB400;
+  margin-bottom: 14px;
+}
+
+.cbf-eyebrow-dot {
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: #FFB400;
+  animation: cbfPulse 2s infinite;
+}
+
+@keyframes cbfPulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.4; transform: scale(0.8); }
+}
+
+.cbf-title {
+  font-family: 'Playfair Display', serif;
+  font-size: clamp(28px, 3.5vw, 42px);
+  font-weight: 700;
+  color: #1A2A31;
+  line-height: 1.15;
+  margin-bottom: 14px;
+}
+
+.cbf-divider {
+  width: 52px;
+  height: 3px;
+  background: #FFB400;
+  border-radius: 2px;
+  margin: 0 auto 20px;
+}
+
+.cbf-subtitle {
+  font-size: 16px;
+  color: #6B7880;
+  max-width: 520px;
+  margin: 0 auto;
+  line-height: 1.75;
+}
+
+.cbf-trust-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 28px;
+  flex-wrap: wrap;
+  margin-top: 20px;
+}
+
+.cbf-trust-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 500;
+  color: #8C959D;
+}
+
+.cbf-trust-icon {
+  width: 16px;
+  height: 16px;
+  color: #FFB400;
+}
+
+.cbf-trust-sep {
+  width: 1px;
+  height: 14px;
+  background: #D0D5DA;
+}
+
+.cbf-inner {
+  display: grid;
+  grid-template-columns: 280px 1fr;
+  gap: 32px;
+  align-items: start;
+}
+
+.cbf-price-card {
+  background: linear-gradient(150deg, #003A3A 0%, #1A2A31 100%);
+  border-radius: 16px;
+  padding: 32px 28px;
+  position: relative;
+  overflow: hidden;
+  margin-bottom: 16px;
+}
+
+.cbf-price-card::after {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #FFB400, rgba(255,180,0,0.2));
+}
+
+.cbf-price-card::before {
+  content: '';
+  position: absolute;
+  top: -60px; right: -60px;
+  width: 200px; height: 200px;
+  background: radial-gradient(circle, rgba(255,180,0,0.08) 0%, transparent 65%);
+  pointer-events: none;
+}
+
+.cbf-price-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255,255,255,0.4);
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.cbf-price-num {
+  font-family: 'Playfair Display', serif;
+  font-size: 52px;
+  font-weight: 700;
+  color: #FFB400;
+  line-height: 1;
+  margin-bottom: 4px;
+  position: relative;
+}
+
+.cbf-price-session {
+  font-size: 13px;
+  color: rgba(255,255,255,0.45);
+  margin-bottom: 24px;
+  position: relative;
+}
+
+.cbf-price-divider {
+  height: 1px;
+  background: rgba(255,255,255,0.08);
+  margin-bottom: 20px;
+}
+
+.cbf-feature {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 13px;
+  color: rgba(255,255,255,0.65);
+  margin-bottom: 12px;
+  line-height: 1.4;
+  position: relative;
+}
+
+.cbf-feature:last-child { margin-bottom: 0; }
+
+.cbf-fcheck {
+  width: 20px;
+  height: 20px;
+  min-width: 20px;
+  background: rgba(255,180,0,0.12);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.cbf-fcheck svg {
+  width: 10px;
+  height: 10px;
+  color: #FFB400;
+}
+
+.cbf-guarantee {
+  background: #ffffff;
+  border: 1px solid #E2E5E9;
+  border-radius: 12px;
+  padding: 16px 18px;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.cbf-g-seal {
+  width: 40px;
+  height: 40px;
+  min-width: 40px;
+  background: linear-gradient(135deg, #FFB400, #e6a200);
+  border-radius: 50%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 4px 12px rgba(255,180,0,0.3);
+}
+
+.cbf-g-pct {
+  font-family: 'Playfair Display', serif;
+  font-size: 11px;
+  font-weight: 700;
+  color: #1A2A31;
+  line-height: 1;
+}
+
+.cbf-g-word {
+  font-size: 6px;
+  font-weight: 700;
+  color: rgba(26,42,49,0.65);
+  text-transform: uppercase;
+}
+
+.cbf-g-text strong {
+  display: block;
+  font-size: 12px;
+  font-weight: 700;
+  color: #1A2A31;
+  margin-bottom: 3px;
+}
+
+.cbf-g-text span {
+  font-size: 11px;
+  color: #8C959D;
+  line-height: 1.55;
+}
+
+.cbf-form-card {
+  background: #ffffff;
+  border: 1px solid #E2E5E9;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.06);
+}
+
+.cbf-form-header {
+  background: #003A3A;
+  padding: 20px 32px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cbf-fh-left {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.cbf-fh-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #FFB400;
+  animation: cbfPulse 2s infinite;
+}
+
+.cbf-fh-title {
+  font-size: 14px;
+  font-weight: 600;
+  color: rgba(255,255,255,0.85);
+}
+
+.cbf-fh-secure {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: rgba(255,255,255,0.4);
+}
+
+.cbf-fh-secure svg {
+  width: 12px;
+  height: 12px;
+  color: rgba(255,180,0,0.6);
+}
+
+.cbf-steps {
+  display: flex;
+  align-items: center;
+  padding: 20px 32px;
+  border-bottom: 1px solid #F0F2F4;
+}
+
+.cbf-step {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+}
+
+.cbf-step-num {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background: #F0F2F4;
+  border: 2px solid #E2E5E9;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 12px;
+  font-weight: 700;
+  color: #8C959D;
+  transition: all 0.3s;
+  flex-shrink: 0;
+}
+
+.cbf-step.active .cbf-step-num {
+  background: #003A3A;
+  border-color: #003A3A;
+  color: #FFB400;
+}
+
+.cbf-step.completed .cbf-step-num {
+  background: #FFB400;
+  border-color: #FFB400;
+  color: #1A2A31;
+}
+
+.cbf-step-label {
+  font-size: 12px;
+  font-weight: 600;
+  color: #8C959D;
+  transition: color 0.3s;
+}
+
+.cbf-step.active .cbf-step-label { color: #003A3A; }
+.cbf-step.completed .cbf-step-label { color: #FFB400; }
+
+.cbf-step-line {
+  flex: 1;
+  height: 2px;
+  background: #E2E5E9;
+  margin: 0 12px;
+  transition: background 0.3s;
+}
+
+.cbf-step-line.completed { background: #FFB400; }
+
+.cbf-panel {
+  padding: 32px;
+}
+
+.cbf-field-note {
+  font-size: 12px;
+  color: #6B7880;
+  line-height: 1.55;
+}
+
+.cbf-success-credit {
+  max-width: 460px;
+  margin: 24px auto 0;
+  padding: 14px 18px;
+  background: rgba(255,180,0,0.12);
+  border: 1px solid rgba(255,180,0,0.4);
+  border-radius: 10px;
+  font-size: 13px;
+  line-height: 1.6;
+  color: #2D3A42;
+  text-align: left;
+}
+
+.cbf-section-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: #003A3A;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cbf-section-label::after {
+  content: '';
+  flex: 1;
+  height: 1px;
+  background: #F0F2F4;
+}
+
+.cbf-calendar-nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 16px;
+}
+
+.cbf-cal-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 18px;
+  font-weight: 700;
+  color: #1A2A31;
+}
+
+.cbf-cal-btn {
+  width: 36px;
+  height: 36px;
+  border-radius: 50%;
+  background: #F5F6F8;
+  border: 1px solid #E2E5E9;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+}
+
+.cbf-cal-btn:hover { background: #003A3A; border-color: #003A3A; }
+.cbf-cal-btn:hover svg { color: #FFB400; }
+
+.cbf-cal-btn svg {
+  width: 16px;
+  height: 16px;
+  color: #6B7880;
+  transition: color 0.2s;
+}
+
+.cbf-cal-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 4px;
+  margin-bottom: 28px;
+}
+
+.cbf-cal-day-header {
+  text-align: center;
+  font-size: 11px;
+  font-weight: 700;
+  color: #8C959D;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  padding: 8px 0;
+}
+
+.cbf-cal-day {
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 8px;
+  font-size: 13px;
+  font-weight: 500;
+  color: #2D3A42!important;
+  cursor: pointer;
+  transition: all 0.2s;
+  border: 1px solid transparent;
+}
+
+.cbf-cal-day:hover:not(.disabled):not(.empty) {
+  background: rgba(0,58,58,0.08)!important;
+  border-color: rgba(0,58,58,0.15)!important;
+  color:#2D3A42!important;
+}
+
+.cbf-cal-day.selected {
+  background: #003A3A!important;
+  color: #ffffff!important;
+  font-weight: 700;
+  border-color: #003A3A!important;
+}
+
+.cbf-cal-day.today {
+  border-color: #FFB400!important;
+  color: #003A3A!important;
+  font-weight: 700;
+}
+
+.cbf-cal-day.disabled {
+  color: #D0D5DA !important;
+  cursor: not-allowed !important;
+  pointer-events: none !important;
+  background: transparent !important;
+}
+.cbf-cal-day.empty { cursor: default; }
+
+.cbf-slots-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cbf-slots-title-text {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A2A31;
+}
+
+.cbf-slots-tz {
+  font-size: 11px;
+  color: #8C959D;
+  font-weight: 500;
+  background: #F5F6F8;
+  border: 1px solid #E2E5E9;
+  border-radius: 4px;
+  padding: 3px 10px;
+}
+
+.cbf-slots-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.cbf-slot {
+  padding: 10px 8px;
+  border-radius: 8px;
+  border: 1px solid #E2E5E9;
+  background: #ffffff;
+  font-size: 13px;
+  font-weight: 600;
+  color: #2D3A42;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s;
+}
+
+.cbf-slot:hover { border-color: #003A3A; background: rgba(0,58,58,0.05); }
+.cbf-slot.selected { background: #003A3A; border-color: #003A3A; color: #FFB400; }
+
+.cbf-no-slots {
+  text-align: center;
+  padding: 24px;
+  color: #8C959D;
+  font-size: 13px;
+  background: #F5F6F8;
+  border-radius: 8px;
+  border: 1px dashed #D0D5DA;
+  margin-bottom: 28px;
+}
+
+.cbf-no-date-msg {
+  text-align: center;
+  padding: 32px 20px;
+  color: #8C959D;
+  font-size: 14px;
+  background: #F5F6F8;
+  border-radius: 10px;
+  border: 1px dashed #D0D5DA;
+  margin-bottom: 28px;
+}
+
+.cbf-loading-slots {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  padding: 24px;
+  color: #6B7880;
+  font-size: 13px;
+  margin-bottom: 28px;
+}
+
+.cbf-spinner {
+  width: 18px;
+  height: 18px;
+  border: 2px solid #E2E5E9;
+  border-top-color: #003A3A;
+  border-radius: 50%;
+  animation: cbfSpin 0.8s linear infinite;
+}
+
+@keyframes cbfSpin { to { transform: rotate(360deg); } }
+
+.cbf-form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-bottom: 18px;
+}
+
+.cbf-form-group:last-child { margin-bottom: 0; }
+
+.cbf-form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 18px;
+  margin-bottom: 18px;
+}
+
+.cbf-label {
+  font-size: 12px;
+  font-weight: 700;
+  color: #1A2A31;
+  letter-spacing: 0.02em;
+}
+
+.cbf-label span { color: #e53e3e; margin-left: 2px; }
+
+.cbf-input, .cbf-select, .cbf-textarea {
+  width: 100%;
+  border: 1px solid #E2E5E9;
+  border-radius: 8px;
+  font-size: 14px;
+  font-family: 'Inter', sans-serif;
+  color: #1A2A31;
+  background: #ffffff;
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+  box-sizing: border-box;
+}
+
+.cbf-input:focus, .cbf-select:focus, .cbf-textarea:focus {
+  border-color: #003A3A;
+  box-shadow: 0 0 0 3px rgba(0,58,58,0.08);
+}
+
+.cbf-input::placeholder { color: #B0BAC2; }
+.cbf-textarea { resize: vertical; min-height: 90px; }
+.cbf-select { appearance: none; cursor: pointer; }
+
+.cbf-booking-summary {
+  background: rgba(0,58,58,0.04);
+  border: 1px solid rgba(0,58,58,0.1);
+  border-radius: 10px;
+  padding: 16px 20px;
+  margin-bottom: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.cbs-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #8C959D;
+  margin-bottom: 4px;
+}
+
+.cbs-value {
+  font-size: 14px;
+  font-weight: 600;
+  color: #1A2A31;
+}
+
+.cbs-price {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #003A3A;
+}
+
+.cbf-payment-summary {
+  background: rgba(0,58,58,0.04);
+  border: 1px solid rgba(0,58,58,0.1);
+  border-radius: 10px;
+  padding: 20px 24px;
+  margin-bottom: 24px;
+}
+
+.cbf-ps-row {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  font-size: 14px;
+  color: #2D3A42;
+  margin-bottom: 10px;
+}
+
+.cbf-ps-row:last-child {
+  margin-bottom: 0;
+  padding-top: 12px;
+  border-top: 1px solid rgba(0,58,58,0.1);
+  font-weight: 700;
+  font-size: 16px;
+  color: #1A2A31;
+}
+
+.cbf-payment-label {
+  font-size: 13px;
+  font-weight: 700;
+  color: #1A2A31;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.cbf-payment-label svg { width: 16px; height: 16px; color: #003A3A; }
+
+.cbf-square-wrap {
+  border: 1px solid #E2E5E9;
+  border-radius: 10px;
+  overflow: hidden;
+  margin-bottom: 20px;
+}
+
+.cbf-square-header {
+  background: #F5F6F8;
+  padding: 12px 18px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid #E2E5E9;
+}
+
+.cbf-square-brand {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 12px;
+  font-weight: 600;
+  color: #6B7880;
+}
+
+.cbf-card-icons {
+  display: flex;
+  gap: 6px;
+}
+
+.cbf-card-icon {
+  height: 20px;
+  width: 32px;
+  background: #E2E5E9;
+  border-radius: 3px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 8px;
+  font-weight: 700;
+  color: #6B7880;
+}
+
+.cbf-square-body { padding: 20px 18px; }
+
+.cbf-card-field-label {
+  font-size: 11px;
+  font-weight: 700;
+  color: #6B7880;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  margin-bottom: 6px;
+}
+
+#card-container {
+  width: 100%;
+  min-height: 44px;
+  border: 1px solid #E2E5E9;
+  border-radius: 8px;
+  padding: 14px 12px;
+  background: #ffffff;
+  margin-bottom: 16px;
+  box-sizing: border-box;
+}
+
+.cbf-secure-note {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 11px;
+  color: #8C959D;
+}
+
+.cbf-secure-note svg { width: 12px; height: 12px; color: #003A3A; }
+
+.cbf-error-msg {
+  background: rgba(229,62,62,0.08);
+  border: 1px solid rgba(229,62,62,0.2);
+  border-radius: 8px;
+  padding: 12px 16px;
+  font-size: 13px;
+  color: #c53030;
+  margin-bottom: 16px;
+  display: none;
+}
+
+.cbf-loading-payment {
+  display: none;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  font-size: 14px;
+  color: #6B7880;
+  padding: 20px;
+}
+
+.cbf-nav-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding-top: 24px;
+  border-top: 1px solid #F0F2F4;
+  margin-top: 8px;
+}
+
+.cbf-btn-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13px;
+  font-weight: 600;
+  color: #6B7880;
+  background: none;
+  border: 1px solid #E2E5E9;
+  border-radius: 6px;
+  padding: 11px 20px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+}
+
+.cbf-btn-back:hover { border-color: #003A3A; color: #003A3A; }
+
+.cbf-btn-next {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A2A31;
+  background: #FFB400;
+  border: none;
+  border-radius: 6px;
+  padding: 12px 32px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  box-shadow: 0 4px 16px rgba(255,180,0,0.35);
+}
+
+.cbf-btn-next:hover { background: #e6a200; transform: translateY(-1px); }
+.cbf-btn-next:disabled { background: #E2E5E9; color: #B0BAC2; cursor: not-allowed; box-shadow: none; transform: none; }
+
+.cbf-btn-submit {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 14px;
+  font-weight: 700;
+  color: #1A2A31;
+  background: #FFB400;
+  border: none;
+  border-radius: 6px;
+  padding: 16px 40px;
+  cursor: pointer;
+  transition: all 0.2s;
+  font-family: 'Inter', sans-serif;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  box-shadow: 0 6px 20px rgba(255,180,0,0.4);
+}
+
+.cbf-btn-submit:hover { background: #e6a200; transform: translateY(-1px); }
+.cbf-btn-submit:disabled { background: #E2E5E9; color: #B0BAC2; cursor: not-allowed; box-shadow: none; transform: none; }
+
+.cbf-success {
+  display: none;
+  text-align: center;
+  padding: 60px 40px;
+}
+
+.cbf-success.active { display: block; }
+
+.cbf-success-icon {
+  width: 72px;
+  height: 72px;
+  background: rgba(0,58,58,0.08);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto 24px;
+}
+
+.cbf-success-icon svg { width: 36px; height: 36px; color: #003A3A; }
+
+.cbf-success-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 28px;
+  font-weight: 700;
+  color: #1A2A31;
+  margin-bottom: 12px;
+}
+
+.cbf-success-sub {
+  font-size: 15px;
+  color: #6B7880;
+  line-height: 1.75;
+  max-width: 400px;
+  margin: 0 auto 32px;
+}
+
+.cbf-success-detail {
+  background: #F5F6F8;
+  border-radius: 10px;
+  padding: 20px 24px;
+  display: inline-block;
+  text-align: left;
+  min-width: 280px;
+}
+
+.cbf-sd-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 12px;
+  font-size: 14px;
+  color: #2D3A42;
+}
+
+.cbf-sd-row:last-child { margin-bottom: 0; }
+
+.cbf-sd-icon {
+  width: 32px;
+  height: 32px;
+  background: rgba(0,58,58,0.08);
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.cbf-sd-icon svg { width: 16px; height: 16px; color: #003A3A; }
+
+@media(max-width: 1024px) {
+  .cbf-inner { grid-template-columns: 1fr; }
+  .cbf-sidebar { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+  .cbf-price-card { margin-bottom: 0; }
+  .cbf-form-grid { grid-template-columns: 1fr; }
+}
+
+@media(max-width: 768px) {
+  .cbf-slots-grid { grid-template-columns: repeat(3, 1fr); }
+}
+
+@media(max-width: 640px) {
+  .cbf-container { padding: 0 20px; }
+  .cbf-section { padding: 64px 0; }
+  .cbf-sidebar { grid-template-columns: 1fr; }
+  .cbf-slots-grid {
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin-bottom: 20px;
+}
+.cbf-slot {
+  padding: 10px 4px;
+  font-size: 12.5px;
+  white-space: nowrap;
+}
+  .cbf-panel { padding: 20px; }
+  .cbf-trust-sep { display: none; }
+  .cbf-steps { padding: 16px 20px; }
+  .cbf-cal-day { height: 36px; }
+  .cbf-cal-grid { margin-bottom: 20px; }
+  .cbf-success { padding: 40px 20px; }
+  .cbf-success-detail { min-width: 0; width: 100%; box-sizing: border-box; }
+  .cbf-form-header { padding: 16px 20px; }
+  .cbf-fh-title { font-size: 13px; }
+
+  .cbf-nav-row { flex-direction: column-reverse; align-items: stretch; gap: 10px; }
+  .cbf-nav-row > div:empty { display: none; }
+  .cbf-btn-back, .cbf-btn-next, .cbf-btn-submit {
+    width: 100%;
+    justify-content: center;
+    box-sizing: border-box;
+    padding: 14px 16px;
+  }
+  .cbf-btn-submit {
+    text-transform: none;
+    letter-spacing: 0;
+    font-size: 15px;
+  }
+}
+</style>
+
+<section class="cbf-section" id="booking">
+  <div class="cbf-container">
+
+    <div class="cbf-header">
+      <div class="cbf-eyebrow">
+        <span class="cbf-eyebrow-dot"></span>
+        Reserve Your Session
+      </div>
+      <h2 class="cbf-title">Book Your Retirement Certainty Session</h2>
+      <div class="cbf-divider"></div>
+      <p class="cbf-subtitle">Select a date and time, fill in your details, and complete your secure $125 payment.</p>
+      <div class="cbf-trust-row">
+        <div class="cbf-trust-item">
+          <svg class="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          Up to 15 minutes
+        </div>
+        <div class="cbf-trust-sep"></div>
+        <div class="cbf-trust-item">
+          <svg class="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+          Secure payment
+        </div>
+        <div class="cbf-trust-sep"></div>
+        <div class="cbf-trust-item">
+          <svg class="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Instant confirmation
+        </div>
+        <div class="cbf-trust-sep"></div>
+        <div class="cbf-trust-item">
+          <svg class="cbf-trust-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+          400% guarantee
+        </div>
+      </div>
+    </div>
+
+    <div class="cbf-inner">
+
+      <div class="cbf-sidebar">
+        <div class="cbf-price-card">
+          <div class="cbf-price-label">Session Fee</div>
+          <div class="cbf-price-num">$125</div>
+          <div class="cbf-price-session">Up to 15-Minute Phone Session</div>
+          <div class="cbf-price-divider"></div>
+          <div class="cbf-feature"><div class="cbf-fcheck"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FFB400" stroke-width="2" stroke-linecap="round"/></svg></div>Focus on your one key concern</div>
+          <div class="cbf-feature"><div class="cbf-fcheck"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FFB400" stroke-width="2" stroke-linecap="round"/></svg></div>Spot potential compliance risks</div>
+          <div class="cbf-feature"><div class="cbf-fcheck"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FFB400" stroke-width="2" stroke-linecap="round"/></svg></div>Clarify applicable IRS rules</div>
+          <div class="cbf-feature"><div class="cbf-fcheck"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FFB400" stroke-width="2" stroke-linecap="round"/></svg></div>Understand your safest path forward</div>
+          <div class="cbf-feature"><div class="cbf-fcheck"><svg viewBox="0 0 12 12" fill="none"><path d="M2 6l3 3 5-5" stroke="#FFB400" stroke-width="2" stroke-linecap="round"/></svg></div>Know your next steps</div>
+        </div>
+        <div class="cbf-guarantee">
+          <div class="cbf-g-seal">
+            <div class="cbf-g-pct">400%</div>
+            <div class="cbf-g-word">Guar.</div>
+          </div>
+          <div class="cbf-g-text">
+            <strong>400% Value Guarantee</strong>
+            <span>Contact us within 7 days for a full refund if value isn't delivered.</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="cbf-form-card">
+
+        <div id="form" class="cbf-form-header">
+          <div class="cbf-fh-left">
+            <div class="cbf-fh-dot"></div>
+            <div class="cbf-fh-title">Retirement Certainty Session — $125</div>
+          </div>
+          <div class="cbf-fh-secure">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Secure & Encrypted
+          </div>
+        </div>
+
+        <div class="cbf-steps" id="stepsBar">
+          <div class="cbf-step active" id="step-ind-1">
+            <div class="cbf-step-num" id="step-num-1">1</div>
+            <div class="cbf-step-label">Date & Time</div>
+          </div>
+          <div class="cbf-step-line" id="step-line-1"></div>
+          <div class="cbf-step" id="step-ind-2">
+            <div class="cbf-step-num" id="step-num-2">2</div>
+            <div class="cbf-step-label">Your Details</div>
+          </div>
+          <div class="cbf-step-line" id="step-line-2"></div>
+          <div class="cbf-step" id="step-ind-3">
+            <div class="cbf-step-num" id="step-num-3">3</div>
+            <div class="cbf-step-label">Payment</div>
+          </div>
+        </div>
+
+        <div id="panel-1" class="cbf-panel">
+          <div class="cbf-section-label">Pick a Date</div>
+          <div class="cbf-calendar-nav">
+            <button class="cbf-cal-btn" onclick="changeMonth(-1)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="15 18 9 12 15 6"/></svg>
+            </button>
+            <div class="cbf-cal-title" id="calMonthTitle"></div>
+            <button class="cbf-cal-btn" onclick="changeMonth(1)">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round"><polyline points="9 18 15 12 9 6"/></svg>
+            </button>
+          </div>
+          <div class="cbf-cal-grid" id="calGrid"></div>
+
+          <div class="cbf-slots-header">
+            <div class="cbf-slots-title-text">Available Times</div>
+            <div class="cbf-slots-tz">&#128336; Central Time (CT)</div>
+          </div>
+          <div id="slotsContent">
+            <div class="cbf-no-date-msg">Please select a date to see available time slots</div>
+          </div>
+
+          <div class="cbf-nav-row">
+            <div></div>
+            <button class="cbf-btn-next" id="btn-next-1" onclick="goToStep(2)" disabled>Continue to Details →</button>
+          </div>
+        </div>
+
+        <div id="panel-2" class="cbf-panel">
+          <div class="cbf-booking-summary">
+            <div>
+              <div class="cbs-label">Date & Time</div>
+              <div class="cbs-value" id="summaryDateTime">—</div>
+            </div>
+            <div>
+              <div class="cbs-label">Consultant</div>
+              <div class="cbs-value">Tim Berry</div>
+            </div>
+            <div>
+              <div class="cbs-label">Total</div>
+              <div class="cbs-price">$125</div>
+            </div>
+          </div>
+
+          <div class="cbf-section-label">Your Details</div>
+          <div class="cbf-form-grid">
+            <div class="cbf-form-group">
+              <label class="cbf-label">First Name <span>*</span></label>
+              <input type="text" class="cbf-input" id="firstName" required>
+            </div>
+            <div class="cbf-form-group">
+              <label class="cbf-label">Last Name <span>*</span></label>
+              <input type="text" class="cbf-input" id="lastName" required>
+            </div>
+            <div class="cbf-form-group">
+              <label class="cbf-label">Email Address <span>*</span></label>
+              <input type="email" class="cbf-input" id="email" required>
+            </div>
+            <div class="cbf-form-group">
+              <label class="cbf-label">Phone Number <span>*</span></label>
+              <input type="tel" class="cbf-input" id="phone" placeholder="+1 (555) 000-0000" required>
+            </div>
+            <div class="cbf-form-group">
+              <label class="cbf-label">Type of Account <span>*</span></label>
+              <select class="cbf-select" id="accountType" required>
+                <option value="">Select account type</option>
+                <option value="self-directed-ira">Self-Directed IRA</option>
+                <option value="solo-401k">Solo 401(k)</option>
+                <option value="both">Both IRA & 401(k)</option>
+                <option value="not-sure">Not Sure Yet</option>
+              </select>
+            </div>
+            <div class="cbf-form-group">
+              <label class="cbf-label">Primary Concern <span>*</span></label>
+              <select class="cbf-select" id="primaryConcern" required>
+                <option value="">Select your main concern</option>
+                <option value="prohibited-transaction">Prohibited Transaction</option>
+                <option value="real-estate">Real Estate Transaction</option>
+                <option value="private-lending">Private Lending</option>
+                <option value="checkbook-llc">Checkbook LLC</option>
+                <option value="general-compliance">General Compliance</option>
+                <option value="pre-investment">Pre-Investment Question</option>
+                <option value="other">Other</option>
+              </select>
+            </div>
+          </div>
+          <div class="cbf-form-group">
+            <label class="cbf-label">Your Most Important Question <span>*</span></label>
+            <textarea class="cbf-textarea" id="description" required></textarea>
+            <div class="cbf-field-note">Please describe your single most important question or concern so Tim can make the best use of your session.</div>
+          </div>
+
+          <div class="cbf-nav-row">
+            <button class="cbf-btn-back" onclick="goToStep(1)">← Back</button>
+            <button class="cbf-btn-next" onclick="goToStep(3)">Continue to Payment →</button>
+          </div>
+        </div>
+
+        <div id="panel-3" class="cbf-panel">
+          <div class="cbf-payment-summary">
+            <div class="cbf-ps-row"><span>Retirement Certainty Session (up to 15 min)</span><span>$125.00</span></div>
+            <div class="cbf-ps-row"><span>Consultant</span><span>Tim Berry</span></div>
+            <div class="cbf-ps-row"><span>Date & Time</span><span id="paymentDateTime">—</span></div>
+            <div class="cbf-ps-row"><span>Total Due Today</span><span>$125.00</span></div>
+          </div>
+
+          <div class="cbf-error-msg" id="paymentError"></div>
+
+          <div class="cbf-payment-label">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+            Payment Information
+          </div>
+
+          <div class="cbf-square-wrap">
+            <div class="cbf-square-header">
+              <div class="cbf-square-brand">
+                Powered by Stripe
+              </div>
+              <div class="cbf-card-icons">
+                <div class="cbf-card-icon">VISA</div>
+                <div class="cbf-card-icon">MC</div>
+                <div class="cbf-card-icon">AMEX</div>
+              </div>
+            </div>
+            <div class="cbf-square-body">
+              <div class="cbf-card-field-label">Card Details</div>
+              <div id="card-container"></div>
+              <div class="cbf-secure-note">
+                <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                256-bit SSL encryption · PCI DSS compliant · Card details never stored
+              </div>
+            </div>
+          </div>
+
+          <div class="cbf-loading-payment" id="paymentLoading">
+            <div class="cbf-spinner"></div>
+            Processing your payment securely...
+          </div>
+
+          <div class="cbf-nav-row">
+            <button class="cbf-btn-back" onclick="goToStep(2)">← Back</button>
+            <button class="cbf-btn-submit" id="paymentBtn" onclick="processPayment()">
+              <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" width="16" height="16"><rect x="3" y="11" width="18" height="11" rx="2"/><path d="M7 11V7a5 5 0 0110 0v4"/></svg>
+              Pay $125 & Confirm Booking
+            </button>
+          </div>
+        </div>
+
+        <div class="cbf-success" id="successScreen">
+          <div class="cbf-success-icon">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          </div>
+          <h3 class="cbf-success-title">Your Session Is Confirmed!</h3>
+          <p class="cbf-success-sub">Your Retirement Certainty Session with Tim Berry is booked and your payment was received. A confirmation email is on its way, with a calendar invite and your reschedule link. Tim will call you at the number you provided.</p>
+          <div class="cbf-success-detail">
+            <div class="cbf-sd-row">
+              <div class="cbf-sd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/></svg></div>
+              <div><strong id="successDate">—</strong><br><span style="font-size:12px;color:#8C959D;">Date & Time (CT)</span></div>
+            </div>
+            <div class="cbf-sd-row">
+              <div class="cbf-sd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M20 21v-2a4 4 0 00-4-4H8a4 4 0 00-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></div>
+              <div><strong>Tim Berry</strong><br><span style="font-size:12px;color:#8C959D;">Self-Directed Retirement Specialist</span></div>
+            </div>
+            <div class="cbf-sd-row">
+              <div class="cbf-sd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div>
+              <div><strong id="successName">—</strong><br><span style="font-size:12px;color:#8C959D;">Confirmation sent to <span id="successEmail">—</span></span></div>
+            </div>
+            <div class="cbf-sd-row">
+              <div class="cbf-sd-icon"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="12" y1="1" x2="12" y2="23"/><path d="M17 5H9.5a3.5 3.5 0 000 7h5a3.5 3.5 0 010 7H6"/></svg></div>
+              <div><strong>$125.00 Paid</strong><br><span style="font-size:12px;color:#8C959D;">Via Stripe</span></div>
+            </div>
+          </div>
+          <div class="cbf-success-credit">
+            <strong>Good to know:</strong> If you decide to move forward with a full Advanced Planning Session within 14 days, your $125 is credited toward it. You do not need to decide now.
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<script>
+(function() {
+
+  
+  // ── CONFIG ─────────────────────────────────────────────────────────────
+  // Stripe publishable key (public) + n8n webhooks that talk to GoHighLevel.
+  var STRIPE_PUBLISHABLE_KEY = 'pk_live_51UI6jT2eiso8i6zsDPPGW72Fkv3WuLxmNuhVmSulZSfksut4TlmHARwr5z2MybVM7RtuxtZR4bAUCdIpGMPPiIyN005Ld2TTyN';
+  var N8N_SLOTS_WEBHOOK = 'https://n8n.coreautomations.org/webhook/get-slots-ghl';
+  var N8N_BOOKING_WEBHOOK = 'https://n8n.coreautomations.org/webhook/booking-ghl';
+
+  var AVAILABLE_DAYS = [1, 2, 4];
+  var WORK_START_HOUR = 9;
+  var WORK_START_MIN = 30;
+  var WORK_END_HOUR = 15;
+  var WORK_END_MIN = 0;
+  var SLOT_DURATION = 15;
+
+  var state = {
+    currentMonth: new Date().getMonth(),
+    currentYear: new Date().getFullYear(),
+    selectedDate: null,
+    selectedSlot: null,
+    currentStep: 1
+  };
+
+  var monthNames = ['January','February','March','April','May','June',
+    'July','August','September','October','November','December'];
+  var dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+
+
+  function chicagoSlotToUTC(year, month, day, hour24, minute) {
+    let guess = new Date(Date.UTC(year, month, day, hour24, minute));
+    const fmt = new Intl.DateTimeFormat('en-US', {
+      timeZone: 'America/Chicago', hour12: false,
+      hour: '2-digit', minute: '2-digit'
+    });
+    for (let i = 0; i < 2; i++) {
+      const parts = fmt.formatToParts(guess).reduce((a, p) => { a[p.type] = p.value; return a; }, {});
+      const gotHour = Number(parts.hour) % 24;
+      const diffMinutes = (hour24 * 60 + minute) - (gotHour * 60 + Number(parts.minute));
+      guess = new Date(guess.getTime() + diffMinutes * 60000);
+    }
+    return guess;
+  }
+
+
+  function parseSlotLabel(label) {
+    var m = label.match(/(\d+):(\d+)\s*(AM|PM)/i);
+    var hour = parseInt(m[1], 10);
+    var minute = parseInt(m[2], 10);
+    var ampm = m[3].toUpperCase();
+    if (ampm === 'PM' && hour !== 12) hour += 12;
+    if (ampm === 'AM' && hour === 12) hour = 0;
+    return { hour: hour, minute: minute };
+  }
+
+  function renderCalendar() {
+    var title = document.getElementById('calMonthTitle');
+    var grid = document.getElementById('calGrid');
+    if (!title || !grid) return;
+    title.textContent = monthNames[state.currentMonth] + ' ' + state.currentYear;
+    grid.innerHTML = '';
+    dayNames.forEach(function(d) {
+      var el = document.createElement('div');
+      el.className = 'cbf-cal-day-header';
+      el.textContent = d;
+      grid.appendChild(el);
+    });
+    var now = new Date();
+    var cstTime = new Date(now.toLocaleString('en-US', { timeZone: 'America/Chicago' }));
+    var today = new Date(cstTime.getFullYear(), cstTime.getMonth(), cstTime.getDate());
+    var firstDay = new Date(state.currentYear, state.currentMonth, 1).getDay();
+    var daysInMonth = new Date(state.currentYear, state.currentMonth + 1, 0).getDate();
+    for (var i = 0; i < firstDay; i++) {
+      var el = document.createElement('div');
+      el.className = 'cbf-cal-day empty';
+      grid.appendChild(el);
+    }
+    for (var day = 1; day <= daysInMonth; day++) {
+      var date = new Date(state.currentYear, state.currentMonth, day);
+      var el = document.createElement('div');
+      el.className = 'cbf-cal-day';
+      el.textContent = day;
+      var isPast = date <= today;
+      var isAvailable = AVAILABLE_DAYS.indexOf(date.getDay()) !== -1;
+      var isToday = date.getTime() === today.getTime();
+      var isSelected = state.selectedDate && date.toDateString() === state.selectedDate.toDateString();
+      if (isPast || !isAvailable) {
+        el.className += ' disabled';
+      } else {
+        if (isToday) el.className += ' today';
+        if (isSelected) el.className += ' selected';
+        (function(d) { el.addEventListener('click', function() { selectDate(d); }); })(date);
+      }
+      grid.appendChild(el);
+    }
+  }
+
+  window.changeMonth = function(dir) {
+    state.currentMonth += dir;
+    if (state.currentMonth > 11) { state.currentMonth = 0; state.currentYear++; }
+    if (state.currentMonth < 0) { state.currentMonth = 11; state.currentYear--; }
+    renderCalendar();
+  };
+
+  function selectDate(date) {
+    state.selectedDate = date;
+    state.selectedSlot = null;
+    document.getElementById('btn-next-1').disabled = true;
+    renderCalendar();
+    fetchSlots(date);
+  }
+
+  function fetchSlots(date) {
+    var container = document.getElementById('slotsContent');
+    if (!container) return;
+    container.innerHTML = '<div class="cbf-loading-slots"><div class="cbf-spinner"></div> Checking availability...</div>';
+
+    var dayStart = chicagoSlotToUTC(date.getFullYear(), date.getMonth(), date.getDate(), WORK_START_HOUR, WORK_START_MIN);
+    var dayEnd = chicagoSlotToUTC(date.getFullYear(), date.getMonth(), date.getDate(), WORK_END_HOUR, WORK_END_MIN);
+
+    fetch(N8N_SLOTS_WEBHOOK, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify({
+        from_time: dayStart.toISOString(),
+        to_time: dayEnd.toISOString(),
+        timezone: 'America/Chicago'
+      })
+    })
+    .then(function(res) { return res.json(); })
+    .then(function(data) {
+      var slots = data.availableSlots || data.slots || generateSlots();
+      displaySlots(slots, container);
+    })
+    .catch(function() {
+      displaySlots(generateSlots(), container);
+    });
+  }
+
+  function generateSlots() {
+    var slots = [];
+    var startMin = WORK_START_HOUR * 60 + WORK_START_MIN;
+    var endMin = WORK_END_HOUR * 60 + WORK_END_MIN;
+    for (var m = startMin; m < endMin; m += SLOT_DURATION) {
+      slots.push(minutesToTime(m));
+    }
+    return slots;
+  }
+
+  function minutesToTime(m) {
+    var h = Math.floor(m / 60);
+    var min = m % 60;
+    var ampm = h >= 12 ? 'PM' : 'AM';
+    var h12 = h % 12 || 12;
+    return h12 + ':' + (min < 10 ? '0' + min : min) + ' ' + ampm;
+  }
+
+  function displaySlots(slots, container) {
+    container.innerHTML = '';
+    if (!slots || !slots.length) {
+      container.innerHTML = '<div class="cbf-no-slots">No available slots for this date. Tim is available Monday, Tuesday and Thursday 9:30 AM - 3:00 PM CT. Please select another date.</div>';
+      return;
+    }
+    var grid = document.createElement('div');
+    grid.className = 'cbf-slots-grid';
+    slots.forEach(function(slot) {
+      var label = typeof slot === 'object' ? slot.label : slot;
+      var el = document.createElement('div');
+      el.className = 'cbf-slot';
+      el.textContent = label;
+      el.addEventListener('click', function() {
+        document.querySelectorAll('.cbf-slot').forEach(function(s) { s.classList.remove('selected'); });
+        el.classList.add('selected');
+        state.selectedSlot = label;
+        document.getElementById('btn-next-1').disabled = false;
+      });
+      grid.appendChild(el);
+    });
+    container.appendChild(grid);
+  }
+
+  window.goToStep = function(step) {
+    if (step === 2 && (!state.selectedDate || !state.selectedSlot)) return;
+
+    if ((step === 2 || step === 3) && state.selectedDate && state.selectedSlot) {
+      var dateStr = state.selectedDate.toLocaleDateString('en-US', {
+        weekday: 'long', month: 'long', day: 'numeric', year: 'numeric'
+      });
+      var dt = dateStr + ' at ' + state.selectedSlot + ' CT';
+      var sd = document.getElementById('summaryDateTime');
+      if (sd) sd.textContent = dt;
+      var pd = document.getElementById('paymentDateTime');
+      if (pd) pd.textContent = dt;
+    }
+
+    if (step === 3) {
+      var fields = ['firstName','lastName','email','phone','accountType','primaryConcern','description'];
+      var valid = true;
+      fields.forEach(function(id) {
+        var el = document.getElementById(id);
+        if (!el || !el.value.trim()) {
+          valid = false;
+          if (el) el.style.borderColor = '#e53e3e';
+        } else {
+          if (el) el.style.borderColor = '';
+        }
+      });
+      if (!valid) { alert('Please fill in all required fields.'); return; }
+    }
+
+    document.querySelectorAll('.cbf-panel').forEach(function(p) {
+      p.style.display = 'none';
+      p.classList.remove('active');
+    });
+    var panel = document.getElementById('panel-' + step);
+    if (panel) {
+      panel.style.display = 'block';
+      panel.classList.add('active');
+    }
+
+    for (var i = 1; i <= 3; i++) {
+      var ind = document.getElementById('step-ind-' + i);
+      var num = document.getElementById('step-num-' + i);
+      var line = document.getElementById('step-line-' + i);
+      if (!ind) continue;
+      ind.classList.remove('active','completed');
+      if (i < step) {
+        ind.classList.add('completed');
+        if (num) num.innerHTML = '<svg viewBox="0 0 12 12" fill="none" width="12" height="12"><path d="M2 6l3 3 5-5" stroke="#1A2A31" stroke-width="2" stroke-linecap="round"/></svg>';
+      } else if (i === step) {
+        ind.classList.add('active');
+        if (num) num.textContent = i;
+      } else {
+        if (num) num.textContent = i;
+      }
+      if (line) line.classList.toggle('completed', i < step);
+    }
+    state.currentStep = step;
+  };
+
+  window.processPayment = function() {
+    var btn = document.getElementById('paymentBtn');
+    var loading = document.getElementById('paymentLoading');
+    var errEl = document.getElementById('paymentError');
+
+    if (btn) btn.style.display = 'none';
+    if (loading) loading.style.display = 'flex';
+    if (errEl) errEl.style.display = 'none';
+
+    var slotTime = state.selectedSlot ? parseSlotLabel(state.selectedSlot) : { hour: WORK_START_HOUR, minute: WORK_START_MIN };
+    var slotStartUTC = state.selectedDate ? chicagoSlotToUTC(state.selectedDate.getFullYear(), state.selectedDate.getMonth(), state.selectedDate.getDate(), slotTime.hour, slotTime.minute) : null;
+    var slotEndUTC = slotStartUTC ? new Date(slotStartUTC.getTime() + SLOT_DURATION * 60000) : null;
+
+    var bookingData = {
+      from_time: slotStartUTC ? slotStartUTC.toISOString() : '',
+      to_time: slotEndUTC ? slotEndUTC.toISOString() : '',
+      timezone: 'America/Chicago',
+      customer_details: {
+        first_name: document.getElementById('firstName').value,
+        last_name: document.getElementById('lastName').value,
+        email: document.getElementById('email').value,
+        phone: document.getElementById('phone').value,
+        account_type: document.getElementById('accountType').value,
+        primary_concern: document.getElementById('primaryConcern').value,
+        description: document.getElementById('description').value,
+        selected_slot: state.selectedSlot,
+        amount: 12500
+      }
+    };
+
+    function handleError(message) {
+      if (loading) loading.style.display = 'none';
+      if (btn) btn.style.display = 'flex';
+      if (errEl) {
+        errEl.textContent = message || 'Payment failed. Please try again.';
+        errEl.style.display = 'block';
+      }
+    }
+
+    if (!stripe || !cardElement) {
+      handleError('The payment form did not load. Please refresh the page and try again.');
+      return;
+    }
+
+    stripe.createPaymentMethod({
+      type: 'card',
+      card: cardElement,
+      billing_details: {
+        name: bookingData.customer_details.first_name + ' ' + bookingData.customer_details.last_name,
+        email: bookingData.customer_details.email,
+        phone: bookingData.customer_details.phone
+      }
+    })
+    .then(function(result) {
+      if (result.error) {
+        throw new Error(result.error.message || 'Card validation failed. Please check your details and try again.');
+      }
+      bookingData.customer_details.payment_token = result.paymentMethod.id;   // pm_...
+      bookingData.customer_details.payment_method = 'stripe_card';
+      return fetch(N8N_BOOKING_WEBHOOK, {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(bookingData)
+      });
+    })
+    .then(function(res) {
+      if (!res.ok) throw new Error('Server error (' + res.status + '). Please try again.');
+      return res.json();
+    })
+    .then(function(data) {
+      if (data.success === true || data.status === 'success' || data.confirmed === true) {
+        if (loading) loading.style.display = 'none';
+        showSuccess(bookingData);
+      } else {
+        var isDoubleBook = data.error_code === 'SLOT_UNAVAILABLE' ||
+          (data.message && (
+            data.message.toLowerCase().indexOf('slot') !== -1 ||
+            data.message.toLowerCase().indexOf('booked') !== -1 ||
+            data.message.toLowerCase().indexOf('unavailable') !== -1 ||
+            data.message.toLowerCase().indexOf('taken') !== -1
+          ));
+        if (isDoubleBook) {
+          if (loading) loading.style.display = 'none';
+          showDoubleBookError();
+        } else {
+          throw new Error(data.message || data.error || 'Booking could not be confirmed. Please try again.');
+        }
+      }
+    })
+    .catch(function(err) {
+      handleError(err.message || 'Something went wrong. Please try again or contact us at tim@iraideas.com.');
+    });
+  };
+
+  function showDoubleBookError() {
+    var errEl = document.getElementById('paymentError');
+    var btn = document.getElementById('paymentBtn');
+    if (errEl) {
+      errEl.innerHTML = '<strong>This time slot was just booked by someone else.</strong><br>Please go back and select a different time. Your card was <strong>not charged</strong>.<br><br><button onclick="goBackToSlots()" style="background:#003A3A;color:#FFB400;border:none;border-radius:6px;padding:10px 20px;font-weight:700;font-size:13px;cursor:pointer;font-family:Inter,sans-serif;">← Pick a Different Time</button>';
+      errEl.style.display = 'block';
+    }
+    if (btn) btn.style.display = 'none';
+  }
+
+  window.goBackToSlots = function() {
+    var errEl = document.getElementById('paymentError');
+    if (errEl) { errEl.style.display = 'none'; errEl.innerHTML = ''; }
+    state.selectedSlot = null;
+    document.getElementById('btn-next-1').disabled = true;
+    document.getElementById('slotsContent').innerHTML = '<div class="cbf-no-date-msg">Please select a date to see available time slots</div>';
+    goToStep(1);
+  };
+
+  function showSuccess(data) {
+    document.querySelectorAll('.cbf-panel').forEach(function(p) { p.style.display = 'none'; });
+    var stepsBar = document.getElementById('stepsBar');
+    if (stepsBar) stepsBar.style.display = 'none';
+    var success = document.getElementById('successScreen');
+    if (success) success.classList.add('active');
+    var dateStr = state.selectedDate
+      ? state.selectedDate.toLocaleDateString('en-US', { weekday: 'long', month: 'long', day: 'numeric', year: 'numeric' })
+      : '';
+    var sd = document.getElementById('successDate');
+    if (sd) sd.textContent = dateStr + ' at ' + state.selectedSlot + ' CT';
+    var sn = document.getElementById('successName');
+    if (sn) sn.textContent = data.customer_details.first_name + ' ' + data.customer_details.last_name;
+    var se = document.getElementById('successEmail');
+    if (se) se.textContent = data.customer_details.email;
+  }
+
+  document.querySelectorAll('.cbf-panel').forEach(function(p) { p.style.display = 'none'; });
+  var firstPanel = document.getElementById('panel-1');
+  if (firstPanel) firstPanel.style.display = 'block';
+
+  renderCalendar();
+
+  var stripe, cardElement;
+
+  function initializeStripe() {
+    if (!window.Stripe) { console.error('Stripe.js failed to load'); return; }
+    try {
+      stripe = window.Stripe(STRIPE_PUBLISHABLE_KEY);
+      var elements = stripe.elements();
+      cardElement = elements.create('card', {
+        style: {
+          base: {
+            fontSize: '16px',
+            color: '#1A2A31',
+            fontFamily: 'Inter, sans-serif',
+            '::placeholder': { color: '#B0BAC2' }
+          },
+          invalid: { color: '#c53030' }
+        }
+      });
+      cardElement.mount('#card-container');
+    } catch (e) {
+      console.error('Stripe init failed:', e);
+    }
+  }
+
+  initializeStripe();
+
+})();
+</script>				</div>
+				</div>
+				</div>
+		<div class="elementor-element elementor-element-9b68f6c e-con-full e-flex e-con e-parent" data-id="9b68f6c" data-element_type="container" data-e-type="container" data-settings="{&quot;background_background&quot;:&quot;classic&quot;,&quot;_ha_eqh_enable&quot;:false}">
+		<div class="elementor-element elementor-element-67047a8 e-flex e-con-boxed elementor-invisible e-con e-child" data-id="67047a8" data-element_type="container" data-e-type="container" data-settings="{&quot;animation&quot;:&quot;slideInUp&quot;,&quot;_ha_eqh_enable&quot;:false}">
+					<div class="e-con-inner">

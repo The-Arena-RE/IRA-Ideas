@@ -12,9 +12,23 @@ The site audit (pages, colours, typography, integrations) is in [`docs/site-audi
 | Videos | `/videos-ira-401k/` |
 | Contact | `/get-in-touch-ira-401k-attorney/` |
 | Privacy Policy | `/privacy-policy/` |
+| Retirement Certainty Session ($125 booking) | `/retirement-certainty-session/` |
 
-The URLs match the WordPress site so search rankings carry over. The **booking/funnel pages are not rebuilt yet**:
-"Book An Appointment" buttons link to the WordPress page set in `BOOKING_URL` (`src/data/site.ts`).
+The URLs match the WordPress site so search rankings carry over. "Book An Appointment" buttons go to the
+Retirement Certainty Session page (`BOOKING_URL` in `src/data/site.ts`). The other funnel pages
+(e.g. `/private-strategy-session/`) are not rebuilt yet; links to them still point at WordPress.
+
+## Retirement Certainty Session (booking)
+
+- Page: `src/pages/retirement-certainty-session.astro`. Its sections are in `src/content/rcs/`, carried over
+  from the WordPress page, so the copy, styles and scripts are the same.
+- Booking flow (in `src/content/rcs/14-booking-form.html`, see the `CONFIG` block):
+  1. Pick a date → `POST https://n8n.coreautomations.org/webhook/get-slots-ghl` → free GHL slots
+  2. Enter details → Stripe Elements card → `stripe.createPaymentMethod()` (publishable key only)
+  3. `POST …/webhook/booking-ghl` with the slot, details and `payment_token` → n8n charges and books in GHL
+- No n8n or GHL changes are needed, **but the n8n webhooks must allow the new site's origin (CORS)**, e.g.
+  `https://ira-ideas.<subdomain>.workers.dev` while testing, and `https://iraideas.com` stays the same after go-live.
+- The background videos live in `public/media/rcs/`.
 
 ## Stack
 

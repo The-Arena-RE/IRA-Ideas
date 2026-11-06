@@ -1,0 +1,276 @@
+---
+/**
+ * Retirement Certainty Session ($125 / up to 15 min) — booking funnel page.
+ *
+ * The section markup, styles and scripts in src/content/rcs/ are carried over from the
+ * WordPress page. Booking still runs through the same n8n webhooks (get-slots-ghl,
+ * booking-ghl → GoHighLevel) and Stripe Elements, so no n8n/GHL changes are needed.
+ * See the "CONFIG" block at the top of the <script> in 14-booking-form.html.
+ */
+import Landing from '../layouts/Landing.astro';
+
+import heroDesc from '../content/rcs/03-hero-desc.html?raw';
+import heroSecondary from '../content/rcs/05-hero-secondary.html?raw';
+import heroPhoto from '../content/rcs/06-hero-photo.html?raw';
+import chooseSession from '../content/rcs/07-choose-session.html?raw';
+import whoThisIsFor from '../content/rcs/08-who-this-is-for.html?raw';
+import offer from '../content/rcs/09-offer.html?raw';
+import testimonials from '../content/rcs/10-testimonials.html?raw';
+import focus from '../content/rcs/11-focus.html?raw';
+import credit from '../content/rcs/12-credit.html?raw';
+import guarantee from '../content/rcs/13-guarantee.html?raw';
+import bookingForm from '../content/rcs/14-booking-form.html?raw';
+import faq from '../content/rcs/15-faq.html?raw';
+import finalCta from '../content/rcs/16-final-cta.html?raw';
+---
+
+<Landing
+  title="Self-Directed IRA & 401(k) Compliance Consultation | IRA Ideas LLC"
+  description="Book a Retirement Certainty Session with attorney Tim Berry: up to 15 minutes of focused, one-on-one guidance on one self-directed IRA or 401(k) question. $125, backed by a 400% value guarantee."
+  image="/media/rcs/attorney.webp"
+>
+  <link slot="head" rel="preconnect" href="https://js.stripe.com" />
+
+  <!-- Announcement bar -->
+  <div class="rcs-topbar">
+    <p><strong>Retirement Certainty Session</strong> — Limited spots available each week. Book today before your window fills.</p>
+  </div>
+
+  <!-- Hero -->
+  <section class="rcs-hero lp-video-bg">
+    <video class="rcs-hero-video" muted playsinline loop preload="none" aria-hidden="true" data-desktop-video>
+      <source src="/media/rcs/hero-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="lp-video-overlay" style="background:#dfdfdf;opacity:.74"></div>
+    <div class="lp-video-content lp-box rcs-hero-grid">
+      <div class="rcs-hero-left">
+        <p class="rcs-pill">Self-Directed IRA &amp; 401(k) Specialist</p>
+        <h1 class="rcs-hero-title">Not Sure About an IRA or 401(k) Decision? Get Clarity Before You Act.</h1>
+        <Fragment set:html={heroDesc} />
+        <div class="rcs-hero-cta">
+          <a class="rcs-btn" href="#form">Book My 15-Minute Session | $125</a>
+        </div>
+        <div class="rcs-hero-secondary-wrap"><Fragment set:html={heroSecondary} /></div>
+      </div>
+      <div class="rcs-hero-right">
+        <Fragment set:html={heroPhoto} />
+      </div>
+    </div>
+  </section>
+
+  <Fragment set:html={chooseSession} />
+  <Fragment set:html={whoThisIsFor} />
+
+  <div class="rcs-wrap rcs-pad" style="background:#fff"><div class="lp-box"><Fragment set:html={offer} /></div></div>
+
+  <section class="rcs-testimonials lp-video-bg">
+    <video autoplay muted playsinline loop preload="none" aria-hidden="true">
+      <source src="/media/rcs/testimonials-bg.mp4" type="video/mp4" />
+    </video>
+    <div class="lp-video-overlay" style="background:#093436;opacity:.85"></div>
+    <div class="lp-video-content"><Fragment set:html={testimonials} /></div>
+  </section>
+
+  <div class="rcs-focus rcs-pad"><div class="lp-box"><Fragment set:html={focus} /></div></div>
+
+  <div class="rcs-wrap" style="background:#f5f6f8">
+    <Fragment set:html={credit} />
+    <div style="background:#fff"><div class="lp-box"><Fragment set:html={guarantee} /></div></div>
+  </div>
+
+  <div class="rcs-wrap" style="background:#fff"><Fragment set:html={bookingForm} /></div>
+
+  <div class="rcs-wrap rcs-faq" style="background:#fff"><div class="lp-box"><Fragment set:html={faq} /></div></div>
+
+  <div class="rcs-final"><Fragment set:html={finalCta} /></div>
+
+  <footer class="rcs-footer">
+    <p>
+      © {new Date().getFullYear()} IRA IDEAS LLC · <a href="/">IRAIdeas.com</a> · <a href="/privacy-policy/">Privacy Policy</a>
+    </p>
+  </footer>
+</Landing>
+
+<style is:global>
+  .rcs-topbar {
+    background: #003a3a;
+    min-height: 30px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .rcs-topbar p {
+    width: 93%;
+    margin: 0;
+    padding: 10px 0;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 400;
+    line-height: 1.5;
+    color: #fff;
+  }
+  .rcs-topbar strong {
+    color: #ffb400;
+    font-weight: 700;
+  }
+
+  .rcs-hero {
+    background: #f5f6f8;
+    min-height: 80vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .rcs-hero-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+  }
+  .rcs-hero-left {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 20px;
+    padding: 10px;
+    animation: rcs-fade-up 0.8s ease both;
+  }
+  .rcs-hero-right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    padding: 10px;
+  }
+  .rcs-pill {
+    margin: 0;
+    width: 45%;
+    min-width: 240px;
+    padding: 4px;
+    text-align: center;
+    font-family: 'Inter', sans-serif;
+    font-size: 12px;
+    font-weight: 600;
+    line-height: 1.65;
+    color: #7a5500;
+    background: #fff8e6;
+    border: 1px solid #ffb400;
+    border-radius: 100px;
+  }
+  .rcs-hero-title {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    font-size: 55px;
+    font-weight: 600;
+    line-height: 65px;
+    color: #1a2a31;
+  }
+  .rcs-hero-cta {
+    margin-top: 15px;
+  }
+  .rcs-btn {
+    display: inline-block;
+    padding: 12px 24px;
+    font-family: 'Inter', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    line-height: 1;
+    color: #1a2a31;
+    background: #ffb400;
+    border-radius: 10px;
+    text-decoration: none;
+    transition: background 0.3s;
+  }
+  .rcs-btn:hover,
+  .rcs-btn:focus {
+    background: #e6a200;
+  }
+  .rcs-hero-secondary-wrap {
+    margin-top: -24px;
+  }
+  @keyframes rcs-fade-up {
+    from {
+      opacity: 0;
+      transform: translateY(40px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .rcs-pad {
+    padding: 10px;
+  }
+  .rcs-testimonials {
+    background: #103034;
+    min-height: 658px;
+  }
+  .rcs-focus {
+    min-height: 500px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+  .rcs-final {
+    padding: 30px 0;
+  }
+
+  .rcs-footer {
+    background: #0b1b23;
+    color: rgba(255, 255, 255, 0.7);
+    text-align: center;
+    font-size: 12px;
+    padding: 18px 16px;
+  }
+  .rcs-footer p {
+    margin: 0;
+  }
+  .rcs-footer a {
+    color: #ffb400;
+    text-decoration: none;
+  }
+  .rcs-footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 767px) {
+    .rcs-hero-grid {
+      grid-template-columns: 1fr;
+    }
+    .rcs-hero-left {
+      margin-top: 15px;
+    }
+    .rcs-hero-video {
+      display: none;
+    }
+    .rcs-topbar p {
+      width: 100%;
+      padding: 10px;
+      text-align: left;
+    }
+    .rcs-pill {
+      width: 240px;
+    }
+    .rcs-hero-title {
+      font-size: 33px;
+      line-height: 1.2em;
+    }
+    .rcs-faq {
+      margin-top: -32px;
+    }
+    .rcs-final {
+      padding: 0;
+    }
+  }
+</style>
+
+<script>
+  // Only load the hero background video on desktop (matches the WordPress page,
+  // which hides it on mobile) — saves ~5.7 MB on phones.
+  const v = document.querySelector<HTMLVideoElement>('[data-desktop-video]');
+  if (v && window.matchMedia('(min-width: 768px)').matches && !window.matchMedia('(prefers-reduced-motion: reduce)').matches) {
+    v.preload = 'auto';
+    v.load();
+    v.play().catch(() => {});
+  }
+</script>
