@@ -11,15 +11,20 @@ interface Props {
   /** Hide the "Take the First Step" band above the footer. */
   hideCta?: boolean;
   noindex?: boolean;
+  image?: string;
+  type?: 'website' | 'article';
+  publishedTime?: Date;
+  modifiedTime?: Date;
 }
 
-const { title, description, hideCta = false, noindex = false } = Astro.props;
+const { title, description, hideCta = false, noindex = false, ...seo } = Astro.props;
 ---
 
 <!doctype html>
 <html lang="en-US">
   <head>
-    <Head title={title} description={description} noindex={noindex} />
+    <Head title={title} description={description} noindex={noindex} {...seo} />
+    <slot name="head" />
   </head>
   <body class="flex min-h-screen flex-col">
     <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:top-2 focus:left-2 focus:z-50 focus:bg-white focus:px-4 focus:py-2 focus:text-ink">

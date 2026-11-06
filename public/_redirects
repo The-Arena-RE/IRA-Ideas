@@ -6,3 +6,10 @@
 /tim-berry/                   /about-tim-berry/                   301
 /contact-me/                  /get-in-touch-ira-401k-attorney/    301
 /videos-2/                    /videos-ira-401k/                   301
+
+# Blog (WordPress URL patterns → new blog)
+/feed/                        /feed.xml                           301
+/feed                         /feed.xml                           301
+/category/uncategorized/      /blog/                              301
+/blog/page/:n/                /blog/:n/                           301
+/:year/:month/:day/:slug/     /:slug/                             301

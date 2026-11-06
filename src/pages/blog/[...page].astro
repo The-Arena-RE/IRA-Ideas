@@ -1,0 +1,65 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import PageBanner from '../../components/PageBanner.astro';
+import PostCard from '../../components/PostCard.astro';
+import Pagination from '../../components/Pagination.astro';
+import banner from '../../assets/img/financial-advisor.jpg';
+import { getPosts, tagIndex, POSTS_PER_PAGE } from '../../lib/blog';
+
+// /blog/, /blog/2/, /blog/3/ …
+export const getStaticPaths = (async ({ paginate }) => {
+  const posts = await getPosts();
+  return paginate(posts, { pageSize: POSTS_PER_PAGE });
+}) satisfies GetStaticPaths;
+
+const { page } = Astro.props;
+const allPosts = await getPosts();
+const topTags = [...tagIndex(allPosts).values()].sort((a, b) => b.posts.length - a.posts.length).slice(0, 14);
+const title = page.currentPage === 1 ? 'Blog | IRA Ideas LLC' : `Blog – Page ${page.currentPage} | IRA Ideas LLC`;
+---
+
+<Base
+  title={title}
+  description="Articles by attorney Tim Berry on self-directed IRAs and 401(k)s: prohibited transactions, rollovers, IRA LLCs, Roth conversions, inherited IRAs, IRS levies and bankruptcy protection."
+>
+  <PageBanner title="Blog" image={banner} position="center 35%" />
+
+  <section class="py-16 md:py-20">
+    <div class="container-site">
+      <div class="grid items-end gap-8 lg:grid-cols-[1fr_auto]">
+        <div class="max-w-2xl">
+          <p class="eyebrow">The Latest from Tim Berry</p>
+          <h2 class="mt-3 text-4xl font-semibold md:text-[44px]">Self-Directed IRA &amp; 401(k) Insights</h2>
+          <p class="mt-5">
+            Court cases, IRS rulings and practical commentary on keeping your self-directed retirement plan compliant.
+          </p>
+        </div>
+        <p class="text-sm text-muted">
+          {page.total} articles · Page {page.currentPage} of {page.lastPage}
+        </p>
+      </div>
+
+      <ul class="mt-12 grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {page.data.map((post) => <li><PostCard post={post} /></li>)}
+      </ul>
+
+      <Pagination current={page.currentPage} last={page.lastPage} base="/blog/" />
+
+      <div class="mt-16 rounded-2xl bg-soft p-8">
+        <h2 class="font-sans text-lg font-bold">Browse by topic</h2>
+        <ul class="mt-4 flex flex-wrap gap-2">
+          {
+            topTags.map((t) => (
+              <li>
+                <a href={`/tag/${t.slug}/`} class="inline-block rounded-full border border-line bg-white px-3 py-1.5 text-sm text-ink transition hover:border-amber-500 hover:text-teal-700">
+                  {t.name} <span class="text-muted">({t.posts.length})</span>
+                </a>
+              </li>
+            ))
+          }
+        </ul>
+      </div>
+    </div>
+  </section>
+</Base>

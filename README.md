@@ -13,6 +13,10 @@ The site audit (pages, colours, typography, integrations) is in [`docs/site-audi
 | Contact | `/get-in-touch-ira-401k-attorney/` |
 | Privacy Policy | `/privacy-policy/` |
 | Retirement Certainty Session ($125 booking) | `/retirement-certainty-session/` |
+| Blog (51 posts, paginated) | `/blog/`, `/blog/2/` … |
+| Blog posts | `/<post-slug>/` (same URLs as WordPress) |
+| Tag / category archives | `/tag/<slug>/`, `/category/<slug>/` |
+| RSS feed | `/feed.xml` (`/feed/` redirects) |
 
 The URLs match the WordPress site so search rankings carry over. "Book An Appointment" buttons go to the
 Retirement Certainty Session page (`BOOKING_URL` in `src/data/site.ts`). The other funnel pages
@@ -37,6 +41,29 @@ Retirement Certainty Session page (`BOOKING_URL` in `src/data/site.ts`). The oth
 - **Cloudflare Worker** (`worker/index.ts`) handles `POST /api/contact` and forwards submissions to an **n8n** webhook.
   All other routes are static files.
 - `public/_redirects` sends old duplicate URLs to their new pages, and `public/_headers` sets security and caching headers.
+
+## Blog
+
+Posts are Markdown files in **`src/content/blog/`**; the file name is the URL (`what-is-an-ira.md` → `/what-is-an-ira/`).
+To add a post, copy an existing file and change the front matter:
+
+```md
+---
+title: "My new post"
+description: "One or two sentences for Google and the blog cards."
+pubDate: 2026-11-06T12:00:00Z
+image: ../../assets/blog/my-photo.jpg   # optional, put the image in src/assets/blog/
+imageAlt: "Describe the photo"
+tags:
+  - { slug: "self-directed-ira", name: "self directed IRA" }
+---
+
+Write the article here in Markdown.
+```
+
+Long quoted material (court rulings etc.) can go in a collapsible block:
+`<details class="expand"><summary>Read the full ruling</summary> … </details>`.
+PDFs linked from posts are kept at their old WordPress paths in `public/wp-content/uploads/`.
 
 ## Editing content
 

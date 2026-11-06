@@ -1,0 +1,35 @@
+---
+import type { GetStaticPaths } from 'astro';
+import Base from '../../layouts/Base.astro';
+import PostCard from '../../components/PostCard.astro';
+import { getPosts, CATEGORY_NAMES, type Post } from '../../lib/blog';
+
+// /category/professional/, /category/retail/ ("uncategorized" redirects to /blog/ — see public/_redirects)
+export const getStaticPaths = (async () => {
+  const posts = await getPosts();
+  const slugs = [...new Set(posts.flatMap((p) => p.data.categories))];
+  return slugs.map((c) => ({ params: { category: c }, props: { posts: posts.filter((p) => p.data.categories.includes(c)) } }));
+}) satisfies GetStaticPaths;
+
+const { category } = Astro.params;
+const { posts } = Astro.props as { posts: Post[] };
+const name = CATEGORY_NAMES[category!] ?? category;
+---
+
+<Base title={`${name} – Articles | IRA Ideas LLC`} description={`${name} articles from attorney Tim Berry on self-directed IRAs and 401(k)s.`}>
+  <section class="bg-teal-950 py-14 text-white md:py-20">
+    <div class="container-site">
+      <a href="/blog/" class="text-sm text-white/70 hover:text-amber-500">← All articles</a>
+      <p class="eyebrow mt-6 text-amber-500">Category</p>
+      <h1 class="mt-2 font-sans text-4xl font-bold text-white md:text-5xl">{name}</h1>
+      <p class="mt-4 text-white/80">{posts.length} {posts.length === 1 ? 'article' : 'articles'}</p>
+    </div>
+  </section>
+  <section class="py-16 md:py-20">
+    <div class="container-site">
+      <ul class="grid grid-cols-1 gap-8 sm:grid-cols-2 lg:grid-cols-3">
+        {posts.map((post) => <li><PostCard post={post} /></li>)}
+      </ul>
+    </div>
+  </section>
+</Base>
