@@ -1,0 +1,20 @@
+---
+import Landing from '../layouts/Landing.astro';
+import timPortrait from '../assets/img/tim-about.png';
+import pageMarkup from '../partials/private-strategy-session.html?raw';
+import '../styles/private-strategy-session.css';
+
+const markup = pageMarkup.replace('__TIM_PORTRAIT_ASSET__', timPortrait.src);
+---
+
+<Landing
+  title="Private Strategy Session with Tim Berry | IRA Ideas LLC"
+  description="Get dedicated, one-on-one time with attorney Tim Berry to work through an important self-directed IRA or 401(k) transaction, strategy, structure, or retirement-plan question. Tax Academy members may qualify for the $1,000 rate after email verification; standard booking is $1,500."
+  image={timPortrait.src}
+>
+  <Fragment set:html={markup} />
+</Landing>
+
+<script>
+  import '../scripts/private-strategy-session.js';
+</script>

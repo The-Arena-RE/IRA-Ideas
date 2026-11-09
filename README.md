@@ -13,14 +13,25 @@ The site audit (pages, colours, typography, integrations) is in [`docs/site-audi
 | Contact | `/get-in-touch-ira-401k-attorney/` |
 | Privacy Policy | `/privacy-policy/` |
 | Retirement Certainty Session ($125 booking) | `/retirement-certainty-session/` |
+| Private Strategy Session ($1,000 member / $1,500 standard) | `/private-strategy-session/` |
 | Blog (51 posts, paginated) | `/blog/`, `/blog/2/` … |
 | Blog posts | `/<post-slug>/` (same URLs as WordPress) |
 | Tag / category archives | `/tag/<slug>/`, `/category/<slug>/` |
 | RSS feed | `/feed.xml` (`/feed/` redirects) |
 
 The URLs match the WordPress site so search rankings carry over. "Book An Appointment" buttons go to the
-Retirement Certainty Session page (`BOOKING_URL` in `src/data/site.ts`). The other funnel pages
-(e.g. `/private-strategy-session/`) are not rebuilt yet; links to them still point at WordPress.
+Retirement Certainty Session page (`BOOKING_URL` in `src/data/site.ts`). Other funnel pages not listed here
+remain on WordPress until they are migrated.
+
+## Private Strategy Session
+
+- Page: `src/pages/private-strategy-session.astro`; the supplied page markup, styling, and booking interface are preserved in `src/partials/`, `src/styles/`, and `src/scripts/`.
+- Pricing: $1,000 for an active Tax Academy member after backend email verification; $1,500 standard rate.
+- Same-origin Worker endpoints: `POST /api/pss/verification` handles `verify_membership` and `get_availability`; `POST /api/pss/booking` handles `create_booking` and `booking_status`.
+- Configure Worker secrets `PSS_VERIFICATION_WEBHOOK_URL` and `PSS_BOOKING_WEBHOOK_URL` with the production n8n webhook URLs on `n8n.coreautomations.org`.
+- Configure the public Worker variable `PSS_STRIPE_PUBLISHABLE_KEY`. Use a Stripe test-mode publishable key first. Never put Stripe secret keys or membership-service credentials in the repository or browser.
+- Until the two n8n webhook secrets and Stripe publishable key are configured, the page is available for visual review but membership verification and checkout remain disabled. The Worker returns a 503 response rather than simulating a member result or booking.
+- The n8n workflows must verify membership server-side, derive the amount from the backend verification record, reserve real calendar availability, create payment, validate Stripe payment events server-side, and prevent duplicate bookings/payments.
 
 ## Retirement Certainty Session (booking)
 
