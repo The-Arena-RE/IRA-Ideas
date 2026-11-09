@@ -55,16 +55,6 @@
   body {
     @apply bg-white font-sans text-base leading-[1.65] text-muted antialiased;
   }
-  /* Keep the footer attached to the final page section; prevent stray section margins from creating a white gap. */
-  body > main {
-    margin-block-end: 0 !important;
-  }
-  body > main > :last-child {
-    margin-block-end: 0 !important;
-  }
-  body > footer {
-    margin-block-start: 0 !important;
-  }
   h1,
   h2,
   h3,
