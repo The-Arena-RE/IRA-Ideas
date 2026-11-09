@@ -1,0 +1,140 @@
+<section id="ps4-situations" class="ps4-section">
+<style>
+/* Elementor spacing reset: removes the default gap/padding around this section's container and widget */
+.e-con:has(#ps4-situations),.e-con-inner:has(#ps4-situations),.elementor-section:has(#ps4-situations) .elementor-widget-wrap{--gap:0px!important;--row-gap:0px!important;--column-gap:0px!important;--widgets-spacing:0px!important;--widgets-spacing-row:0px!important;--padding-top:0px!important;--padding-bottom:0px!important;--padding-left:0px!important;--padding-right:0px!important;gap:0!important;padding:0!important}
+.elementor-widget-html:has(#ps4-situations){margin:0!important;padding:0!important;--kit-widget-spacing:0px!important}
+.elementor-widget-html:has(#ps4-situations) > .elementor-widget-container{margin:0!important;padding:0!important}
+
+#ps4-situations{--ps4-ink:#141312;--ps4-ink2:#4a463f;--ps4-muted:#7a7469;--ps4-gold:#c9a45c;--ps4-gold2:#e4c98f;--ps4-gold3:#a9843f;--ps4-line:#e4dccd;--ps4-ivory:#f6f2ea;--ps4-paper:#fffdf9;
+  --ps4-serif:'Playfair Display',Georgia,'Times New Roman',serif;--ps4-sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  display:block;width:100%;max-width:none;margin:0;position:relative;overflow:hidden;
+  font-family:var(--ps4-sans);font-size:16px;line-height:1.65;color:var(--ps4-ink);text-align:left;-webkit-font-smoothing:antialiased;
+  padding:50px 0;background:var(--ps4-ivory)}
+#ps4-situations::before{content:"";position:absolute;inset:0;background:radial-gradient(700px 420px at 0% 0%,rgba(201,164,92,.09),transparent 70%),radial-gradient(700px 420px at 100% 100%,rgba(201,164,92,.08),transparent 70%);pointer-events:none}
+#ps4-situations *,#ps4-situations *::before,#ps4-situations *::after{box-sizing:border-box}
+#ps4-situations h2,#ps4-situations h3,#ps4-situations p,#ps4-situations ul,#ps4-situations li{margin:0;padding:0;border:0;list-style:none}
+#ps4-situations a{text-decoration:none;box-shadow:none}
+#ps4-situations :focus-visible{outline:2px solid var(--ps4-gold);outline-offset:3px}
+
+#ps4-situations .ps4-wrap{max-width:1406px;margin:0 auto;padding:0 28px;position:relative}
+#ps4-situations .ps4-head{display:grid;grid-template-columns:1.2fr .8fr;gap:64px;align-items:end}
+#ps4-situations .ps4-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ps4-gold3)}
+#ps4-situations .ps4-eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+#ps4-situations .ps4-title{font-family:var(--ps4-serif)!important;font-weight:600!important;font-size:52px;line-height:1.08!important;letter-spacing:-.015em!important;color:var(--ps4-ink)!important;margin-top:18px;text-transform:none!important}
+#ps4-situations .ps4-title em{font-style:italic;font-weight:500;color:var(--ps4-gold3)}
+#ps4-situations .ps4-sub{font-size:16.5px;color:var(--ps4-ink2);line-height:1.65;padding-left:24px;border-left:2px solid var(--ps4-gold)}
+
+/* cards */
+#ps4-situations .ps4-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;margin-top:44px}
+#ps4-situations .ps4-card{position:relative;background:var(--ps4-paper);border:1px solid var(--ps4-line);border-radius:18px;padding:34px 32px 30px;overflow:hidden;display:flex;flex-direction:column;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+#ps4-situations .ps4-card::after{content:"";position:absolute;left:0;top:0;height:3px;width:100%;background:linear-gradient(90deg,var(--ps4-gold3),var(--ps4-gold2));transform:scaleX(0);transform-origin:left;transition:transform .4s ease}
+#ps4-situations .ps4-card:hover{transform:translateY(-4px);box-shadow:0 30px 60px -36px rgba(20,19,18,.4);border-color:#d6c6a4}
+#ps4-situations .ps4-card:hover::after{transform:scaleX(1)}
+#ps4-situations .ps4-num{position:absolute;right:24px;top:18px;font-family:var(--ps4-serif);font-style:italic;font-size:54px;line-height:1;color:rgba(169,132,63,.14);font-weight:500;pointer-events:none}
+#ps4-situations .ps4-ico{width:52px;height:52px;border-radius:14px;display:grid;place-items:center;background:linear-gradient(150deg,#1f1c17,#0e0e0f);color:var(--ps4-gold2);box-shadow:0 10px 24px -14px rgba(20,19,18,.6)}
+#ps4-situations .ps4-ico svg{width:23px;height:23px}
+#ps4-situations .ps4-card h3{font-family:var(--ps4-serif)!important;font-size:23px!important;font-weight:600!important;line-height:1.25!important;color:var(--ps4-ink)!important;margin-top:24px;text-transform:none!important}
+#ps4-situations .ps4-card p{font-size:15.5px;color:var(--ps4-ink2);line-height:1.65;margin-top:12px}
+
+/* dark featured card (last) */
+#ps4-situations .ps4-card.ps4-dark{background:linear-gradient(155deg,#1f1c17 0%,#0e0e0f 65%);border-color:rgba(201,164,92,.5)}
+#ps4-situations .ps4-card.ps4-dark h3{color:#fff!important}
+#ps4-situations .ps4-card.ps4-dark p{color:#c9c4ba}
+#ps4-situations .ps4-card.ps4-dark .ps4-ico{background:var(--ps4-gold);color:#15120c}
+#ps4-situations .ps4-card.ps4-dark .ps4-num{color:rgba(228,201,143,.16)}
+
+/* bottom strip */
+#ps4-situations .ps4-strip{display:flex;align-items:center;justify-content:space-between;gap:24px;flex-wrap:wrap;margin-top:28px;padding:22px 28px;border-radius:16px;background:var(--ps4-paper);border:1px solid var(--ps4-line)}
+#ps4-situations .ps4-strip p{font-size:16px;color:var(--ps4-ink2);flex:1 1 520px;max-width:860px}
+#ps4-situations .ps4-strip p b{font-family:var(--ps4-serif);font-size:19px;font-weight:600;color:var(--ps4-ink);margin-right:6px}
+#ps4-situations .ps4-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:15px 24px;border-radius:8px;font-family:var(--ps4-sans);font-size:15px;font-weight:600;line-height:1.2;background:var(--ps4-ink);color:#fff!important;transition:background .2s ease,color .2s ease,transform .2s ease}
+#ps4-situations .ps4-btn:hover{background:#000;color:var(--ps4-gold2)!important;transform:translateY(-1px)}
+#ps4-situations .ps4-btn svg{width:16px;height:16px}
+#ps4-situations .ps4-swipe{display:none}
+
+@media (max-width:1024px){
+  #ps4-situations .ps4-head{grid-template-columns:1fr;gap:20px}
+  #ps4-situations .ps4-title{font-size:44px}
+  #ps4-situations .ps4-grid{grid-template-columns:1fr 1fr}
+}
+@media (max-width:767px){
+  #ps4-situations{padding:30px 0}
+  #ps4-situations .ps4-wrap{padding:0 20px}
+  #ps4-situations .ps4-title{font-size:33px;margin-top:14px}
+  #ps4-situations .ps4-sub{font-size:15.5px;padding-left:18px}
+  #ps4-situations .ps4-swipe{display:flex;align-items:center;justify-content:space-between;gap:8px;margin-top:26px;font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--ps4-gold3)}
+  #ps4-situations .ps4-swipe span{display:inline-flex;align-items:center;gap:8px}
+  #ps4-situations .ps4-swipe svg{width:14px;height:14px;animation:ps4nudge 1.8s ease-in-out infinite}
+  #ps4-situations .ps4-swipe em{font-style:normal;color:var(--ps4-muted);letter-spacing:.1em}
+  @keyframes ps4nudge{0%,100%{transform:translateX(0)}50%{transform:translateX(5px)}}
+  #ps4-situations .ps4-grid{display:flex;grid-template-columns:none;gap:12px;margin:12px -20px 0;padding:4px 20px 22px;overflow-x:auto;overflow-y:hidden;scroll-snap-type:x mandatory;scroll-padding:0 20px;-webkit-overflow-scrolling:touch;overscroll-behavior-x:contain;scrollbar-width:none;align-items:stretch}
+  #ps4-situations .ps4-grid::-webkit-scrollbar{display:none}
+  #ps4-situations .ps4-grid::after{content:"";flex:0 0 8px}
+  #ps4-situations .ps4-card{flex:0 0 82%;max-width:320px;scroll-snap-align:start;padding:26px 22px 24px;border-radius:16px}
+  #ps4-situations .ps4-card:hover{transform:none}
+  #ps4-situations .ps4-num{font-size:44px;right:18px;top:14px}
+  #ps4-situations .ps4-ico{width:46px;height:46px;border-radius:12px}
+  #ps4-situations .ps4-card h3{font-size:21px!important;margin-top:20px}
+  #ps4-situations .ps4-card p{font-size:15px}
+  #ps4-situations .ps4-strip{margin-top:6px;padding:20px;flex-direction:column;align-items:stretch;text-align:center}
+  #ps4-situations .ps4-strip p b{display:block;margin:0 0 4px}
+  #ps4-situations .ps4-btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){#ps4-situations *{transition:none!important;animation:none!important}}
+</style>
+<div class="ps4-wrap">
+  <div class="ps4-head">
+    <div>
+      <span class="ps4-eyebrow">Who This Is For</span>
+      <h2 class="ps4-title">This Session Is Designed for <em>Situations Like These</em></h2>
+    </div>
+    <p class="ps4-sub">The Private Strategy Session is built for more complicated situations, not routine questions. If one of these sounds familiar, it puts your specific situation directly in front of Tim.</p>
+  </div>
+
+  <p class="ps4-swipe" aria-hidden="true"><span>Swipe to see all</span><em>6 situations <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></em></p>
+
+  <ul class="ps4-grid">
+    <li class="ps4-card">
+      <span class="ps4-num" aria-hidden="true">01</span>
+      <div class="ps4-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M15.5 8.5l-2 5-5 2 2-5 5-2z"/></svg></div>
+      <h3>Planning a Complex Transaction</h3>
+      <p>You're evaluating an investment or transaction involving multiple parties, entities, accounts, or regulatory considerations and want to examine the structure before proceeding.</p>
+    </li>
+    <li class="ps4-card">
+      <span class="ps4-num" aria-hidden="true">02</span>
+      <div class="ps4-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="5" y="4" width="14" height="17" rx="2"/><path d="M9 4V3h6v1M9 12l2 2 4-4"/></svg></div>
+      <h3>Reviewing Something You've Already Done</h3>
+      <p>You've completed a transaction and have concerns about how it was structured, documented, or handled. You want to discuss potential issues and determine whether further investigation or corrective work may be needed.</p>
+    </li>
+    <li class="ps4-card">
+      <span class="ps4-num" aria-hidden="true">03</span>
+      <div class="ps4-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l9 5-9 5-9-5 9-5z"/><path d="M3 13l9 5 9-5"/><path d="M3 17.5l9 5 9-5" opacity=".5"/></svg></div>
+      <h3>Advanced Retirement Strategies</h3>
+      <p>You're considering a retirement-plan strategy involving issues beyond routine plan administration and want to explore its structure, limitations, and possible implications.</p>
+    </li>
+    <li class="ps4-card">
+      <span class="ps4-num" aria-hidden="true">04</span>
+      <div class="ps4-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 21h18M5 21V10l7-5 7 5v11M10 21v-6h4v6"/></svg></div>
+      <h3>Real Estate &amp; Private Investments</h3>
+      <p>You're considering or have completed transactions involving real estate, private lending, private companies, or alternative investments through retirement accounts and need a more detailed strategic discussion.</p>
+    </li>
+    <li class="ps4-card">
+      <span class="ps4-num" aria-hidden="true">05</span>
+      <div class="ps4-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l9.5 17h-19L12 3z"/><path d="M12 10v4M12 17h.01"/></svg></div>
+      <h3>Conflicting Information or Potential Problems</h3>
+      <p>You've received conflicting guidance, identified a potentially significant problem, or encountered a situation where the appropriate next step is unclear.</p>
+    </li>
+    <li class="ps4-card ps4-dark">
+      <span class="ps4-num" aria-hidden="true">06</span>
+      <div class="ps4-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 4v16M7 20h10M5 8h14M5 8l-2.5 6a3 3 0 005 0L5 8zM19 8l-2.5 6a3 3 0 005 0L19 8z"/></svg></div>
+      <h3>An Important Decision Is Approaching</h3>
+      <p>You've researched your options, but the financial or compliance consequences make it important to discuss your specific circumstances before moving forward.</p>
+    </li>
+  </ul>
+
+  <div class="ps4-strip">
+    <p><b>Recognize your situation?</b>If your situation involves more than one connected concern, significant financial consequences, or decisions that require a more detailed discussion, this session is designed for you.</p>
+    <a href="#pss-booking" class="ps4-btn" data-pss-cta="standard">Book a Private Strategy Session <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+</div>
+</section>

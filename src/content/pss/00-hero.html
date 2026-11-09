@@ -1,0 +1,111 @@
+<section id="ps1-hero" class="ps1-fullbleed">
+<style>
+/* Elementor spacing reset: removes the default gap/padding around this section's container and widget */
+.e-con:has(#ps1-hero),.e-con-inner:has(#ps1-hero),.elementor-section:has(#ps1-hero) .elementor-widget-wrap{--gap:0px!important;--row-gap:0px!important;--column-gap:0px!important;--widgets-spacing:0px!important;--widgets-spacing-row:0px!important;--padding-top:0px!important;--padding-bottom:0px!important;--padding-left:0px!important;--padding-right:0px!important;gap:0!important;padding:0!important}
+.elementor-widget-html:has(#ps1-hero){margin:0!important;padding:0!important;--kit-widget-spacing:0px!important}
+.elementor-widget-html:has(#ps1-hero) > .elementor-widget-container{margin:0!important;padding:0!important}
+html{scroll-behavior:smooth}
+body{overflow-x:clip}
+#ps1-hero{--gold:#c9a45c;--gold2:#e4c98f;--muted:#a19c93;--line2:rgba(255,255,255,.14);--serif:'Playfair Display',Georgia,'Times New Roman',serif;--sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  font-family:var(--sans);font-size:16px;line-height:1.65;color:#e9e6e0;text-align:left;-webkit-font-smoothing:antialiased;
+  padding:104px 0 112px;overflow:hidden;
+  background-color:#0a0a0b;background-image:radial-gradient(900px 560px at 78% 18%,rgba(201,164,92,.20),transparent 60%),radial-gradient(700px 500px at 0% 100%,rgba(201,164,92,.08),transparent 60%),linear-gradient(90deg,rgba(10,10,11,.95) 0%,rgba(10,10,11,.86) 55%,rgba(10,10,11,.78) 100%),url('/media/pss/pexels-pixabay-261621.jpg');background-size:auto,auto,auto,cover;background-position:center,center,center,center;background-repeat:no-repeat}
+#ps1-hero.ps1-fullbleed{display:block;width:100%;max-width:none;margin:0;left:auto;right:auto}
+#ps1-hero *,#ps1-hero *::before,#ps1-hero *::after{box-sizing:border-box}
+#ps1-hero h1,#ps1-hero p,#ps1-hero figure{margin:0;padding:0;border:0}
+#ps1-hero a{text-decoration:none;box-shadow:none}
+#ps1-hero img{max-width:100%;display:block}
+#ps1-hero :focus-visible{outline:2px solid var(--gold);outline-offset:3px}
+#ps1-hero .ps1-wrap{max-width:1406px;margin:0 auto;padding:0 28px;display:grid;grid-template-columns:1.18fr .82fr;gap:72px;align-items:center}
+#ps1-hero .ps1-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--gold);font-family:var(--sans)}
+#ps1-hero .ps1-eyebrow::before{content:"";width:28px;height:1px;background:currentColor;opacity:.8;flex:none}
+#ps1-hero h1{font-family:var(--serif)!important;font-weight:600!important;font-size:64px;line-height:1.04!important;letter-spacing:-.015em!important;color:#fff!important;margin-top:24px;text-transform:none!important}
+#ps1-hero h1 em{display:block;font-style:italic;font-weight:500;background:linear-gradient(120deg,#f0d9a6,#c9a45c 60%,#b08a45);-webkit-background-clip:text;background-clip:text;color:transparent!important;-webkit-text-fill-color:transparent}
+#ps1-hero .ps1-copy{font-size:17px;color:#bdb8ae;max-width:640px;margin-top:26px}
+#ps1-hero .ps1-copy p+p{margin-top:14px}
+#ps1-hero .ps1-copy .ps1-lead{font-family:var(--serif);font-size:22px;line-height:1.4;color:#f1ede5;font-style:italic}
+#ps1-hero .ps1-copy .ps1-exp{color:var(--gold2);font-weight:500}
+#ps1-hero .ps1-credit{display:flex;gap:14px;align-items:flex-start;max-width:640px;margin-top:16px;padding:14px 18px;border:1px dashed rgba(201,164,92,.45);border-radius:12px;background:rgba(201,164,92,.05)}
+#ps1-hero .ps1-credit-ico{flex:none;width:34px;height:34px;border-radius:50%;display:grid;place-items:center;background:rgba(201,164,92,.14);color:var(--gold2)}
+#ps1-hero .ps1-credit-ico svg{width:18px;height:18px}
+#ps1-hero .ps1-credit p{margin:0;font-size:14px;line-height:1.55;color:#bdb8ae}
+#ps1-hero .ps1-credit b{color:#f1ede5;font-weight:600}
+#ps1-hero .ps1-credit a{display:inline-block;margin-top:6px;color:var(--gold2);font-weight:600;border-bottom:1px solid rgba(228,201,143,.4)}
+#ps1-hero .ps1-credit a:hover{color:#fff;border-color:#fff}
+#ps1-hero .ps1-prices{display:grid;grid-template-columns:.8fr 1fr 1fr;margin-top:38px;border:1px solid var(--line2);border-radius:14px;overflow:hidden;max-width:640px;background:rgba(255,255,255,.02)}
+#ps1-hero .ps1-prices>div{padding:18px 20px;border-left:1px solid var(--line2)}
+#ps1-hero .ps1-prices>div:first-child{border-left:0}
+#ps1-hero .ps1-prices small{display:block;font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--muted);font-weight:600;line-height:1.4}
+#ps1-hero .ps1-prices strong{display:block;font-family:var(--serif);font-size:30px;font-weight:600;color:#fff;line-height:1.15;margin-top:6px}
+#ps1-hero .ps1-prices .ps1-member strong{color:var(--gold2)}
+#ps1-hero .ps1-prices .ps1-len strong{font-family:var(--sans);font-size:15px;color:#d8d3ca;margin-top:10px}
+#ps1-hero .ps1-ctas{display:flex;flex-wrap:wrap;gap:14px;margin-top:34px}
+#ps1-hero .ps1-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:17px 28px;border-radius:8px;font-family:var(--sans);font-size:15px;font-weight:600;line-height:1.2;text-align:center;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease}
+#ps1-hero .ps1-btn svg{width:16px;height:16px;flex:none}
+#ps1-hero .ps1-btn-gold{background:linear-gradient(135deg,#e2c283 0%,#c9a45c 48%,#a9843f 100%);color:#15120c;box-shadow:0 10px 30px -12px rgba(201,164,92,.65)}
+#ps1-hero .ps1-btn-gold:hover{transform:translateY(-1px);box-shadow:0 16px 36px -12px rgba(201,164,92,.8);color:#15120c}
+#ps1-hero .ps1-btn-ghost{border:1px solid rgba(201,164,92,.55);color:var(--gold2);background:rgba(201,164,92,.04)}
+#ps1-hero .ps1-btn-ghost:hover{background:rgba(201,164,92,.12);color:#fff}
+#ps1-hero .ps1-note{font-size:13px;color:var(--muted);margin-top:16px;max-width:560px;line-height:1.55}
+#ps1-hero .ps1-portrait{position:relative;border-radius:22px;overflow:hidden;aspect-ratio:4/5;background:radial-gradient(120% 80% at 50% 0%,#2a2620,#121112 70%);border:1px solid rgba(201,164,92,.28);box-shadow:0 40px 90px -40px rgba(0,0,0,.9),0 0 0 8px rgba(201,164,92,.04)}
+#ps1-hero .ps1-portrait img{width:100%;height:100%;object-fit:cover;object-position:center top;position:absolute;inset:0}
+#ps1-hero .ps1-mono{position:absolute;inset:0;display:grid;place-items:center;font-family:var(--serif);font-style:italic;font-size:120px;color:rgba(201,164,92,.35)}
+#ps1-hero .ps1-cap{position:absolute;left:0;right:0;bottom:0;padding:90px 140px 24px 26px;background:linear-gradient(transparent,rgba(8,8,9,.94) 55%)}
+#ps1-hero .ps1-cap b{display:block;font-family:var(--serif);font-size:26px;font-weight:600;color:#fff;line-height:1.3}
+#ps1-hero .ps1-cap span{display:block;font-size:13px;color:var(--gold2);margin-top:4px;letter-spacing:.02em}
+#ps1-hero .ps1-badge{position:absolute;right:16px;bottom:22px;z-index:2;max-width:120px;background:rgba(10,10,11,.72);border:1px solid rgba(201,164,92,.4);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);border-radius:10px;padding:8px 12px;text-align:left}
+#ps1-hero .ps1-badge b{display:block;font-family:var(--serif);font-size:16px;color:var(--gold2);line-height:1.1}
+#ps1-hero .ps1-badge span{display:block;font-size:9px;line-height:1.35;color:#cfcac0;letter-spacing:.08em;text-transform:uppercase;margin-top:3px}
+@media (max-width:1024px){
+  #ps1-hero .ps1-wrap{grid-template-columns:1fr;gap:56px}
+  #ps1-hero .ps1-portrait{max-width:440px;aspect-ratio:1/1}
+  #ps1-hero h1{font-size:54px}
+}
+@media (max-width:767px){
+  #ps1-hero{padding:60px 0 76px;background-image:radial-gradient(600px 400px at 70% 10%,rgba(201,164,92,.18),transparent 60%),radial-gradient(1px 1px at 0 0,transparent,transparent),linear-gradient(180deg,rgba(10,10,11,.90),rgba(10,10,11,.93)),url('/media/pss/pexels-pixabay-261621.jpg')}
+  #ps1-hero .ps1-wrap{padding:0 20px}
+  #ps1-hero h1{font-size:40px}
+  #ps1-hero .ps1-copy{font-size:16px}
+  #ps1-hero .ps1-copy .ps1-lead{font-size:20px}
+  #ps1-hero .ps1-credit{padding:12px 14px;gap:12px}
+  #ps1-hero .ps1-prices{grid-template-columns:1fr 1fr}
+  #ps1-hero .ps1-prices .ps1-len{grid-column:1/-1;border-bottom:1px solid var(--line2);display:flex;justify-content:space-between;align-items:center;padding:12px 18px}
+  #ps1-hero .ps1-prices .ps1-len strong{margin:0}
+  #ps1-hero .ps1-prices>div:nth-child(2){border-left:0}
+  #ps1-hero .ps1-prices strong{font-size:26px}
+  #ps1-hero .ps1-ctas .ps1-btn{width:100%}
+}
+@media (prefers-reduced-motion:reduce){html{scroll-behavior:auto}#ps1-hero *{transition:none!important}}
+</style>
+<div class="ps1-wrap">
+  <div>
+    <span class="ps1-eyebrow">Private Strategy Session with Tim Berry</span>
+    <h1>When the Decision Matters, <em>Get Tim Directly Involved.</em></h1>
+    <div class="ps1-copy">
+      <p class="ps1-lead">Complex retirement-plan decisions deserve more than a quick answer.</p>
+      <p>Whether you're evaluating an advanced investment strategy, dealing with a complicated transaction, questioning something you've already done, or trying to determine the right path forward, work through your specific situation directly with Tim Berry.</p>
+      <p>Your Private Strategy Session includes up to 45 minutes of dedicated consultation, an opportunity to submit relevant information beforehand, personalized strategic guidance, and a concise summary of recommended next steps.</p>
+      <p class="ps1-exp">Nearly 30 years of retirement-plan experience, applied directly to your situation.</p>
+    </div>
+    <div class="ps1-prices">
+      <div class="ps1-len"><small>Session</small><strong>Up to 45 Minutes</strong></div>
+      <div class="ps1-member"><small>Tax Academy Members</small><strong>$650</strong></div>
+      <div><small>Standard Booking</small><strong>$950</strong></div>
+    </div>
+    <div class="ps1-credit">
+      <span class="ps1-credit-ico" aria-hidden="true"><svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="2.5" y="5" width="15" height="10" rx="2"/><path d="M2.5 8.5h15M6 12h3"/></svg></span>
+      <p><b>Already completed a $125 Retirement Certainty Session?</b> Your full $125 payment can be applied toward this session when booked within 14 days of completing your original consultation.<br><a href="#pss-credit" data-pss-cta="credit">Apply My $125 Consultation Credit &rarr;</a></p>
+    </div>
+    <div class="ps1-ctas">
+      <a href="#pss-booking" class="ps1-btn ps1-btn-gold" data-pss-cta="standard">Book My Private Strategy Session <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      <a href="#pss-booking" class="ps1-btn ps1-btn-ghost" data-pss-cta="member">Tax Academy Member? Verify Your Email</a>
+    </div>
+    <p class="ps1-note">Tax Academy members: enter your membership email when booking and the $650 member rate applies automatically. No coupon code is required.</p>
+  </div>
+  <figure class="ps1-portrait">
+    <img decoding="async" src="/media/rcs/attorney.webp" alt="Tim Berry" loading="eager" fetchpriority="high">
+    <div class="ps1-badge"><b>Nearly 30</b><span>Years of Experience</span></div>
+    <figcaption class="ps1-cap"><b>Tim Berry</b><span>Private Strategy Sessions · IRA Ideas</span></figcaption>
+  </figure>
+</div>
+</section>

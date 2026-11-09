@@ -13,7 +13,7 @@ The site audit (pages, colours, typography, integrations) is in [`docs/site-audi
 | Contact | `/get-in-touch-ira-401k-attorney/` |
 | Privacy Policy | `/privacy-policy/` |
 | Retirement Certainty Session ($125 booking) | `/retirement-certainty-session/` |
-| Private Strategy Session ($1,000 member / $1,500 standard) | `/private-strategy-session/` |
+| Private Strategy Session (design only, booking not connected) | `/private-strategy-session/` |
 | Blog (51 posts, paginated) | `/blog/`, `/blog/2/` … |
 | Blog posts | `/<post-slug>/` (same URLs as WordPress) |
 | Tag / category archives | `/tag/<slug>/`, `/category/<slug>/` |
@@ -25,13 +25,16 @@ remain on WordPress until they are migrated.
 
 ## Private Strategy Session
 
-- Page: `src/pages/private-strategy-session.astro`; the supplied page markup, styling, and booking interface are preserved in `src/partials/`, `src/styles/`, and `src/scripts/`.
-- Pricing: $1,000 for an active Tax Academy member after backend email verification; $1,500 standard rate.
-- Same-origin Worker endpoints: `POST /api/pss/verification` handles `verify_membership` and `get_availability`; `POST /api/pss/booking` handles `create_booking` and `booking_status`.
-- Configure Worker secrets `PSS_VERIFICATION_WEBHOOK_URL` and `PSS_BOOKING_WEBHOOK_URL` with the production n8n webhook URLs on `n8n.coreautomations.org`.
-- Configure the public Worker variable `PSS_STRIPE_PUBLISHABLE_KEY`. Use a Stripe test-mode publishable key first. Never put Stripe secret keys or membership-service credentials in the repository or browser.
-- Until the two n8n webhook secrets and Stripe publishable key are configured, the page is available for visual review but membership verification and checkout remain disabled. The Worker returns a 503 response rather than simulating a member result or booking.
-- The n8n workflows must verify membership server-side, derive the amount from the backend verification record, reserve real calendar availability, create payment, validate Stripe payment events server-side, and prevent duplicate bookings/payments.
+- Page: `src/pages/private-strategy-session.astro`. **Design only for now:** a visual copy of the WordPress page;
+  its 13 sections are in `src/content/pss/` (copy, styles and UI scripts carried over).
+- Booking is **not connected**: the WordPress booking script (membership check, availability, Stripe) is not included,
+  the booking section's webhook/Stripe data attributes are blank, and the calendar shows a "not connected yet" note.
+  A small display-only script fills in the time-zone list and month grid and makes the CTA buttons scroll to the booking card.
+- Links to this session from the Retirement Certainty Session page still point at the working WordPress page.
+- For wiring up booking later: the earlier black/gold implementation (`src/partials/private-strategy-session.html`,
+  `src/scripts/private-strategy-session.js`, `src/styles/private-strategy-session.css`) is kept but not used, and the
+  Worker still has the same-origin proxy endpoints `/api/pss/config`, `/api/pss/verification` and `/api/pss/booking`
+  (configured with Worker secrets `PSS_VERIFICATION_WEBHOOK_URL`, `PSS_BOOKING_WEBHOOK_URL` and `PSS_STRIPE_PUBLISHABLE_KEY`).
 
 ## Retirement Certainty Session (booking)
 

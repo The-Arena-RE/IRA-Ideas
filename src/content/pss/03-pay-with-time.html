@@ -1,0 +1,141 @@
+<section id="ps3-tradeoff" class="ps3-section">
+<style>
+/* Elementor spacing reset: removes the default gap/padding around this section's container and widget */
+.e-con:has(#ps3-tradeoff),.e-con-inner:has(#ps3-tradeoff),.elementor-section:has(#ps3-tradeoff) .elementor-widget-wrap{--gap:0px!important;--row-gap:0px!important;--column-gap:0px!important;--widgets-spacing:0px!important;--widgets-spacing-row:0px!important;--padding-top:0px!important;--padding-bottom:0px!important;--padding-left:0px!important;--padding-right:0px!important;gap:0!important;padding:0!important}
+.elementor-widget-html:has(#ps3-tradeoff){margin:0!important;padding:0!important;--kit-widget-spacing:0px!important}
+.elementor-widget-html:has(#ps3-tradeoff) > .elementor-widget-container{margin:0!important;padding:0!important}
+
+#ps3-tradeoff{--ps3-gold:#c9a45c;--ps3-gold2:#e4c98f;--ps3-gold3:#a9843f;--ps3-text:#e9e6e0;--ps3-soft:#bdb8ae;--ps3-muted:#8f8a81;--ps3-line:rgba(255,255,255,.10);
+  --ps3-serif:'Playfair Display',Georgia,'Times New Roman',serif;--ps3-sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  display:block;width:100%;max-width:none;margin:0;position:relative;overflow:hidden;
+  font-family:var(--ps3-sans);font-size:16px;line-height:1.65;color:var(--ps3-text);text-align:left;-webkit-font-smoothing:antialiased;
+  padding:50px 0;
+  background-color:#0a0a0b;
+  background-image:radial-gradient(800px 420px at 50% 0%,rgba(201,164,92,.16),transparent 70%),linear-gradient(180deg,rgba(10,10,11,.90) 0%,rgba(10,10,11,.84) 50%,rgba(10,10,11,.92) 100%),url('/media/pss/h4-holder-background-2.jpg');
+  background-size:auto,auto,cover;background-position:center,center,center;background-repeat:no-repeat}
+#ps3-tradeoff *,#ps3-tradeoff *::before,#ps3-tradeoff *::after{box-sizing:border-box}
+#ps3-tradeoff h2,#ps3-tradeoff h3,#ps3-tradeoff p,#ps3-tradeoff ol,#ps3-tradeoff li{margin:0;padding:0;border:0;list-style:none}
+#ps3-tradeoff a{text-decoration:none;box-shadow:none}
+#ps3-tradeoff :focus-visible{outline:2px solid var(--ps3-gold);outline-offset:3px}
+
+#ps3-tradeoff .ps3-wrap{max-width:1406px;margin:0 auto;padding:0 28px;position:relative}
+#ps3-tradeoff .ps3-head{text-align:center;max-width:1100px;margin:0 auto}
+#ps3-tradeoff .ps3-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ps3-gold)}
+#ps3-tradeoff .ps3-eyebrow::before,#ps3-tradeoff .ps3-eyebrow::after{content:"";width:28px;height:1px;background:currentColor;opacity:.8}
+#ps3-tradeoff .ps3-title{font-family:var(--ps3-serif)!important;font-weight:600!important;font-size:60px;line-height:1.06!important;letter-spacing:-.015em!important;color:#fff!important;margin-top:20px;text-transform:none!important}
+#ps3-tradeoff .ps3-title em{font-style:italic;font-weight:500;color:var(--ps3-gold2)}
+
+/* split panel */
+#ps3-tradeoff .ps3-split{display:grid;grid-template-columns:1fr 1fr;margin-top:48px;border:1px solid var(--ps3-line);border-radius:22px;overflow:hidden;background:rgba(17,17,19,.72);-webkit-backdrop-filter:blur(6px);backdrop-filter:blur(6px);box-shadow:0 50px 100px -60px rgba(0,0,0,.9)}
+#ps3-tradeoff .ps3-side{padding:44px 46px;position:relative}
+#ps3-tradeoff .ps3-side+.ps3-side{border-left:1px solid var(--ps3-line)}
+#ps3-tradeoff .ps3-label{display:inline-flex;align-items:center;gap:10px;font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ps3-muted)}
+#ps3-tradeoff .ps3-label svg{width:16px;height:16px}
+#ps3-tradeoff .ps3-side p.ps3-lead{font-size:18px;line-height:1.65;color:var(--ps3-soft);margin-top:16px}
+
+/* the long road */
+#ps3-tradeoff .ps3-road{margin-top:30px;display:grid;grid-template-columns:repeat(3,1fr);gap:10px}
+#ps3-tradeoff .ps3-road li{position:relative;font-size:13.5px;color:#cfcac1;background:rgba(255,255,255,.03);border:1px solid var(--ps3-line);border-radius:10px;padding:12px 14px 12px 36px;line-height:1.35}
+#ps3-tradeoff .ps3-road li::before{content:counter(ps3step);counter-increment:ps3step;position:absolute;left:12px;top:12px;font-size:11px;font-weight:700;color:var(--ps3-muted)}
+#ps3-tradeoff .ps3-road{counter-reset:ps3step}
+#ps3-tradeoff .ps3-years{display:flex;align-items:center;gap:12px;margin-top:22px;font-size:13px;color:var(--ps3-muted)}
+#ps3-tradeoff .ps3-years i{flex:1;height:1px;background:linear-gradient(90deg,rgba(255,255,255,.18),rgba(255,255,255,.02))}
+
+/* the direct path */
+#ps3-tradeoff .ps3-direct{background:linear-gradient(155deg,rgba(201,164,92,.16) 0%,rgba(201,164,92,.03) 55%,transparent 100%)}
+#ps3-tradeoff .ps3-direct .ps3-label{color:var(--ps3-gold)}
+#ps3-tradeoff .ps3-direct p.ps3-lead{color:#e6e1d8}
+#ps3-tradeoff .ps3-stat{display:flex;align-items:flex-end;gap:16px;margin-top:30px;padding-top:26px;border-top:1px solid rgba(201,164,92,.25)}
+#ps3-tradeoff .ps3-stat b{font-family:var(--ps3-serif);font-weight:600;font-size:72px;line-height:.9;color:var(--ps3-gold2);letter-spacing:-.02em}
+#ps3-tradeoff .ps3-stat span{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:#d6d0c5;line-height:1.5;padding-bottom:6px}
+#ps3-tradeoff .ps3-stat span em{display:block;font-style:normal;color:var(--ps3-muted);font-weight:500;letter-spacing:.1em}
+
+#ps3-tradeoff .ps3-stat b small{display:block;font-family:var(--ps3-sans);font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ps3-gold);margin-bottom:8px;line-height:1}
+#ps3-tradeoff .ps3-path{display:grid;grid-template-columns:repeat(3,1fr);gap:0;margin-top:30px;position:relative}
+#ps3-tradeoff .ps3-path::before{content:"";position:absolute;left:14px;right:14px;top:14px;height:1px;background:linear-gradient(90deg,var(--ps3-gold),rgba(201,164,92,.35))}
+#ps3-tradeoff .ps3-path li{position:relative;font-size:13.5px;font-weight:500;color:#e2ddd3;padding-top:40px}
+#ps3-tradeoff .ps3-path li:nth-child(2){text-align:center}
+#ps3-tradeoff .ps3-path li.ps3-path-end{text-align:right}
+#ps3-tradeoff .ps3-path i{position:absolute;top:0;width:29px;height:29px;border-radius:50%;display:grid;place-items:center;font-style:normal;font-size:12px;font-weight:700;background:#15140f;border:1px solid var(--ps3-gold);color:var(--ps3-gold2)}
+#ps3-tradeoff .ps3-path li:first-child i{left:0}
+#ps3-tradeoff .ps3-path li:nth-child(2) i{left:50%;transform:translateX(-50%)}
+#ps3-tradeoff .ps3-path li.ps3-path-end i{right:0;background:var(--ps3-gold);color:#15120c}
+
+/* closing line */
+#ps3-tradeoff .ps3-close{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:36px;margin-top:40px;padding:30px 36px;border-radius:18px;border:1px solid rgba(201,164,92,.35);background:rgba(10,10,11,.6)}
+#ps3-tradeoff .ps3-close strong{font-family:var(--ps3-serif);font-style:italic;font-weight:600;font-size:22px;line-height:1.3;color:var(--ps3-gold2);max-width:380px}
+#ps3-tradeoff .ps3-close p{font-size:16.5px;color:var(--ps3-soft);border-left:1px solid var(--ps3-line);padding-left:36px}
+#ps3-tradeoff .ps3-btn{display:inline-flex;align-items:center;justify-content:center;gap:10px;padding:16px 26px;border-radius:8px;font-family:var(--ps3-sans);font-size:15px;font-weight:600;line-height:1.2;white-space:nowrap;background:linear-gradient(135deg,#e2c283 0%,#c9a45c 48%,#a9843f 100%);color:#15120c!important;box-shadow:0 10px 30px -12px rgba(201,164,92,.65);transition:transform .2s ease,box-shadow .2s ease}
+#ps3-tradeoff .ps3-btn:hover{transform:translateY(-1px);box-shadow:0 16px 36px -12px rgba(201,164,92,.8)}
+#ps3-tradeoff .ps3-btn svg{width:16px;height:16px}
+
+@media (max-width:1024px){
+  #ps3-tradeoff .ps3-title{font-size:48px}
+  #ps3-tradeoff .ps3-split{grid-template-columns:1fr}
+  #ps3-tradeoff .ps3-side+.ps3-side{border-left:0;border-top:1px solid var(--ps3-line)}
+  #ps3-tradeoff .ps3-close{grid-template-columns:1fr;gap:16px;text-align:center}
+  #ps3-tradeoff .ps3-close p{border-left:0;padding-left:0}
+  #ps3-tradeoff .ps3-close strong{max-width:none}
+  #ps3-tradeoff .ps3-btn{justify-self:center}
+}
+@media (max-width:767px){
+  #ps3-tradeoff{padding:30px 0}
+  #ps3-tradeoff .ps3-wrap{padding:0 20px}
+  #ps3-tradeoff .ps3-title{font-size:36px;margin-top:16px}
+  #ps3-tradeoff .ps3-split{margin-top:30px;border-radius:18px}
+  #ps3-tradeoff .ps3-side{padding:28px 22px}
+  #ps3-tradeoff .ps3-side p.ps3-lead{font-size:16px}
+  #ps3-tradeoff .ps3-road{grid-template-columns:1fr 1fr;gap:8px;margin-top:22px}
+  #ps3-tradeoff .ps3-road li{font-size:12.5px;padding:10px 10px 10px 30px}
+  #ps3-tradeoff .ps3-road li::before{left:10px;top:10px}
+  #ps3-tradeoff .ps3-stat{margin-top:22px;padding-top:20px}
+  #ps3-tradeoff .ps3-stat b{font-size:56px}
+  #ps3-tradeoff .ps3-path{margin-top:24px}
+  #ps3-tradeoff .ps3-path li{font-size:12.5px}
+  #ps3-tradeoff .ps3-close{margin-top:24px;padding:24px 20px}
+  #ps3-tradeoff .ps3-close strong{font-size:20px;max-width:none}
+  #ps3-tradeoff .ps3-close p{font-size:15.5px}
+  #ps3-tradeoff .ps3-btn{width:100%;white-space:normal}
+}
+@media (prefers-reduced-motion:reduce){#ps3-tradeoff *{transition:none!important}}
+</style>
+<div class="ps3-wrap">
+  <div class="ps3-head">
+    <span class="ps3-eyebrow">The Real Trade-Off</span>
+    <h2 class="ps3-title">Pay With Time <em>or</em> Pay With Money.</h2>
+  </div>
+
+  <div class="ps3-split">
+    <div class="ps3-side">
+      <span class="ps3-label"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.5"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Pay with time</span>
+      <p class="ps3-lead">You can spend years learning the rules, researching transactions, studying changes, making mistakes, correcting them, and developing judgment through experience.</p>
+      <ol class="ps3-road" aria-label="The do-it-yourself path">
+        <li>Learning the rules</li>
+        <li>Researching transactions</li>
+        <li>Studying changes</li>
+        <li>Making mistakes</li>
+        <li>Correcting them</li>
+        <li>Developing judgment</li>
+      </ol>
+      <p class="ps3-years"><span>Measured in years</span><i></i></p>
+    </div>
+
+    <div class="ps3-side ps3-direct">
+      <span class="ps3-label"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M2 8h11M9 4l4 4-4 4"/></svg>Pay with money</span>
+      <p class="ps3-lead">Or you can bring your situation to someone who has already spent nearly 30 years doing it, and have that experience applied to your specific circumstances.</p>
+      <div class="ps3-stat"><b><small>Nearly</small>30</b><span>Years of retirement-plan experience<em>Applied directly to your situation</em></span></div>
+      <ol class="ps3-path" aria-label="The direct path">
+        <li><i>1</i>Your situation</li>
+        <li><i>2</i>Tim's experience</li>
+        <li class="ps3-path-end"><i>3</i>Your next step</li>
+      </ol>
+    </div>
+  </div>
+
+  <div class="ps3-close">
+    <strong>We will continue providing educational resources that help people learn these strategies independently.</strong>
+    <p>But when you have a complex transaction, an important decision, or a situation that needs more individual attention, the Private Strategy Session gives you dedicated time to work through it directly with Tim Berry.</p>
+    <a href="#pss-booking" class="ps3-btn" data-pss-cta="standard">Book a Strategy Session <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+  </div>
+</div>
+</section>

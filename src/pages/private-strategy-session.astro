@@ -1,20 +1,123 @@
 ---
+/**
+ * Private Strategy Session — visual copy of the WordPress page (design only).
+ *
+ * The 13 sections in src/content/pss/ are carried over from the WordPress page's Elementor
+ * HTML widgets. Booking is NOT wired up yet: the WordPress booking script (n8n membership
+ * check, availability, Stripe payment) is intentionally not included, and the booking
+ * section's webhook/Stripe data attributes are blank.
+ */
 import Landing from '../layouts/Landing.astro';
-import timPortrait from '../assets/img/tim-about.png';
-import pageMarkup from '../partials/private-strategy-session.html?raw';
-import '../styles/private-strategy-session.css';
 
-const markup = pageMarkup.replace('__TIM_PORTRAIT_ASSET__', timPortrait.src);
+import hero from '../content/pss/00-hero.html?raw';
+import whatYouGet from '../content/pss/01-what-you-get.html?raw';
+import someQuestions from '../content/pss/02-some-questions.html?raw';
+import payWithTime from '../content/pss/03-pay-with-time.html?raw';
+import thisSession from '../content/pss/04-this-session.html?raw';
+import beforeYouBook from '../content/pss/05-before-you-book.html?raw';
+import howItWorks from '../content/pss/06-how-it-works.html?raw';
+import additionalHelp from '../content/pss/07-additional-help.html?raw';
+import reviews from '../content/pss/08-reviews.html?raw';
+import booking from '../content/pss/09-booking.html?raw';
+import quote from '../content/pss/10-quote.html?raw';
+import faq from '../content/pss/11-faq.html?raw';
+import finalCta from '../content/pss/12-final-cta.html?raw';
+
+const sections = [hero, whatYouGet, someQuestions, payWithTime, thisSession, beforeYouBook, howItWorks, additionalHelp, reviews, booking, quote, faq, finalCta];
 ---
 
 <Landing
   title="Private Strategy Session with Tim Berry | IRA Ideas LLC"
-  description="Get dedicated, one-on-one time with attorney Tim Berry to work through an important self-directed IRA or 401(k) transaction, strategy, structure, or retirement-plan question. Tax Academy members may qualify for the $1,000 rate after email verification; standard booking is $1,500."
-  image={timPortrait.src}
+  description="Book dedicated one-on-one time with attorney Tim Berry to work through an important self-directed IRA or 401(k) transaction, strategy, structure, or retirement-plan question."
+  image="/media/rcs/attorney.webp"
 >
-  <Fragment set:html={markup} />
+  <div class="pss-page">
+    {sections.map((html) => <Fragment set:html={html} />)}
+  </div>
 </Landing>
 
+<style is:global>
+  /* Stands in for the WordPress Elementor container that held the sections. */
+  .pss-page {
+    display: flex;
+    flex-direction: column;
+  }
+</style>
+
 <script>
-  import '../scripts/private-strategy-session.js';
+  // Display-only behaviour for the booking section (no availability lookup, membership check or payment).
+  // Mirrors what the WordPress booking script draws on load so the section looks the same.
+  const NOT_CONNECTED_MSG = 'Online booking isn’t connected on this site yet.';
+  const $ = <T extends HTMLElement>(id: string) => document.getElementById(id) as T | null;
+  const header = () => document.querySelector<HTMLElement>('.pss-sticky, .ps-sticky')?.offsetHeight ?? 0;
+  const scrollToEl = (el: HTMLElement | null, off = 30) => {
+    if (!el) return;
+    window.scrollTo({ top: Math.max(0, el.getBoundingClientRect().top + scrollY - off - header()), behavior: 'smooth' });
+  };
+
+  // Time zones (same list and labels as the WordPress page)
+  let tz = 'America/New_York';
+  try { tz = Intl.DateTimeFormat().resolvedOptions().timeZone || tz; } catch {}
+  const tzSel = $<HTMLSelectElement>('ps8-tz');
+  if (tzSel) {
+    const zones: [string, string][] = [['America/New_York', 'Eastern Time'], ['America/Chicago', 'Central Time'], ['America/Denver', 'Mountain Time'], ['America/Phoenix', 'Arizona Time'], ['America/Los_Angeles', 'Pacific Time'], ['America/Anchorage', 'Alaska Time'], ['Pacific/Honolulu', 'Hawaii Time']];
+    if (!zones.some(([z]) => z === tz)) zones.unshift([tz, tz.replace(/_/g, ' ')]);
+    for (const [value, label] of zones) tzSel.add(new Option(label + (value === tz ? ' (your time zone)' : ''), value));
+    tzSel.value = tz;
+  }
+
+  // Calendar: current month, no selectable days
+  const now = new Date();
+  const label = $('ps8-m-label');
+  if (label) label.textContent = now.toLocaleDateString('en-US', { month: 'long', year: 'numeric' });
+  $<HTMLButtonElement>('ps8-m-prev')?.setAttribute('disabled', '');
+  $<HTMLButtonElement>('ps8-m-next')?.setAttribute('disabled', '');
+  const days = $('ps8-days');
+  if (days) {
+    const first = new Date(now.getFullYear(), now.getMonth(), 1).getDay();
+    const count = new Date(now.getFullYear(), now.getMonth() + 1, 0).getDate();
+    for (let i = 0; i < first; i++) days.append(document.createElement('span'));
+    for (let d = 1; d <= count; d++) { const s = document.createElement('span'); s.textContent = String(d); days.append(s); }
+  }
+  const calMsg = $('ps8-c-msg');
+  if (calMsg) calMsg.textContent = NOT_CONNECTED_MSG;
+
+  // $125 credit row: visible, and the toggle opens/closes its panel
+  const credit = $('ps8-credit');
+  if (credit) credit.hidden = false;
+  $('ps8-credit-toggle')?.addEventListener('click', function () {
+    const body = $('ps8-credit-body');
+    if (!body) return;
+    body.hidden = !body.hidden;
+    this.setAttribute('aria-expanded', String(!body.hidden));
+  });
+  for (const id of ['ps8-credit-send', 'ps8-credit-apply']) {
+    $(id)?.addEventListener('click', () => { const m = $('ps8-credit-msg'); if (m) m.textContent = NOT_CONNECTED_MSG; });
+  }
+
+  // CTA buttons anywhere on the page scroll to the booking card (as on WordPress)
+  document.addEventListener('click', (ev) => {
+    const a = (ev.target as Element | null)?.closest?.('[data-pss-cta]');
+    if (!a) return;
+    const type = a.getAttribute('data-pss-cta');
+    if (type === 'member') {
+      ev.preventDefault();
+      const row = $('ps8-email-row');
+      scrollToEl(row);
+      setTimeout(() => {
+        const email = $<HTMLInputElement>('ps8-email');
+        email?.focus({ preventScroll: true });
+        if (email) email.placeholder = 'Your Tax Academy email address';
+        row?.classList.remove('ps8-attn'); void row?.offsetWidth; row?.classList.add('ps8-attn');
+        setTimeout(() => row?.classList.remove('ps8-attn'), 1600);
+      }, 500);
+    } else if (type === 'standard') {
+      ev.preventDefault();
+      scrollToEl($('ps8-cal'));
+    } else if (type === 'credit') {
+      ev.preventDefault();
+      scrollToEl($('ps8-email-row'));
+      setTimeout(() => { const body = $('ps8-credit-body'); if (body) body.hidden = false; }, 400);
+    }
+  }, true);
 </script>

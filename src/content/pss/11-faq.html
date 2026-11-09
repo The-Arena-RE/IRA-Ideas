@@ -1,0 +1,98 @@
+<section id="ps10-faq" class="ps10-section">
+<style>
+/* Elementor spacing reset */
+.e-con:has(#ps10-faq),.e-con-inner:has(#ps10-faq),.elementor-section:has(#ps10-faq) .elementor-widget-wrap{--gap:0px!important;--row-gap:0px!important;--column-gap:0px!important;--widgets-spacing:0px!important;--widgets-spacing-row:0px!important;--padding-top:0px!important;--padding-bottom:0px!important;--padding-left:0px!important;--padding-right:0px!important;gap:0!important;padding:0!important}
+.elementor-widget-html:has(#ps10-faq){margin:0!important;padding:0!important;--kit-widget-spacing:0px!important}
+.elementor-widget-html:has(#ps10-faq) > .elementor-widget-container{margin:0!important;padding:0!important}
+
+#ps10-faq{--ps10-ink:#141312;--ps10-ink2:#4a463f;--ps10-muted:#7a7469;--ps10-gold:#c9a45c;--ps10-gold2:#e4c98f;--ps10-gold3:#a9843f;--ps10-line:#e4dccd;--ps10-ivory:#f6f2ea;--ps10-paper:#fffdf9;
+  --ps10-serif:'Playfair Display',Georgia,'Times New Roman',serif;--ps10-sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  display:block;width:100%;max-width:none;margin:0;position:relative;overflow:hidden;
+  font-family:var(--ps10-sans);font-size:16px;line-height:1.6;color:var(--ps10-ink);text-align:left;-webkit-font-smoothing:antialiased;
+  padding:50px 0;background:var(--ps10-ivory)}
+#ps10-faq *,#ps10-faq *::before,#ps10-faq *::after{box-sizing:border-box}
+#ps10-faq h2,#ps10-faq p,#ps10-faq details,#ps10-faq summary{margin:0;padding:0;border:0}
+#ps10-faq a{text-decoration:none;box-shadow:none}
+#ps10-faq :focus-visible{outline:2px solid var(--ps10-gold);outline-offset:3px}
+
+#ps10-faq .ps10-wrap{max-width:1406px;margin:0 auto;padding:0 28px}
+#ps10-faq .ps10-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+#ps10-faq .ps10-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ps10-gold3)}
+#ps10-faq .ps10-eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+#ps10-faq .ps10-title{font-family:var(--ps10-serif)!important;font-weight:600!important;font-size:42px;line-height:1.1!important;letter-spacing:-.015em!important;color:var(--ps10-ink)!important;margin-top:12px;text-transform:none!important}
+#ps10-faq .ps10-title em{font-style:italic;font-weight:500;color:var(--ps10-gold3)}
+#ps10-faq .ps10-side{display:flex;align-items:center;gap:16px}
+#ps10-faq .ps10-side p{font-size:14px;color:var(--ps10-muted);max-width:300px;text-align:right;line-height:1.5}
+#ps10-faq .ps10-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:13px 20px;border-radius:9px;font-family:var(--ps10-sans);font-size:14.5px;font-weight:600;line-height:1.2;white-space:nowrap;background:var(--ps10-ink);color:#fff!important;transition:background .2s ease,color .2s ease}
+#ps10-faq .ps10-btn:hover{background:#000;color:var(--ps10-gold2)!important}
+#ps10-faq .ps10-btn svg{width:15px;height:15px}
+
+#ps10-faq .ps10-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px 16px;margin-top:28px;align-items:start}
+#ps10-faq .ps10-col{display:grid;gap:10px}
+#ps10-faq details{background:var(--ps10-paper);border:1px solid var(--ps10-line);border-radius:12px;transition:border-color .25s ease,box-shadow .25s ease;position:relative;overflow:hidden}
+#ps10-faq details::before{content:"";position:absolute;left:0;top:0;bottom:0;width:3px;background:linear-gradient(180deg,var(--ps10-gold2),var(--ps10-gold3));transform:scaleY(0);transform-origin:top;transition:transform .3s ease}
+#ps10-faq details[open]{border-color:#d9c79f;box-shadow:0 18px 40px -30px rgba(20,19,18,.35)}
+#ps10-faq details[open]::before{transform:scaleY(1)}
+#ps10-faq details:hover{border-color:#d9c79f}
+#ps10-faq summary{list-style:none;cursor:pointer;display:flex;align-items:center;justify-content:space-between;gap:16px;padding:15px 18px;font-size:15px;font-weight:600;color:var(--ps10-ink);line-height:1.4;user-select:none}
+#ps10-faq summary::-webkit-details-marker{display:none}
+#ps10-faq summary::marker{content:""}
+#ps10-faq summary i{width:26px;height:26px;border-radius:50%;flex:none;position:relative;background:#f3ece0;transition:background .25s ease,transform .3s ease}
+#ps10-faq summary i::before,#ps10-faq summary i::after{content:"";position:absolute;left:50%;top:50%;width:10px;height:1.6px;background:var(--ps10-gold3);border-radius:2px;transform:translate(-50%,-50%)}
+#ps10-faq summary i::after{transform:translate(-50%,-50%) rotate(90deg);transition:transform .3s ease}
+#ps10-faq details[open] summary i{background:var(--ps10-ink)}
+#ps10-faq details[open] summary i::before,#ps10-faq details[open] summary i::after{background:var(--ps10-gold2)}
+#ps10-faq details[open] summary i::after{transform:translate(-50%,-50%) rotate(0)}
+#ps10-faq details p{padding:0 56px 16px 18px;font-size:14.5px;color:var(--ps10-ink2);line-height:1.65;margin-top:-4px}
+
+@media (max-width:1024px){
+  #ps10-faq .ps10-title{font-size:36px}
+  #ps10-faq .ps10-side p{text-align:left}
+}
+@media (max-width:767px){
+  #ps10-faq{padding:30px 0}
+  #ps10-faq .ps10-wrap{padding:0 20px}
+  #ps10-faq .ps10-title{font-size:29px;margin-top:10px}
+  #ps10-faq .ps10-head{gap:14px}
+  #ps10-faq .ps10-side{flex-direction:column;align-items:stretch;width:100%;gap:12px}
+  #ps10-faq .ps10-side p{max-width:none;font-size:13.5px}
+  #ps10-faq .ps10-btn{width:100%}
+  #ps10-faq .ps10-grid{grid-template-columns:1fr;gap:8px;margin-top:20px}
+  #ps10-faq .ps10-col{gap:8px}
+  #ps10-faq summary{padding:13px 14px;font-size:14.5px}
+  #ps10-faq details p{padding:0 14px 14px;font-size:14px}
+}
+@media (prefers-reduced-motion:reduce){#ps10-faq *{transition:none!important}}
+#ps10-faq details p+p{margin-top:-6px}
+</style>
+<div class="ps10-wrap">
+  <div class="ps10-head">
+    <div>
+      <span class="ps10-eyebrow">Common Questions</span>
+      <h2 class="ps10-title">Everything You Need <em>Before Booking</em></h2>
+    </div>
+    <div class="ps10-side">
+      <p>Still deciding? Check your rate with your email. It only takes a moment.</p>
+      <a href="#pss-booking" class="ps10-btn" data-pss-cta="standard">Check My Rate <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+    </div>
+  </div>
+
+  <div class="ps10-grid">
+    <div class="ps10-col">
+      <details><summary>What's the difference between the $125 session and this one?<i aria-hidden="true"></i></summary><p>The $125 Retirement Certainty Session is intended for one focused question or concern and includes up to 15 minutes with Tim.</p><p>The Private Strategy Session provides up to 45 minutes of dedicated consultation for more complicated situations, an opportunity to submit relevant information and documents beforehand, and a concise summary of recommended next steps afterward. It is designed for circumstances requiring more extensive discussion and strategic consideration.</p></details>
+      <details><summary>Do I have to book the $125 session first?<i aria-hidden="true"></i></summary><p>No. If you already know your situation requires a more comprehensive discussion, you can book a Private Strategy Session directly.</p></details>
+      <details><summary>I already paid $125. Can I apply that toward this session?<i aria-hidden="true"></i></summary><p>Yes. If you've completed a Retirement Certainty Session, your entire $125 payment can be credited toward a Private Strategy Session booked within 14 days of completing your original consultation.</p><p>For active Tax Academy members, this reduces the payment from $650 to $525. For nonmembers, it reduces the payment from $950 to $825.</p></details>
+      <details><summary>Can I send documents before my appointment?<i aria-hidden="true"></i></summary><p>Yes. You can securely submit selected relevant documents and background information to help Tim prepare.</p><p>Extensive document review, formal written analysis, and document preparation are not included in the session price.</p></details>
+      <details><summary>Will I receive written recommendations?<i aria-hidden="true"></i></summary><p>The Private Strategy Session includes a concise post-session summary of key considerations and recommended next steps.</p><p>This is not a comprehensive legal memorandum, formal written opinion, or detailed implementation package. Those services can be discussed separately if needed.</p></details>
+      <details><summary>What if my situation requires custom documents or corrective work?<i aria-hidden="true"></i></summary><p>If your situation requires specialized documents, amendments, corrections, formal analysis, or implementation services, Tim can discuss the available next steps.</p><p>Any additional services will be separately scoped and quoted under an appropriate written agreement. No additional services or charges will be initiated without authorization.</p></details>
+    </div>
+    <div class="ps10-col">
+      <details><summary>Is the Private Strategy Session $650 or $950?<i aria-hidden="true"></i></summary><p>Active Tax Academy members receive the $650 member rate. Clients who are not active members pay the $950 standard rate.</p><p>Membership is verified using the email associated with your active Tax Academy account. Enter it in the email box above the calendar and the member rate applies automatically before you pay. No coupon code is needed.</p></details>
+      <details><summary>I'm a Tax Academy member. Can I still submit questions through member support?<i aria-hidden="true"></i></summary><p>Yes. Tax Academy members can continue using their existing support services for routine questions and assistance included in their membership.</p><p>The Private Strategy Session is a separate service for clients who want dedicated live time with Tim and a more comprehensive discussion of their situation.</p></details>
+      <details><summary>What if Tim resolves my question before 45 minutes?<i aria-hidden="true"></i></summary><p>The session provides up to 45 minutes, not a mandatory 45-minute discussion. If your primary concerns can be addressed sooner, the session has accomplished its purpose.</p><p>The fee reflects dedicated access, preparation, and the strategic nature of the consultation.</p></details>
+      <details><summary>What is the cancellation or refund policy?<i aria-hidden="true"></i></summary><p>You can reschedule anytime from your confirmation email. Cancellations are not refundable. These terms are also shown before you pay.</p><p>The 400% Value Guarantee offered with the $125 Retirement Certainty Session does not apply to the Private Strategy Session.</p></details>
+      <details><summary>Does booking guarantee a particular tax or legal outcome?<i aria-hidden="true"></i></summary><p>No. The consultation is intended to help you discuss your situation, understand relevant considerations, and determine potential next steps.</p><p>No particular tax, IRS, legal, financial, or transaction result is guaranteed.</p></details>
+    </div>
+  </div>
+</div>
+</section>

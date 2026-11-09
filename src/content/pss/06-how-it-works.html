@@ -1,0 +1,138 @@
+<section id="ps6-process" class="ps6-section">
+<style>
+/* Elementor spacing reset: removes the default gap/padding around this section's container and widget */
+.e-con:has(#ps6-process),.e-con-inner:has(#ps6-process),.elementor-section:has(#ps6-process) .elementor-widget-wrap{--gap:0px!important;--row-gap:0px!important;--column-gap:0px!important;--widgets-spacing:0px!important;--widgets-spacing-row:0px!important;--padding-top:0px!important;--padding-bottom:0px!important;--padding-left:0px!important;--padding-right:0px!important;gap:0!important;padding:0!important}
+.elementor-widget-html:has(#ps6-process){margin:0!important;padding:0!important;--kit-widget-spacing:0px!important}
+.elementor-widget-html:has(#ps6-process) > .elementor-widget-container{margin:0!important;padding:0!important}
+
+#ps6-process{--ps6-ink:#141312;--ps6-ink2:#4a463f;--ps6-muted:#857f73;--ps6-gold:#c9a45c;--ps6-gold2:#e4c98f;--ps6-gold3:#a9843f;--ps6-line:#e4dccd;--ps6-ivory:#f6f2ea;--ps6-paper:#fffdf9;
+  --ps6-serif:'Playfair Display',Georgia,'Times New Roman',serif;--ps6-sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  display:block;width:100%;max-width:none;margin:0;position:relative;overflow:hidden;
+  font-family:var(--ps6-sans);font-size:16px;line-height:1.65;color:var(--ps6-ink);text-align:left;-webkit-font-smoothing:antialiased;
+  padding:50px 0;background:var(--ps6-ivory)}
+#ps6-process::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 380px at 50% 0%,rgba(201,164,92,.10),transparent 70%);pointer-events:none}
+#ps6-process *,#ps6-process *::before,#ps6-process *::after{box-sizing:border-box}
+#ps6-process h2,#ps6-process h3,#ps6-process p,#ps6-process ol,#ps6-process li{margin:0;padding:0;border:0;list-style:none}
+
+#ps6-process .ps6-wrap{max-width:1406px;margin:0 auto;padding:0 28px;position:relative}
+#ps6-process .ps6-head{text-align:center;max-width:900px;margin:0 auto}
+#ps6-process .ps6-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ps6-gold3)}
+#ps6-process .ps6-eyebrow::before,#ps6-process .ps6-eyebrow::after{content:"";width:28px;height:1px;background:currentColor}
+#ps6-process .ps6-title{font-family:var(--ps6-serif)!important;font-weight:600!important;font-size:50px;line-height:1.1!important;letter-spacing:-.015em!important;color:var(--ps6-ink)!important;margin-top:16px;text-transform:none!important}
+#ps6-process .ps6-title em{font-style:italic;font-weight:500;color:var(--ps6-gold3)}
+#ps6-process .ps6-sub{font-size:15px;color:var(--ps6-muted);margin-top:10px}
+
+/* timeline */
+#ps6-process .ps6-steps{display:grid;grid-template-columns:repeat(4,1fr);gap:22px;margin-top:46px;position:relative;counter-reset:ps6}
+#ps6-process .ps6-steps::before{content:"";position:absolute;top:29px;left:calc(12.5% - 10px);right:calc(12.5% - 10px);height:2px;background:linear-gradient(90deg,#d9c79f 0%,var(--ps6-gold) 70%,var(--ps6-gold3) 100%);border-radius:2px}
+#ps6-process .ps6-step{position:relative;display:flex;flex-direction:column;align-items:center}
+#ps6-process .ps6-node{position:relative;z-index:1;width:60px;height:60px;border-radius:50%;display:grid;place-items:center;background:var(--ps6-paper);border:2px solid var(--ps6-gold);font-family:var(--ps6-serif);font-weight:600;font-size:22px;color:var(--ps6-gold3);box-shadow:0 0 0 8px var(--ps6-ivory),0 14px 30px -16px rgba(169,132,63,.6)}
+#ps6-process .ps6-arrow{position:absolute;top:22px;right:-19px;z-index:1;width:16px;height:16px;color:var(--ps6-gold3);background:var(--ps6-ivory);border-radius:50%}
+#ps6-process .ps6-arrow svg{width:16px;height:16px;display:block}
+#ps6-process .ps6-card{margin-top:26px;width:100%;flex:1;background:var(--ps6-paper);border:1px solid var(--ps6-line);border-radius:18px;padding:28px 26px 26px;position:relative;transition:transform .3s ease,box-shadow .3s ease,border-color .3s ease}
+#ps6-process .ps6-card::before{content:"";position:absolute;top:-8px;left:50%;width:14px;height:14px;background:inherit;border-left:1px solid var(--ps6-line);border-top:1px solid var(--ps6-line);transform:translateX(-50%) rotate(45deg)}
+#ps6-process .ps6-step:hover .ps6-card{transform:translateY(-3px);box-shadow:0 26px 50px -32px rgba(20,19,18,.35);border-color:#d6c6a4}
+#ps6-process .ps6-label{font-size:11px;font-weight:700;letter-spacing:.2em;text-transform:uppercase;color:var(--ps6-gold3)}
+#ps6-process .ps6-card h3{font-family:var(--ps6-serif)!important;font-size:22px!important;font-weight:600!important;line-height:1.25!important;color:var(--ps6-ink)!important;margin-top:10px;text-transform:none!important}
+#ps6-process .ps6-card p{font-size:15px;color:var(--ps6-ink2);line-height:1.65;margin-top:10px}
+
+/* final step emphasis */
+#ps6-process .ps6-final .ps6-node{background:linear-gradient(135deg,#e2c283,#c9a45c 50%,#a9843f);border-color:#a9843f;color:#15120c}
+#ps6-process .ps6-final .ps6-card{background:linear-gradient(155deg,#1f1c17 0%,#0e0e0f 70%);border-color:rgba(201,164,92,.55)}
+#ps6-process .ps6-final .ps6-card::before{background:#1f1c17;border-color:rgba(201,164,92,.55)}
+#ps6-process .ps6-final .ps6-label{color:var(--ps6-gold)}
+#ps6-process .ps6-final h3{color:#fff!important}
+#ps6-process .ps6-final p{color:#c9c4ba}
+#ps6-process .ps6-final p.ps6-quote{font-family:var(--ps6-serif);font-style:italic;font-size:17px;color:var(--ps6-gold2);margin-top:12px}
+#ps6-process .ps6-final p+p{margin-top:8px}
+
+#ps6-process .ps6-card p+p{margin-top:10px}
+#ps6-process .ps6-clock{display:grid;grid-template-columns:auto 1fr;gap:32px;align-items:center;margin-top:36px;padding:26px 32px;border-radius:16px;background:var(--ps6-paper);border:1px solid var(--ps6-line);border-left:3px solid var(--ps6-gold)}
+#ps6-process .ps6-clock p{margin:0;font-size:15.5px;line-height:1.65;color:var(--ps6-ink2)}
+#ps6-process .ps6-clock .ps6-clock-q{font-family:var(--ps6-serif,'Playfair Display',Georgia,serif);font-style:italic;font-size:24px;line-height:1.3;color:var(--ps6-ink);max-width:300px}
+@media (max-width:1024px){
+  #ps6-process .ps6-title{font-size:42px}
+  #ps6-process .ps6-steps{grid-template-columns:1fr 1fr;row-gap:34px}
+  #ps6-process .ps6-steps::before{display:none}
+  #ps6-process .ps6-arrow{display:none}
+}
+@media (max-width:767px){
+  #ps6-process{padding:30px 0}
+  #ps6-process .ps6-wrap{padding:0 20px}
+  #ps6-process .ps6-title{font-size:32px;margin-top:12px}
+  #ps6-process .ps6-sub{font-size:14px}
+  /* vertical timeline */
+  #ps6-process .ps6-steps{display:block;margin-top:30px;position:relative}
+  #ps6-process .ps6-steps::before{display:none}
+  #ps6-process .ps6-step:not(:last-child)::after{content:"";position:absolute;left:23px;top:48px;bottom:-14px;width:2px;background:linear-gradient(180deg,#d9c79f,var(--ps6-gold))}
+  #ps6-process .ps6-step{display:grid;grid-template-columns:48px 1fr;gap:14px;align-items:start}
+  #ps6-process .ps6-step+.ps6-step{margin-top:14px}
+  #ps6-process .ps6-node{width:48px;height:48px;font-size:18px;box-shadow:0 0 0 6px var(--ps6-ivory)}
+  #ps6-process .ps6-card{margin-top:0;padding:18px 18px 18px;border-radius:14px}
+  #ps6-process .ps6-card::before{top:17px;left:-8px;transform:rotate(-45deg)}
+  #ps6-process .ps6-final .ps6-card::before{background:#1f1c17}
+  #ps6-process .ps6-step:hover .ps6-card{transform:none}
+  #ps6-process .ps6-card h3{font-size:19px!important;margin-top:6px}
+  #ps6-process .ps6-card p{font-size:14.5px;margin-top:8px}
+  #ps6-process .ps6-final p.ps6-quote{font-size:16px}
+}
+@media (max-width:767px){
+  #ps6-process .ps6-clock{grid-template-columns:1fr;gap:10px;padding:22px 20px;margin-top:24px}
+  #ps6-process .ps6-clock .ps6-clock-q{font-size:21px;max-width:none}
+}
+@media (prefers-reduced-motion:reduce){#ps6-process *{transition:none!important}}
+</style>
+<div class="ps6-wrap">
+  <div class="ps6-head">
+    <span class="ps6-eyebrow">The Process</span>
+    <h2 class="ps6-title">How Your Private Strategy Session <em>Works</em></h2>
+    <p class="ps6-sub">Four steps from booking to a clear direction forward.</p>
+  </div>
+
+  <ol class="ps6-steps">
+    <li class="ps6-step">
+      <span class="ps6-node">1</span>
+      <span class="ps6-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg></span>
+      <div class="ps6-card">
+        <span class="ps6-label">Step 01</span>
+        <h3>Choose Your Time and Reserve Your Session</h3>
+        <p>Select an available appointment, verify your Tax Academy member rate if applicable, and complete your secure booking.</p>
+        <p>If you have an eligible $125 consultation credit, apply it before paying.</p>
+      </div>
+    </li>
+    <li class="ps6-step">
+      <span class="ps6-node">2</span>
+      <span class="ps6-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg></span>
+      <div class="ps6-card">
+        <span class="ps6-label">Step 02</span>
+        <h3>Tell Tim About Your Situation</h3>
+        <p>After booking, complete a brief intake form explaining your circumstances, the primary issue, and what you want to accomplish.</p>
+        <p>You can securely submit selected documents or background materials that may help Tim prepare.</p>
+      </div>
+    </li>
+    <li class="ps6-step">
+      <span class="ps6-node">3</span>
+      <span class="ps6-arrow" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2"><path d="M6 4l4 4-4 4"/></svg></span>
+      <div class="ps6-card">
+        <span class="ps6-label">Step 03</span>
+        <h3>Work Through It Directly With Tim</h3>
+        <p>Meet privately with Tim for up to 45 minutes to discuss your situation, relevant considerations, available approaches, and potential next steps.</p>
+      </div>
+    </li>
+    <li class="ps6-step ps6-final">
+      <span class="ps6-node">4</span>
+      <div class="ps6-card">
+        <span class="ps6-label">Step 04</span>
+        <h3>Leave With Direction</h3>
+        <p>Determine your next steps and receive a concise follow-up summary of the discussion.</p>
+        <p>If additional research, document preparation, formal analysis, or implementation is needed, those services can be considered under a separate agreement.</p>
+      </div>
+    </li>
+  </ol>
+
+  <div class="ps6-clock">
+    <p class="ps6-clock-q">The purpose is not to fill the clock.</p>
+    <p>If the central issue can be addressed in less than 45 minutes, that is a successful session. The price reflects dedicated access, preparation, and the nature of the service, not a guarantee that every appointment will last exactly 45 minutes.</p>
+  </div>
+</div>
+</section>

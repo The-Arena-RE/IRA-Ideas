@@ -1,0 +1,120 @@
+<section id="ps11-final" class="ps11-section">
+<style>
+/* Elementor spacing reset */
+.e-con:has(#ps11-final),.e-con-inner:has(#ps11-final),.elementor-section:has(#ps11-final) .elementor-widget-wrap{--gap:0px!important;--row-gap:0px!important;--column-gap:0px!important;--widgets-spacing:0px!important;--widgets-spacing-row:0px!important;--padding-top:0px!important;--padding-bottom:0px!important;--padding-left:0px!important;--padding-right:0px!important;gap:0!important;padding:0!important}
+.elementor-widget-html:has(#ps11-final){margin:0!important;padding:0!important;--kit-widget-spacing:0px!important}
+.elementor-widget-html:has(#ps11-final) > .elementor-widget-container{margin:0!important;padding:0!important}
+
+#ps11-final{--ps11-gold:#c9a45c;--ps11-gold2:#e4c98f;--ps11-gold3:#a9843f;--ps11-soft:#bdb8ae;--ps11-muted:#8a857c;--ps11-line:rgba(255,255,255,.09);
+  --ps11-serif:'Playfair Display',Georgia,'Times New Roman',serif;--ps11-sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  display:block;width:100%;max-width:none;margin:0;position:relative;overflow:hidden;
+  font-family:var(--ps11-sans);font-size:16px;line-height:1.6;color:#e9e6e0;text-align:left;-webkit-font-smoothing:antialiased;
+  background:#0a0a0b}
+#ps11-final *,#ps11-final *::before,#ps11-final *::after{box-sizing:border-box}
+#ps11-final h2,#ps11-final p,#ps11-final ul,#ps11-final li{margin:0;padding:0;border:0;list-style:none}
+#ps11-final a{text-decoration:none;box-shadow:none}
+#ps11-final img{max-width:100%;display:block;height:auto}
+#ps11-final :focus-visible{outline:2px solid var(--ps11-gold);outline-offset:3px}
+#ps11-final .ps11-wrap{max-width:1406px;margin:0 auto;padding:0 28px}
+
+/* final CTA */
+#ps11-final .ps11-cta{padding:50px 0;background:radial-gradient(800px 380px at 20% 0%,rgba(201,164,92,.16),transparent 70%),radial-gradient(600px 320px at 100% 100%,rgba(201,164,92,.08),transparent 70%)}
+#ps11-final .ps11-grid{display:grid;grid-template-columns:1.05fr 1fr;gap:48px;align-items:center}
+#ps11-final .ps11-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ps11-gold)}
+#ps11-final .ps11-eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+#ps11-final .ps11-title{font-family:var(--ps11-serif)!important;font-weight:600!important;font-size:42px;line-height:1.12!important;letter-spacing:-.015em!important;color:#fff!important;margin-top:14px;text-transform:none!important}
+#ps11-final .ps11-title em{font-style:italic;font-weight:500;color:var(--ps11-gold2)}
+#ps11-final .ps11-lead{font-size:16px;color:var(--ps11-soft);margin-top:14px;max-width:560px}
+#ps11-final .ps11-note{display:inline-flex;align-items:center;gap:8px;margin-top:16px;font-size:13px;color:var(--ps11-muted)}
+#ps11-final .ps11-note svg{width:15px;height:15px;flex:none;color:var(--ps11-gold)}
+#ps11-final .ps11-lead+.ps11-lead{margin-top:10px}
+#ps11-final .ps11-credit{margin-top:22px;max-width:560px;padding:14px 18px;border:1px dashed rgba(201,164,92,.45);border-radius:12px;background:rgba(201,164,92,.05);font-size:14px;line-height:1.55;color:var(--ps11-soft)}
+#ps11-final .ps11-credit b{color:#fff;font-weight:600}
+#ps11-final .ps11-credit a{display:inline-block;margin-top:4px;color:var(--ps11-gold2);font-weight:600;border-bottom:1px solid rgba(228,201,143,.4)}
+
+#ps11-final .ps11-cards{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#ps11-final .ps11-card{position:relative;border-radius:18px;padding:24px 22px 22px;display:flex;flex-direction:column;border:1px solid rgba(255,255,255,.12);background:linear-gradient(160deg,rgba(255,255,255,.05),rgba(255,255,255,.015));transition:transform .25s ease,border-color .25s ease,box-shadow .25s ease}
+#ps11-final .ps11-card:hover{transform:translateY(-3px);border-color:rgba(201,164,92,.45);box-shadow:0 26px 50px -30px rgba(0,0,0,.8)}
+#ps11-final .ps11-card small{font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ps11-muted)}
+#ps11-final .ps11-amt{font-family:var(--ps11-serif);font-weight:600;font-size:44px;line-height:1;margin-top:12px;color:#fff;letter-spacing:-.02em}
+#ps11-final .ps11-desc{font-size:13px;color:var(--ps11-muted);margin-top:8px;line-height:1.45;flex:1}
+#ps11-final .ps11-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;margin-top:18px;width:100%;padding:14px 16px;border-radius:9px;font-family:var(--ps11-sans);font-size:14.5px;font-weight:600;line-height:1.2;text-align:center;transition:transform .2s ease,background .2s ease,color .2s ease,border-color .2s ease}
+#ps11-final .ps11-btn svg{width:15px;height:15px;flex:none}
+#ps11-final .ps11-btn-gold{background:linear-gradient(135deg,#e2c283 0%,#c9a45c 48%,#a9843f 100%);color:#15120c!important;box-shadow:0 12px 28px -12px rgba(201,164,92,.7)}
+#ps11-final .ps11-btn-line{border:1px solid rgba(201,164,92,.55);color:var(--ps11-gold2)!important;background:rgba(201,164,92,.04)}
+#ps11-final .ps11-btn-line:hover{background:var(--ps11-gold);color:#15120c!important;border-color:var(--ps11-gold)}
+#ps11-final .ps11-card-member{border-color:rgba(201,164,92,.6);background:linear-gradient(160deg,rgba(201,164,92,.16),rgba(20,18,14,.6) 65%)}
+#ps11-final .ps11-card-member small{color:var(--ps11-gold)}
+#ps11-final .ps11-card-member .ps11-amt{color:var(--ps11-gold2)}
+#ps11-final .ps11-tag{position:absolute;top:-10px;right:18px;font-size:10px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:#15120c;background:var(--ps11-gold);border-radius:99px;padding:4px 10px;line-height:1.2}
+
+/* footer */
+#ps11-final .ps11-foot{border-top:1px solid var(--ps11-line);background:#070708;padding:22px 0}
+#ps11-final .ps11-foot-in{display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:32px}
+#ps11-final .ps11-logo{display:inline-flex;align-items:center}
+#ps11-final .ps11-logo img{height:40px;width:auto}
+#ps11-final .ps11-logo img.ps11-logo-light{filter:brightness(0) invert(1)}
+#ps11-final .ps11-legal{font-size:12px;color:var(--ps11-muted);line-height:1.6;padding-left:32px;border-left:1px solid var(--ps11-line)}
+#ps11-final .ps11-copy{font-size:12px;color:var(--ps11-muted);white-space:nowrap;display:flex;align-items:center;gap:18px}
+#ps11-final .ps11-top{display:inline-flex;align-items:center;gap:6px;color:var(--ps11-gold2)!important;font-weight:600}
+#ps11-final .ps11-top svg{width:13px;height:13px}
+
+@media (max-width:1024px){
+  #ps11-final .ps11-grid{grid-template-columns:1fr;gap:28px}
+  #ps11-final .ps11-title{font-size:36px}
+  #ps11-final .ps11-foot-in{grid-template-columns:auto 1fr;gap:16px 28px}
+  #ps11-final .ps11-copy{grid-column:1/-1;justify-content:space-between;padding-top:14px;border-top:1px solid var(--ps11-line)}
+}
+@media (max-width:767px){
+  #ps11-final .ps11-cta{padding:30px 0}
+  #ps11-final .ps11-wrap{padding:0 20px}
+  #ps11-final .ps11-title{font-size:28px;margin-top:12px}
+  #ps11-final .ps11-lead{font-size:15px}
+  #ps11-final .ps11-cards{grid-template-columns:1fr;gap:16px}
+  #ps11-final .ps11-card{padding:22px 20px 20px}
+  #ps11-final .ps11-amt{font-size:40px}
+  #ps11-final .ps11-foot{padding:20px 0}
+  #ps11-final .ps11-foot-in{grid-template-columns:1fr;gap:14px}
+  #ps11-final .ps11-logo img{height:34px}
+  #ps11-final .ps11-legal{padding-left:0;border-left:0;font-size:11.5px}
+  #ps11-final .ps11-copy{white-space:normal;font-size:11.5px}
+}
+@media (prefers-reduced-motion:reduce){#ps11-final *{transition:none!important}}
+</style>
+
+<div class="ps11-cta">
+  <div class="ps11-wrap ps11-grid">
+    <div>
+      <span class="ps11-eyebrow">Your Next Step</span>
+      <h2 class="ps11-title">Stop Guessing About an Important <em>Retirement-Plan Decision.</em></h2>
+      <p class="ps11-lead">When the situation is complicated, the decision is important, or the potential consequences are significant, get Tim Berry directly involved.</p>
+      <p class="ps11-lead">Bring your circumstances, explain what you're trying to accomplish, and work through the considerations that matter.</p>
+      <p class="ps11-note"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Up to 45 minutes of dedicated consultation, advance submission of relevant information, and personalized next steps.</p>
+      <p class="ps11-credit"><b>Already completed a $125 Retirement Certainty Session?</b> Apply your eligible $125 credit before checkout. <a href="#pss-credit" data-pss-cta="credit">Apply My Consultation Credit &rarr;</a></p>
+    </div>
+    <div class="ps11-cards">
+      <div class="ps11-card ps11-card-member">
+        <span class="ps11-tag">Member rate</span>
+        <small>Tax Academy Members</small>
+        <div class="ps11-amt">$650</div>
+        <p class="ps11-desc">Active membership is checked by email on this page.</p>
+        <a href="#pss-booking" class="ps11-btn ps11-btn-gold" data-pss-cta="member">Verify Your Email &amp; Book <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+      <div class="ps11-card">
+        <small>Standard Booking</small>
+        <div class="ps11-amt">$950</div>
+        <p class="ps11-desc">Same core session for clients who are not active Tax Academy members.</p>
+        <a href="#pss-booking" class="ps11-btn ps11-btn-line" data-pss-cta="standard">Book My Private Strategy Session <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M3 8h10M9 4l4 4-4 4"/></svg></a>
+      </div>
+    </div>
+  </div>
+</div>
+
+<footer class="ps11-foot">
+  <div class="ps11-wrap ps11-foot-in">
+    <a class="ps11-logo" href="/"><img decoding="async" src="/media/pss/logo.png" alt="IRA Ideas" loading="lazy"></a>
+    <p class="ps11-legal">Private Strategy Sessions provide dedicated time to discuss your situation with Tim Berry. No specific tax, IRS, or financial result is promised or guaranteed. Testimonials reflect the individual experiences of the clients who wrote them and do not guarantee a similar outcome.</p>
+    <p class="ps11-copy"><span>&copy; 2026 IRA Ideas. All rights reserved.</span><a href="#ps1-hero" class="ps11-top">Back to top <svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M8 13V3M4 7l4-4 4 4"/></svg></a></p>
+  </div>
+</footer>
+</section>

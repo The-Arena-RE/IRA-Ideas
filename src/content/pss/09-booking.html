@@ -1,0 +1,500 @@
+<section id="pss-booking" class="ps8-section"
+  data-verify-url=""
+  data-booking-url=""
+  data-express-url=""
+  data-intake-url=""
+  data-stripe-key=""
+  data-demo="false">
+<style>
+/* Elementor spacing reset */
+.e-con:has(#pss-booking),.e-con-inner:has(#pss-booking),.elementor-section:has(#pss-booking) .elementor-widget-wrap{--gap:0px!important;--row-gap:0px!important;--column-gap:0px!important;--widgets-spacing:0px!important;--widgets-spacing-row:0px!important;--padding-top:0px!important;--padding-bottom:0px!important;--padding-left:0px!important;--padding-right:0px!important;gap:0!important;padding:0!important}
+.elementor-widget-html:has(#pss-booking){margin:0!important;padding:0!important;--kit-widget-spacing:0px!important}
+.elementor-widget-html:has(#pss-booking) > .elementor-widget-container{margin:0!important;padding:0!important}
+
+#pss-booking{--ps8-ink:#141312;--ps8-ink2:#46423c;--ps8-muted:#7a7469;--ps8-gold:#c9a45c;--ps8-gold2:#e4c98f;--ps8-gold3:#a9843f;--ps8-line:#e2d9c9;--ps8-ivory:#f6f2ea;--ps8-paper:#fffdf9;--ps8-ok:#2f7d4f;--ps8-err:#b3412f;
+  --ps8-serif:'Playfair Display',Georgia,'Times New Roman',serif;--ps8-sans:'Inter',system-ui,-apple-system,'Segoe UI',Roboto,Arial,sans-serif;
+  display:block;width:100%;max-width:none;margin:0;position:relative;overflow:hidden;scroll-margin-top:20px;
+  font-family:var(--ps8-sans);font-size:16px;line-height:1.6;color:var(--ps8-ink);text-align:left;-webkit-font-smoothing:antialiased;
+  padding:50px 0;background:var(--ps8-ivory)}
+#pss-booking::before{content:"";position:absolute;inset:0;background:radial-gradient(800px 380px at 100% 0%,rgba(201,164,92,.10),transparent 70%);pointer-events:none}
+#pss-booking *,#pss-booking *::before,#pss-booking *::after{box-sizing:border-box}
+#pss-booking h2,#pss-booking h3,#pss-booking h4,#pss-booking p,#pss-booking ul,#pss-booking ol,#pss-booking li,#pss-booking figure{margin:0;padding:0;border:0;list-style:none}
+#pss-booking a{text-decoration:none;box-shadow:none}
+#pss-booking button{font:inherit;cursor:pointer;border:0;background:none;color:inherit;margin:0;padding:0;box-shadow:none;text-transform:none;letter-spacing:normal;min-height:0;line-height:1.2;border-radius:0}
+#pss-booking [hidden]{display:none!important}
+#pss-booking :focus-visible{outline:2px solid var(--ps8-gold);outline-offset:3px}
+#pss-booking .ps8-wrap{max-width:1406px;margin:0 auto;padding:0 28px;position:relative}
+#pss-booking .ps8-demo{background:#7a2b1c;color:#fff;text-align:center;font-size:13px;font-weight:600;padding:8px 14px;border-radius:10px;margin-bottom:20px}
+
+/* head */
+#pss-booking .ps8-head{display:flex;align-items:flex-end;justify-content:space-between;gap:24px;flex-wrap:wrap}
+#pss-booking .ps8-eyebrow{display:inline-flex;align-items:center;gap:12px;font-size:12px;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--ps8-gold3)}
+#pss-booking .ps8-eyebrow::before{content:"";width:28px;height:1px;background:currentColor}
+#pss-booking .ps8-title{font-family:var(--ps8-serif)!important;font-weight:600!important;font-size:44px;line-height:1.1!important;letter-spacing:-.015em!important;color:var(--ps8-ink)!important;margin-top:12px;text-transform:none!important}
+#pss-booking .ps8-title em{font-style:italic;font-weight:500;color:var(--ps8-gold3)}
+#pss-booking .ps8-trust{display:flex;gap:18px;flex-wrap:wrap;font-size:13px;color:var(--ps8-muted)}
+#pss-booking .ps8-trust span{display:inline-flex;align-items:center;gap:7px}
+#pss-booking .ps8-trust svg{width:15px;height:15px;color:var(--ps8-gold3)}
+
+/* top row: plans + verify */
+#pss-booking .ps8-top{display:grid;grid-template-columns:1.25fr 1fr;gap:20px;margin-top:28px;align-items:stretch}
+#pss-booking .ps8-plans{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#pss-booking .ps8-plan{border-radius:18px;padding:26px 24px 22px;display:flex;flex-direction:column;background:var(--ps8-paper);border:1px solid var(--ps8-line)}
+#pss-booking .ps8-plan small{font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ps8-muted)}
+#pss-booking .ps8-amt{font-family:var(--ps8-serif);font-size:46px;font-weight:600;line-height:1;margin-top:12px;letter-spacing:-.02em;color:var(--ps8-ink)}
+#pss-booking .ps8-plan h3{font-size:14px!important;font-weight:600!important;margin-top:8px;line-height:1.4!important;color:inherit!important;font-family:var(--ps8-sans)!important;text-transform:none!important}
+#pss-booking .ps8-plan ul{margin-top:14px;display:grid;gap:7px;flex:1}
+#pss-booking .ps8-plan li{display:flex;gap:9px;font-size:13.5px;color:var(--ps8-ink2);line-height:1.45;align-items:flex-start}
+#pss-booking .ps8-chk{width:16px;height:16px;border-radius:50%;background:rgba(169,132,63,.14);color:var(--ps8-gold3);display:grid;place-items:center;flex:none;margin-top:1px}
+#pss-booking .ps8-chk svg{width:9px;height:9px}
+#pss-booking .ps8-plan .ps8-btn{margin-top:18px;width:100%}
+#pss-booking .ps8-plan .ps8-fine{margin-top:10px}
+#pss-booking .ps8-plan-member{background:linear-gradient(160deg,#1f1c17,#0d0d0e 75%);border-color:rgba(201,164,92,.55);color:#fff;box-shadow:0 30px 60px -40px rgba(0,0,0,.7)}
+#pss-booking .ps8-plan-member small{color:var(--ps8-gold)}
+#pss-booking .ps8-plan-member .ps8-amt{color:var(--ps8-gold2)}
+#pss-booking .ps8-plan-member li{color:#d2cdc3}
+#pss-booking .ps8-plan-member .ps8-chk{background:rgba(201,164,92,.2);color:var(--ps8-gold2)}
+#pss-booking .ps8-plan-member .ps8-fine{color:#a9a49a}
+#pss-booking .ps8-fine{font-size:12px;color:var(--ps8-muted);line-height:1.5}
+
+/* buttons */
+#pss-booking .ps8-btn{display:inline-flex;align-items:center;justify-content:center;gap:9px;padding:14px 20px;border-radius:9px;font-family:var(--ps8-sans);font-size:14.5px;font-weight:600;line-height:1.2;text-align:center;transition:transform .2s ease,box-shadow .2s ease,background .2s ease,color .2s ease}
+#pss-booking .ps8-btn svg{width:15px;height:15px;flex:none}
+#pss-booking .ps8-btn-gold{background:linear-gradient(135deg,#e2c283 0%,#c9a45c 48%,#a9843f 100%);color:#15120c!important;box-shadow:0 10px 26px -12px rgba(201,164,92,.7)}
+#pss-booking .ps8-btn-gold:hover{transform:translateY(-1px)}
+#pss-booking .ps8-btn-dark{background:var(--ps8-ink);color:#fff!important}
+#pss-booking .ps8-btn-dark:hover{background:#000;color:var(--ps8-gold2)!important}
+#pss-booking .ps8-btn-line{border:1px solid #cdbf9f;color:var(--ps8-ink)!important;background:transparent}
+#pss-booking .ps8-btn-sm{padding:9px 14px;font-size:13px}
+#pss-booking .ps8-btn[disabled]{opacity:.5;cursor:not-allowed;transform:none}
+
+/* verify panel */
+#pss-booking .ps8-panel{background:var(--ps8-paper);border:1px solid var(--ps8-line);border-radius:18px;padding:26px 26px 22px;box-shadow:0 30px 60px -48px rgba(20,19,18,.45)}
+#pss-booking .ps8-progress{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:18px}
+#pss-booking .ps8-progress li{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#a39d92;padding:5px 10px 5px 5px;border-radius:99px;background:#f3eee5}
+#pss-booking .ps8-progress li i{font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:#e4ddd0;color:#7a746a;font-size:10.5px}
+#pss-booking .ps8-progress li.on{color:var(--ps8-ink);background:#efe4cd}
+#pss-booking .ps8-progress li.on i{background:var(--ps8-ink);color:var(--ps8-gold2)}
+#pss-booking .ps8-progress li.done i{background:var(--ps8-gold3);color:#fff}
+#pss-booking .ps8-panel > h3{font-family:var(--ps8-serif)!important;font-size:24px!important;font-weight:600!important;line-height:1.2!important;color:var(--ps8-ink)!important;text-transform:none!important}
+#pss-booking .ps8-sub{color:var(--ps8-muted);margin-top:6px;font-size:14px;line-height:1.55}
+#pss-booking .ps8-label{display:block;font-size:13px;font-weight:600;color:var(--ps8-ink);margin-bottom:6px}
+#pss-booking .ps8-label em{font-style:normal;font-weight:400;color:var(--ps8-muted)}
+#pss-booking input[type=email],#pss-booking input[type=text],#pss-booking input[type=tel],#pss-booking select,#pss-booking textarea{width:100%;font:inherit;font-size:15px;color:var(--ps8-ink);background:#fff;border:1px solid #d8d0c1;border-radius:9px;padding:11px 14px;min-height:46px;line-height:1.4;box-shadow:none;margin:0;transition:border-color .2s,box-shadow .2s;-webkit-appearance:none;appearance:none}
+#pss-booking select{background-image:linear-gradient(45deg,transparent 50%,#6a655d 50%),linear-gradient(135deg,#6a655d 50%,transparent 50%);background-position:calc(100% - 19px) 50%,calc(100% - 14px) 50%;background-size:5px 5px,5px 5px;background-repeat:no-repeat;padding-right:38px}
+#pss-booking textarea{min-height:96px;resize:vertical}
+#pss-booking input:focus,#pss-booking select:focus,#pss-booking textarea:focus{outline:0;border-color:var(--ps8-gold3);box-shadow:0 0 0 3px rgba(201,164,92,.2)}
+#pss-booking input[readonly]{background:#f6f1e8;color:#5a554c;cursor:default}
+#pss-booking input[readonly]:focus{box-shadow:none;border-color:#d8d0c1}
+#pss-booking .ps8-bad{border-color:var(--ps8-err)!important}
+#pss-booking .ps8-verify-form{margin-top:16px}
+#pss-booking .ps8-verify-row{display:flex;gap:10px}
+#pss-booking .ps8-verify-row input{flex:1}
+#pss-booking .ps8-verify-row .ps8-btn{flex:none}
+#pss-booking .ps8-msg{font-size:13.5px;margin-top:10px}
+#pss-booking .ps8-msg:empty{display:none}
+#pss-booking .ps8-msg.err{color:var(--ps8-err)}
+#pss-booking .ps8-msg.ok{color:var(--ps8-ok)}
+#pss-booking .ps8-msg.info{color:var(--ps8-muted)}
+#pss-booking .ps8-panel > .ps8-fine{margin-top:12px;padding-top:12px;border-top:1px solid #eee7da}
+#pss-booking .ps8-spin{width:14px;height:14px;border-radius:50%;border:2px solid currentColor;border-right-color:transparent;animation:ps8spin .8s linear infinite;display:inline-block;vertical-align:-2px}
+@keyframes ps8spin{to{transform:rotate(360deg)}}
+
+/* booking flow */
+#pss-booking .ps8-flow{margin-top:20px;background:var(--ps8-paper);border:1px solid var(--ps8-line);border-radius:18px;padding:24px 28px 26px;box-shadow:0 30px 60px -48px rgba(20,19,18,.45)}
+#pss-booking .ps8-result{display:flex;align-items:center;justify-content:space-between;gap:18px;flex-wrap:wrap;padding:16px 20px;border-radius:14px;background:linear-gradient(160deg,#1f1c17,#0d0d0e 80%);color:#fff;border:1px solid rgba(201,164,92,.5)}
+#pss-booking .ps8-result small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ps8-gold)}
+#pss-booking .ps8-result b{display:inline-block;font-family:var(--ps8-serif);font-size:28px;font-weight:600;color:var(--ps8-gold2);line-height:1.1;margin-top:2px}
+#pss-booking .ps8-result p{font-size:12.5px;color:#bdb8ae;margin-top:2px}
+#pss-booking .ps8-result p button{color:var(--ps8-gold2);text-decoration:underline;font-size:12.5px}
+#pss-booking .ps8-sec-h{font-size:11px;font-weight:700;letter-spacing:.18em;text-transform:uppercase;color:var(--ps8-gold3);margin:22px 0 10px}
+#pss-booking .ps8-g4{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+#pss-booking .ps8-g2{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+#pss-booking .ps8-g-plan{display:grid;grid-template-columns:260px 1fr;gap:16px;align-items:start}
+#pss-booking .ps8-chips{display:flex;flex-wrap:wrap;gap:7px}
+#pss-booking .ps8-chip{position:relative}
+#pss-booking .ps8-chip input{position:absolute;opacity:0;width:1px;height:1px}
+#pss-booking .ps8-chip span{display:inline-block;padding:7px 12px;border-radius:99px;border:1px solid #d8d0c1;background:#fff;font-size:12.5px;font-weight:500;color:var(--ps8-ink2);cursor:pointer;transition:all .15s;user-select:none;line-height:1.3}
+#pss-booking .ps8-chip input:checked+span{background:var(--ps8-ink);border-color:var(--ps8-ink);color:var(--ps8-gold2)}
+#pss-booking .ps8-chip input:focus-visible+span{outline:2px solid var(--ps8-gold);outline-offset:2px}
+#pss-booking .ps8-drop{position:relative;display:flex;align-items:center;gap:14px;border:1.5px dashed #cfc5b2;border-radius:12px;padding:14px 16px;background:#fbf8f2;cursor:pointer;transition:border-color .2s,background .2s}
+#pss-booking .ps8-drop:hover,#pss-booking .ps8-drop.over{border-color:var(--ps8-gold3);background:#f7f0e2}
+#pss-booking .ps8-drop input{position:absolute;opacity:0;width:1px;height:1px}
+#pss-booking .ps8-drop svg{width:22px;height:22px;color:var(--ps8-gold3);flex:none}
+#pss-booking .ps8-drop b{display:block;font-size:14px;color:var(--ps8-ink)}
+#pss-booking .ps8-drop span{display:block;font-size:12px;color:var(--ps8-muted)}
+#pss-booking .ps8-files{display:grid;gap:6px;margin-top:8px}
+#pss-booking .ps8-files li{display:flex;justify-content:space-between;align-items:center;gap:10px;background:#f3eee5;border-radius:8px;padding:8px 12px;font-size:13px}
+#pss-booking .ps8-files li span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+#pss-booking .ps8-files li button{color:var(--ps8-err);font-size:12.5px;font-weight:600;flex:none}
+#pss-booking .ps8-actions{display:flex;justify-content:flex-end;align-items:center;gap:12px;margin-top:18px;flex-wrap:wrap}
+#pss-booking .ps8-divider{height:1px;background:#ebe4d7;margin:24px 0 20px}
+#pss-booking .ps8-flow h3{font-family:var(--ps8-serif)!important;font-size:22px!important;font-weight:600!important;line-height:1.25!important;color:var(--ps8-ink)!important;text-transform:none!important}
+
+/* calendar */
+#pss-booking .ps8-cal-top{display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap}
+#pss-booking .ps8-cal-top select{width:auto;min-width:230px;min-height:40px;padding-top:8px;padding-bottom:8px;font-size:13.5px}
+#pss-booking .ps8-cal{display:grid;grid-template-columns:1fr 1fr;gap:26px;margin-top:16px}
+#pss-booking .ps8-month{display:flex;align-items:center;justify-content:space-between;margin-bottom:8px}
+#pss-booking .ps8-month b{font-family:var(--ps8-serif);font-size:18px;font-weight:600}
+#pss-booking .ps8-month button{width:34px;height:34px;border-radius:50%;border:1px solid #d8d0c1;display:grid;place-items:center}
+#pss-booking .ps8-month button[disabled]{opacity:.3;cursor:default}
+#pss-booking .ps8-month svg{width:14px;height:14px}
+#pss-booking .ps8-dow,#pss-booking .ps8-days{display:grid;grid-template-columns:repeat(7,1fr);gap:5px}
+#pss-booking .ps8-dow span{font-size:10.5px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:#a39d92;text-align:center;padding:4px 0}
+#pss-booking .ps8-days button,#pss-booking .ps8-days span{height:40px;border-radius:9px;display:grid;place-items:center;font-size:13.5px;font-weight:500}
+#pss-booking .ps8-days span{color:#c8c1b4}
+#pss-booking .ps8-days button{background:#fbf6ea;border:1px solid #e3d3b0;color:var(--ps8-ink);font-weight:600}
+#pss-booking .ps8-days button:hover{border-color:var(--ps8-gold3)}
+#pss-booking .ps8-days button.sel{background:var(--ps8-ink);color:var(--ps8-gold2);border-color:var(--ps8-ink)}
+#pss-booking .ps8-times-h{font-size:13.5px;font-weight:600;margin-bottom:10px;color:var(--ps8-ink)}
+#pss-booking .ps8-times{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;max-height:270px;overflow:auto}
+#pss-booking .ps8-times button{padding:11px 8px;border-radius:9px;border:1px solid #d8d0c1;background:#fff;font-size:13.5px;font-weight:600;color:var(--ps8-ink)}
+#pss-booking .ps8-times button:hover{border-color:var(--ps8-gold3)}
+#pss-booking .ps8-times button.sel{background:var(--ps8-ink);color:var(--ps8-gold2);border-color:var(--ps8-ink)}
+#pss-booking .ps8-empty{font-size:13.5px;color:var(--ps8-muted);background:#f6f1e8;border-radius:10px;padding:14px;grid-column:1/-1}
+#pss-booking .ps8-summary{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:#e8e1d4;border:1px solid #e8e1d4;border-radius:12px;overflow:hidden;margin-top:16px}
+#pss-booking .ps8-summary>div{background:#fbf8f2;padding:12px 16px}
+#pss-booking .ps8-summary small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.14em;text-transform:uppercase;color:var(--ps8-muted)}
+#pss-booking .ps8-summary b{display:block;font-size:14px;margin-top:3px;color:var(--ps8-ink)}
+#pss-booking .ps8-notice{border-radius:12px;padding:16px 18px;background:#fbf3e2;border:1px solid #e6cf9f;margin-top:16px}
+#pss-booking .ps8-notice p{font-size:14px;color:var(--ps8-ink2)}
+#pss-booking .ps8-notice .ps8-actions{justify-content:flex-start;margin-top:12px}
+#pss-booking #ps8-pay-mount{margin-top:16px;min-height:50px}
+#pss-booking .ps8-secure{display:flex;align-items:flex-start;gap:9px;font-size:12.5px;line-height:1.55;color:var(--ps8-muted);margin-top:16px;padding-top:14px;border-top:1px solid #efe8db}
+#pss-booking .ps8-secure svg{width:14px;height:14px;flex:none;margin-top:2px;color:var(--ps8-gold3)}
+#pss-booking .ps8-secure p{margin:0}
+#pss-booking .ps8-secure b{color:var(--ps8-ink2);font-weight:600}
+#pss-booking .ps8-done{text-align:center;padding:10px 0}
+#pss-booking .ps8-done-ico{width:60px;height:60px;border-radius:50%;margin:0 auto;display:grid;place-items:center;background:var(--ps8-ink);color:var(--ps8-gold2)}
+#pss-booking .ps8-done-ico svg{width:26px;height:26px}
+#pss-booking .ps8-done h3{margin-top:16px}
+#pss-booking .ps8-done .ps8-summary{text-align:left;max-width:640px;margin-left:auto;margin-right:auto}
+
+
+
+/* ===== v2: time-first booking with express pay ===== */
+#pss-booking .ps8-plans{margin-top:28px}
+#pss-booking .ps8-book{margin-top:20px;background:var(--ps8-paper);border:1px solid var(--ps8-line);border-radius:18px;padding:26px 28px 28px;box-shadow:0 30px 60px -48px rgba(20,19,18,.45)}
+#pss-booking .ps8-book > h3,#pss-booking .ps8-book h3{font-family:var(--ps8-serif)!important;font-size:24px!important;font-weight:600!important;line-height:1.2!important;color:var(--ps8-ink)!important;text-transform:none!important}
+#pss-booking .ps8-steps{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:16px}
+#pss-booking .ps8-steps li{display:flex;align-items:center;gap:6px;font-size:11.5px;font-weight:600;color:#a39d92;padding:5px 10px 5px 5px;border-radius:99px;background:#f3eee5}
+#pss-booking .ps8-steps li i{font-style:normal;width:18px;height:18px;border-radius:50%;display:grid;place-items:center;background:#e4ddd0;color:#7a746a;font-size:10.5px}
+#pss-booking .ps8-steps li.on{color:var(--ps8-ink);background:#efe4cd}
+#pss-booking .ps8-steps li.on i{background:var(--ps8-ink);color:var(--ps8-gold2)}
+#pss-booking .ps8-steps li.done i{background:var(--ps8-gold3);color:#fff}
+#pss-booking .ps8-emailrow{display:grid;grid-template-columns:1fr auto;gap:18px;align-items:end;margin-top:18px;padding:16px 18px;border-radius:14px;background:#fbf8f2;border:1px solid #ece4d5;transition:border-color .3s,box-shadow .3s}
+#pss-booking .ps8-emailrow .ps8-label{margin-bottom:6px}
+#pss-booking .ps8-emailrow .ps8-fine{margin-top:6px}
+#pss-booking .ps8-email-wrap{position:relative}
+#pss-booking .ps8-email-wrap .ps8-spin{position:absolute;right:14px;top:50%;margin-top:-7px;color:var(--ps8-gold3)}
+#pss-booking .ps8-price{min-width:190px;text-align:right}
+#pss-booking .ps8-price small{display:block;font-size:10.5px;font-weight:700;letter-spacing:.16em;text-transform:uppercase;color:var(--ps8-muted)}
+#pss-booking .ps8-price b{display:block;font-family:var(--ps8-serif);font-size:34px;font-weight:600;line-height:1.1;color:var(--ps8-ink)}
+#pss-booking .ps8-price.member small{color:var(--ps8-gold3)}
+#pss-booking .ps8-price.member b{color:var(--ps8-gold3)}
+#pss-booking .ps8-member-ok{display:inline-flex;align-items:center;gap:8px;margin-top:8px;font-size:13px;font-weight:600;color:var(--ps8-ok)}
+#pss-booking .ps8-emailrow.ps8-attn{border-color:var(--ps8-gold);box-shadow:0 0 0 4px rgba(201,164,92,.25);animation:ps8shake .6s cubic-bezier(.36,.07,.19,.97) both}
+#pss-booking .ps8-cal-wrap{margin-top:20px}
+#pss-booking .ps8-paybox{margin-top:20px;border-top:1px solid #ebe4d7;padding-top:20px}
+#pss-booking .ps8-paygrid{display:grid;grid-template-columns:1fr 1fr;gap:22px;align-items:start}
+#pss-booking .ps8-summary.ps8-sum2{grid-template-columns:1fr 1fr;margin-top:0}
+#pss-booking #ps8-express{min-height:48px}
+#pss-booking .ps8-or{display:flex;align-items:center;gap:14px;margin:14px 0;font-size:11px;font-weight:600;letter-spacing:.16em;text-transform:uppercase;color:#b0a99c}
+#pss-booking .ps8-or::before,#pss-booking .ps8-or::after{content:"";flex:1;height:1px;background:#e6dfd2}
+#pss-booking #ps8-express{width:100%;border-radius:12px;overflow:hidden}
+#pss-booking .ps8-cardbtn{width:100%;height:52px;border-radius:12px;font-size:16px;font-weight:600;letter-spacing:-.005em;gap:10px}
+#pss-booking .ps8-cardbtn svg{width:20px;height:20px}
+#pss-booking .ps8-cardbtn-alt{background:#fff;color:var(--ps8-ink)!important;border:1.5px solid #d6cbb6;box-shadow:0 1px 2px rgba(20,19,18,.06)}
+#pss-booking .ps8-cardbtn-alt:hover{border-color:var(--ps8-ink);background:#fff}
+#pss-booking .ps8-cardbtn-alt.ps8-solo{background:linear-gradient(135deg,#e2c283 0%,#c9a45c 48%,#a9843f 100%);border-color:transparent;color:#15120c!important}
+#pss-booking .ps8-hint{text-align:center}
+#pss-booking .ps8-hint{font-size:12.5px;color:var(--ps8-muted);margin-top:10px}
+#pss-booking .ps8-hint b{color:var(--ps8-ink2)}
+#pss-booking .ps8-cardform{margin-top:18px;padding:18px;border:1px solid #ece4d5;border-radius:14px;background:#fff}
+#pss-booking .ps8-cardform .ps8-g3{display:grid;grid-template-columns:1fr 1fr;gap:12px;margin-bottom:12px}
+#pss-booking #ps8-card-mount{margin-top:4px;min-height:44px}
+#pss-booking .ps8-cardform .ps8-btn-gold{width:100%;margin-top:14px}
+#pss-booking .ps8-details{margin-top:22px;text-align:left;border-top:1px solid #ebe4d7;padding-top:20px}
+#pss-booking .ps8-details .ps8-actions{justify-content:flex-start}
+#pss-booking .ps8-skip{font-size:13.5px;color:var(--ps8-muted);text-decoration:underline}
+#pss-booking .ps8-credit{margin-top:14px;border-top:1px dashed #e2d8c6;padding-top:12px}
+#pss-booking .ps8-credit-toggle{display:inline-flex;align-items:center;gap:10px;background:none;border:0;padding:0;cursor:pointer;font:inherit;font-size:14px;color:var(--ps8-ink2);text-align:left}
+#pss-booking .ps8-credit-toggle svg{width:20px;height:20px;flex:none;color:var(--ps8-gold3)}
+#pss-booking .ps8-credit-toggle b{color:var(--ps8-gold3);text-decoration:underline;text-underline-offset:3px}
+#pss-booking .ps8-credit-body{margin-top:12px;padding:14px 16px;border:1px solid #ece4d5;border-radius:12px;background:#fff}
+#pss-booking .ps8-credit-p{margin:0 0 10px;font-size:13.5px;color:var(--ps8-muted);line-height:1.5}
+#pss-booking .ps8-credit-row{display:flex;gap:10px;margin-top:8px}
+#pss-booking .ps8-credit-row input{flex:1;min-width:0}
+#pss-booking .ps8-credit-row .ps8-btn{white-space:nowrap}
+#pss-booking #ps8-credit-code{letter-spacing:.3em;font-variant-numeric:tabular-nums}
+#pss-booking .ps8-credit-ok{display:flex;align-items:center;justify-content:space-between;gap:12px;margin-top:10px;padding:10px 14px;border-radius:10px;background:#eef6f0;border:1px solid #cfe5d6;color:#1f5634;font-size:14px;font-weight:600}
+#pss-booking .ps8-credit-ok small{display:block;font-weight:400;font-size:12.5px;color:#3f6b4e}
+#pss-booking .ps8-credit-remove{background:none;border:0;padding:0;font:inherit;font-size:13px;color:#3f6b4e;text-decoration:underline;cursor:pointer}
+#pss-booking .ps8-price-sub{display:block;margin-top:4px;font-size:12.5px;color:var(--ps8-muted)}
+#pss-booking .ps8-price-sub s{color:#a39d92}
+#pss-booking .ps8-price.credit small,#pss-booking .ps8-price.credit b{color:#1f5634}
+#pss-booking .ps8-g-stage{display:grid;grid-template-columns:1.4fr 1fr;gap:16px;align-items:start}
+#pss-booking .ps8-docnote{font-size:13px;color:var(--ps8-muted);line-height:1.55;margin:-2px 0 10px}
+#pss-booking .ps8-thanks-h{display:block;font-size:16px;margin-bottom:4px}
+#pss-booking .ps8-thanks{margin-top:20px;padding:16px 18px;border-radius:12px;background:#eef6f0;border:1px solid #cfe5d6;color:#1f5634;font-size:14.5px}
+@media (max-width:1100px){
+  #pss-booking .ps8-paygrid{grid-template-columns:1fr}
+  #pss-booking .ps8-cal{grid-template-columns:1fr}
+  #pss-booking .ps8-g4{grid-template-columns:1fr 1fr}
+}
+@media (max-width:767px){
+  #pss-booking{padding:30px 0}
+  #pss-booking .ps8-wrap{padding:0 20px}
+  #pss-booking .ps8-title{font-size:31px}
+  #pss-booking .ps8-trust{display:none}
+  #pss-booking .ps8-plans{grid-template-columns:1fr;gap:12px;margin-top:20px}
+  #pss-booking .ps8-plan-std li:not(:first-child),#pss-booking .ps8-plan-member li:nth-child(n+3){display:none}
+  #pss-booking .ps8-plan{padding:20px 18px 18px}
+  #pss-booking .ps8-amt{font-size:40px}
+  #pss-booking .ps8-book{padding:20px 16px 20px;margin-top:14px}
+  #pss-booking .ps8-emailrow{grid-template-columns:1fr;gap:10px;padding:14px}
+  #pss-booking .ps8-price{text-align:left;display:flex;align-items:baseline;gap:10px;min-width:0}
+  #pss-booking .ps8-price b{font-size:28px}
+  #pss-booking .ps8-cal-top select{width:100%;min-width:0}
+  #pss-booking .ps8-days{gap:4px}
+  #pss-booking .ps8-days button,#pss-booking .ps8-days span{height:38px;font-size:13px;border-radius:8px}
+  #pss-booking .ps8-times{grid-template-columns:1fr 1fr}
+  #pss-booking .ps8-summary,#pss-booking .ps8-summary.ps8-sum2{grid-template-columns:1fr}
+  #pss-booking .ps8-cardform .ps8-g3{grid-template-columns:1fr}
+  #pss-booking .ps8-g4,#pss-booking .ps8-g2,#pss-booking .ps8-g-plan,#pss-booking .ps8-g-stage{grid-template-columns:1fr;gap:12px}
+  #pss-booking .ps8-credit-row{flex-direction:column}
+  #pss-booking .ps8-price-sub{display:inline;margin:0 0 0 6px}
+  #pss-booking .ps8-actions .ps8-btn{width:100%}
+  #pss-booking .ps8-steps li{font-size:10.5px}
+}
+@keyframes ps8shake{0%,100%{transform:translateX(0)}12%{transform:translateX(-7px)}26%{transform:translateX(7px)}40%{transform:translateX(-5px)}54%{transform:translateX(5px)}68%{transform:translateX(-3px)}82%{transform:translateX(2px)}}
+@media (prefers-reduced-motion:reduce){#pss-booking *{transition:none!important;animation:none!important}}
+</style>
+<div class="ps8-wrap">
+  <div class="ps8-demo" id="ps8-demo-banner" hidden>DEMO MODE — calendar and payment are simulated. Set data-demo="false" before launch.</div>
+
+  <div class="ps8-head">
+    <div>
+      <span class="ps8-eyebrow">Reserve Your Session</span>
+      <h2 class="ps8-title">Pick a Time, <em>Book in Seconds</em></h2>
+    </div>
+    <div class="ps8-trust">
+      <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg>Secure payment by Stripe</span>
+      <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 1.8l5 2v4c0 3-2.2 5.3-5 6.4C5.2 13.1 3 10.8 3 7.8v-4l5-2z"/></svg>Apple Pay &amp; Google Pay</span>
+      <span><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="8" cy="8" r="6.5"/><path d="M8 4.5V8l2.5 1.5"/></svg>Up to 45 minutes</span>
+    </div>
+  </div>
+
+  <div class="ps8-plans">
+    <div class="ps8-plan ps8-plan-member">
+      <small>Tax Academy Member Rate</small>
+      <div class="ps8-amt">$650</div>
+      <h3>Private Strategy Session with Tim Berry</h3>
+      <ul>
+        <li><span class="ps8-chk"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>Up to 45 minutes</li>
+        <li><span class="ps8-chk"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>Dedicated discussion of your situation</li>
+        <li><span class="ps8-chk"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>Share documents with Tim beforehand</li>
+        <li><span class="ps8-chk"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>Work through your questions directly with Tim</li>
+      </ul>
+      <a href="#ps8-email-row" class="ps8-btn ps8-btn-gold" data-pss-cta="member">I'm a Tax Academy Member</a>
+      <p class="ps8-fine">Enter your membership email above the calendar. The $650 rate applies automatically.</p>
+    </div>
+    <div class="ps8-plan ps8-plan-std">
+      <small>Standard Booking</small>
+      <div class="ps8-amt">$950</div>
+      <h3>Private Strategy Session with Tim Berry</h3>
+      <ul>
+        <li><span class="ps8-chk"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>Pick a time and pay. That's it.</li>
+        <li><span class="ps8-chk"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>Up to 45 minutes</li>
+        <li><span class="ps8-chk"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>Dedicated discussion of your situation</li>
+        <li><span class="ps8-chk"><svg viewBox="0 0 12 12" fill="none" stroke="currentColor" stroke-width="2"><path d="M2.5 6.2l2.3 2.3 4.7-5"/></svg></span>Share documents with Tim beforehand</li>
+      </ul>
+      <a href="#ps8-cal" class="ps8-btn ps8-btn-dark" data-pss-cta="standard">Pick a Time</a>
+      <p class="ps8-fine">For clients who are not active Tax Academy members.</p>
+    </div>
+  </div>
+
+  <div class="ps8-book" id="ps8-book">
+    <ol class="ps8-steps" id="ps8-steps">
+      <li class="on" data-step="1"><i>1</i>Time &amp; payment</li>
+      <li data-step="2"><i>2</i>Your details</li>
+    </ol>
+
+    <div id="ps8-step1">
+      <h3>Choose a Time With Tim</h3>
+      <p class="ps8-sub">Live availability from Tim's calendar.</p>
+
+      <div class="ps8-emailrow" id="ps8-email-row">
+        <div>
+          <label class="ps8-label" for="ps8-email">Your email <em>(Tax Academy members: use your membership email for $650)</em></label>
+          <div class="ps8-email-wrap">
+            <input type="email" id="ps8-email" autocomplete="email" inputmode="email" placeholder="you@example.com">
+          </div>
+          <div class="ps8-member-ok" id="ps8-member-ok" hidden>✓ Active Tax Academy membership: your rate is $650</div>
+          <p class="ps8-msg" id="ps8-e-msg" role="status" aria-live="polite"></p>
+          <p class="ps8-fine" id="ps8-e-fine">Not a member? You can skip this and pay with Apple Pay, Google Pay or card.</p>
+
+          <div class="ps8-credit" id="ps8-credit" hidden>
+            <button type="button" class="ps8-credit-toggle" id="ps8-credit-toggle" aria-expanded="false" aria-controls="ps8-credit-body">
+              <svg viewBox="0 0 20 20" fill="none" stroke="currentColor" stroke-width="1.6" aria-hidden="true"><rect x="2.5" y="5" width="15" height="10" rx="2"/><path d="M2.5 8.5h15M6 12h3"/></svg>
+              <span>Already completed a $125 consultation? <b>Apply your credit</b></span>
+            </button>
+            <div class="ps8-credit-body" id="ps8-credit-body" hidden>
+              <p class="ps8-credit-p">Enter the email you used for your $125 Retirement Certainty Session. We'll email you a 6-digit code to apply your credit before you pay.</p>
+              <div class="ps8-credit-row">
+                <input type="email" id="ps8-credit-email" autocomplete="email" inputmode="email" placeholder="Email used for your $125 session" aria-label="Email used for your $125 session">
+                <button type="button" class="ps8-btn ps8-btn-dark ps8-btn-sm" id="ps8-credit-send">Send my code</button>
+              </div>
+              <div class="ps8-credit-row" id="ps8-credit-coderow" hidden>
+                <input type="text" id="ps8-credit-code" inputmode="numeric" autocomplete="one-time-code" maxlength="6" placeholder="6-digit code" aria-label="6-digit code">
+                <button type="button" class="ps8-btn ps8-btn-gold ps8-btn-sm" id="ps8-credit-apply">Apply credit</button>
+              </div>
+              <p class="ps8-msg" id="ps8-credit-msg" role="status" aria-live="polite"></p>
+            </div>
+            <div class="ps8-credit-ok" id="ps8-credit-ok" hidden>
+              <span>✓ $125 consultation credit applied<small id="ps8-credit-until"></small></span>
+              <button type="button" class="ps8-credit-remove" id="ps8-credit-remove">Remove</button>
+            </div>
+          </div>
+        </div>
+        <div class="ps8-price" id="ps8-price"><small id="ps8-price-label">Standard rate</small><b id="ps8-price-amt">$950</b><span class="ps8-price-sub" id="ps8-price-sub" hidden></span></div>
+      </div>
+
+      <div class="ps8-cal-wrap" id="ps8-cal">
+        <div class="ps8-cal-top">
+          <div><p class="ps8-sec-h" style="margin:0">Select a date &amp; time</p></div>
+          <select id="ps8-tz" aria-label="Time zone"></select>
+        </div>
+        <div class="ps8-cal">
+          <div>
+            <div class="ps8-month"><button type="button" id="ps8-m-prev" aria-label="Previous month"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M10 3L5 8l5 5"/></svg></button><b id="ps8-m-label"></b><button type="button" id="ps8-m-next" aria-label="Next month"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M6 3l5 5-5 5"/></svg></button></div>
+            <div class="ps8-dow"><span>Sun</span><span>Mon</span><span>Tue</span><span>Wed</span><span>Thu</span><span>Fri</span><span>Sat</span></div>
+            <div class="ps8-days" id="ps8-days"></div>
+          </div>
+          <div>
+            <p class="ps8-times-h" id="ps8-times-h">Available times</p>
+            <div class="ps8-times" id="ps8-times"></div>
+          </div>
+        </div>
+        <p class="ps8-msg" id="ps8-c-msg" role="alert"></p>
+      </div>
+
+      <div class="ps8-paybox" id="ps8-paybox" hidden>
+        <div class="ps8-paygrid">
+          <div class="ps8-summary ps8-sum2">
+            <div><small>When</small><b id="ps8-p-when"></b></div>
+            <div><small id="ps8-p-label">Standard rate</small><b id="ps8-p-amt"></b></div>
+          </div>
+          <div>
+            <div id="ps8-express"></div>
+            <div class="ps8-or" id="ps8-or">or</div>
+            <button type="button" class="ps8-btn ps8-cardbtn ps8-cardbtn-alt" id="ps8-card-open"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7" aria-hidden="true"><rect x="2.5" y="5" width="19" height="14" rx="2.5"/><path d="M2.5 10h19M6.5 15h4"/></svg><span>Pay with card</span></button>
+            <p class="ps8-hint" id="ps8-member-hint"><b>Tax Academy member?</b> Enter your membership email above before paying to get the $650 rate.</p>
+          </div>
+        </div>
+        <p class="ps8-msg" id="ps8-p-msg" role="alert"></p>
+
+        <div class="ps8-cardform" id="ps8-cardform" hidden>
+          <div class="ps8-g3">
+            <div><label class="ps8-label" for="ps8-fn">First name</label><input type="text" id="ps8-fn" autocomplete="given-name"></div>
+            <div><label class="ps8-label" for="ps8-ln">Last name</label><input type="text" id="ps8-ln" autocomplete="family-name"></div>
+            <div><label class="ps8-label" for="ps8-cem">Email</label><input type="email" id="ps8-cem" autocomplete="email" inputmode="email"></div>
+            <div><label class="ps8-label" for="ps8-ph">Phone <em>(Tim will call you)</em></label><input type="tel" id="ps8-ph" autocomplete="tel" inputmode="tel"></div>
+          </div>
+          <div id="ps8-card-mount"></div>
+          <p class="ps8-msg" id="ps8-cf-msg" role="alert"></p>
+          <button type="button" class="ps8-btn ps8-btn-gold" id="ps8-card-pay">Pay &amp; Book</button>
+        </div>
+        <div class="ps8-secure"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="7" width="10" height="7" rx="1.5"/><path d="M5.5 7V5a2.5 2.5 0 015 0v2"/></svg><p><b>Secure checkout by Stripe.</b> Reschedule anytime from your confirmation email. Cancellations are not refundable.</p></div>
+      </div>
+    </div>
+
+    <div id="ps8-wait-step" hidden>
+      <div class="ps8-done"><div class="ps8-done-ico"><span class="ps8-spin" style="width:24px;height:24px"></span></div><h3>Finalizing Your Booking…</h3><p class="ps8-sub" id="ps8-w-text">We're verifying your payment. This only takes a moment.</p></div>
+    </div>
+
+    <div id="ps8-done-step" hidden>
+      <div class="ps8-done">
+        <div class="ps8-done-ico"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M5 12.5l4.5 4.5L19 7.5"/></svg></div>
+        <h3>You're Booked With Tim Berry</h3>
+        <p class="ps8-sub">A confirmation email with a calendar file is on its way.</p>
+        <div class="ps8-summary" id="ps8-d-summary"></div>
+      </div>
+
+      <form class="ps8-details" id="ps8-details" novalidate>
+        <h3>Tell Tim About Your Situation</h3>
+        <p class="ps8-sub">This helps Tim prepare for your session. Please submit it at least one business day before your appointment when possible. You can also do this later from your confirmation email.</p>
+        <div class="ps8-g-plan">
+          <div>
+            <p class="ps8-sec-h">Account or Plan Type</p>
+            <select id="ps8-plan" aria-label="Account or plan type">
+              <option value="">Select one…</option>
+              <option>Self-Directed IRA</option><option>Roth IRA</option><option>Traditional IRA</option><option>Solo 401(k)</option><option>Other Retirement Plan</option><option>More Than One</option><option>Not Sure</option><option>Other</option>
+            </select>
+          </div>
+          <div>
+            <p class="ps8-sec-h">What Do You Want Tim's Help With?</p>
+            <div class="ps8-chips" id="ps8-topics">
+              <label class="ps8-chip"><input type="checkbox" value="Real Estate"><span>Real Estate</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Private Lending"><span>Private Lending</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Private Company Investment"><span>Private Company Investment</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Plan Structure"><span>Plan Structure</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Prohibited Transaction Concern"><span>Prohibited Transaction Concern</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Existing Transaction"><span>Existing Transaction</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Upcoming Transaction"><span>Upcoming Transaction</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Tax Issue"><span>Tax Issue</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="IRS Issue"><span>IRS Issue</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Asset Protection"><span>Asset Protection</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Advanced Retirement Strategy"><span>Advanced Retirement Strategy</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Plan Compliance"><span>Plan Compliance</span></label>
+              <label class="ps8-chip"><input type="checkbox" value="Other"><span>Other</span></label>
+            </div>
+          </div>
+        </div>
+        <div class="ps8-g2">
+          <div>
+            <p class="ps8-sec-h">1 · What Is Your Primary Objective?</p>
+            <label class="ps8-label" for="ps8-q">What specific decision, problem, or outcome do you want to work through with Tim? <em>(required)</em></label>
+            <textarea id="ps8-q" rows="4" required></textarea>
+          </div>
+          <div>
+            <p class="ps8-sec-h">2 · Describe Your Situation</p>
+            <label class="ps8-label" for="ps8-bg">Briefly explain the transaction, retirement-plan structure, prior actions, or other circumstances that are important to understanding your question. <em>(required)</em></label>
+            <textarea id="ps8-bg" rows="4" required data-required></textarea>
+          </div>
+        </div>
+        <div class="ps8-g-stage">
+          <div>
+            <p class="ps8-sec-h">3 · What Stage Are You At?</p>
+            <div class="ps8-chips" id="ps8-stage" role="radiogroup" aria-label="What stage are you at?">
+              <label class="ps8-chip"><input type="radio" name="ps8-stage" value="Considering a future transaction"><span>Considering a future transaction</span></label>
+              <label class="ps8-chip"><input type="radio" name="ps8-stage" value="Currently working through a transaction"><span>Currently working through a transaction</span></label>
+              <label class="ps8-chip"><input type="radio" name="ps8-stage" value="Transaction already completed"><span>Transaction already completed</span></label>
+              <label class="ps8-chip"><input type="radio" name="ps8-stage" value="Potential mistake or compliance concern"><span>Potential mistake or compliance concern</span></label>
+              <label class="ps8-chip"><input type="radio" name="ps8-stage" value="General advanced strategy planning"><span>General advanced strategy planning</span></label>
+              <label class="ps8-chip"><input type="radio" name="ps8-stage" value="Other"><span>Other</span></label>
+            </div>
+          </div>
+          <div>
+            <p class="ps8-sec-h">4 · Is There an Important Deadline?</p>
+            <label class="ps8-label" for="ps8-deadline">Planned closing date, required filing, upcoming investment decision, or other time-sensitive issue <em>(optional)</em></label>
+            <input type="text" id="ps8-deadline" maxlength="200" placeholder="e.g. Closing on Nov 20">
+          </div>
+        </div>
+        <p class="ps8-sec-h">5 · Relevant Documents</p>
+        <p class="ps8-docnote">You may submit selected documents relevant to your primary concern. These materials may help Tim prepare for the discussion. Uploading documents does not include or guarantee an exhaustive document review.</p>
+        <label class="ps8-drop" id="ps8-drop">
+          <input type="file" id="ps8-files" multiple accept=".pdf,.doc,.docx,.jpg,.jpeg,.png,application/pdf,application/msword,application/vnd.openxmlformats-officedocument.wordprocessingml.document,image/jpeg,image/png">
+          <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 16V4M7 9l5-5 5 5M4 16v3a1 1 0 001 1h14a1 1 0 001-1v-3"/></svg>
+          <div><b>Anything Tim should review beforehand? <span style="display:inline;font-weight:400;color:var(--ps8-muted)">(optional)</span></b><span>Tap to add files or drag them here · PDF, DOC, DOCX, JPG, PNG · up to 5 files, 15 MB each</span></div>
+        </label>
+        <ul class="ps8-files" id="ps8-file-list"></ul>
+        <p class="ps8-msg" id="ps8-d-msg" role="alert"></p>
+        <div class="ps8-actions"><button type="submit" class="ps8-btn ps8-btn-dark" id="ps8-d-send">Send to Tim</button><button type="button" class="ps8-skip" id="ps8-d-skip">Skip for now</button></div>
+      </form>
+      <div class="ps8-thanks" id="ps8-thanks" hidden><b class="ps8-thanks-h">Thank You. Tim Has Your Information.</b>Your background information has been submitted. We're looking forward to discussing your situation during your Private Strategy Session. If your situation requires additional specialized services afterward, those can be discussed and quoted separately.</div>
+    </div>
+  </div>
+</div>
+</section>
