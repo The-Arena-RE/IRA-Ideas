@@ -1,0 +1,111 @@
+{
+  "name": "IRA Ideas - Website Contact Form",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "website-contact",
+        "responseMode": "onReceived",
+        "options": {}
+      },
+      "id": "e3b4c4b4-be86-4f58-adfe-723693cc04a0",
+      "name": "Website Form Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [
+        0,
+        0
+      ],
+      "webhookId": "d0e42df7-7e36-43cb-81ff-cd1b7901f741"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Builds both emails from the website form submission.\n// All user input is HTML-escaped before it goes into the email body.\nconst b = $input.first().json.body || {};\n\nconst esc = (v) => String(v ?? '')\n  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')\n  .replace(/\"/g, '&quot;').replace(/'/g, '&#39;');\nconst clean = (v, max) => String(v ?? '').trim().slice(0, max);\n\nconst name = clean(b.name, 200);\nconst email = clean(b.email, 254);\nconst phone = clean(b.phone, 50);\nconst message = clean(b.message, 2000);\nconst page = clean(b.page, 500);\nconst source = clean(b.source, 50);\nconst sourceLabel = {\n  'home-quick-contact': 'Homepage - Quick Contact',\n  'contact-page': 'Contact page - Send Us Your Query',\n}[source] || source || 'Website';\n\nlet when = b.submitted_at || new Date().toISOString();\ntry {\n  when = new Date(when).toLocaleString('en-US', { timeZone: 'America/Phoenix', dateStyle: 'medium', timeStyle: 'short' }) + ' (Arizona)';\n} catch (e) {}\n\nconst row = (label, value) => value\n  ? `<tr><td style=\"padding:8px 12px;color:#55646C;font-weight:600;vertical-align:top;white-space:nowrap\">${label}</td><td style=\"padding:8px 12px;color:#2D3A42\">${value}</td></tr>`\n  : '';\n\nconst wrap = (inner) => `<div style=\"font-family:Arial,Helvetica,sans-serif;background:#F5F6F8;padding:24px\">\n<div style=\"max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden\">\n<div style=\"background:#003A3A;padding:18px 24px;color:#ffffff;font-size:18px;font-weight:bold\"><span style=\"color:#FFB400\">IRA</span> IDEAS LLC</div>\n<div style=\"padding:24px;color:#2D3A42;font-size:15px;line-height:1.6\">${inner}</div>\n</div></div>`;\n\nconst adminHtml = wrap(`\n<h2 style=\"margin:0 0 12px;font-size:20px;color:#003A3A\">New website enquiry</h2>\n<table style=\"border-collapse:collapse;width:100%;font-size:15px\">\n${row('Name', esc(name))}\n${row('Email', `<a href=\"mailto:${esc(email)}\">${esc(email)}</a>`)}\n${row('Phone', esc(phone))}\n${row('Form', esc(sourceLabel))}\n${row('Page', esc(page))}\n${row('Received', esc(when))}\n${row('Country', esc(b.ip_country))}\n</table>\n<h3 style=\"margin:20px 0 8px;font-size:16px;color:#003A3A\">Message</h3>\n<div style=\"white-space:pre-wrap;background:#F5F6F8;border-left:4px solid #FFB400;padding:12px 16px\">${esc(message)}</div>\n<p style=\"margin-top:20px;font-size:13px;color:#7A7A7A\">Reply to this email to answer ${esc(name || email)} directly.</p>`);\n\nconst firstName = name.split(/\\s+/)[0];\nconst clientHtml = wrap(`\n<p>Hi ${esc(firstName) || 'there'},</p>\n<p>Thank you for contacting IRA Ideas. We've received your message and will get back to you as soon as possible, usually within one business day.</p>\n<p>If your question is time-sensitive, you can book a Retirement Certainty Session with attorney Tim Berry:</p>\n<p><a href=\"https://iraideas.com/retirement-certainty-session/\" style=\"display:inline-block;background:#FFB400;color:#ffffff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:4px\">Book An Appointment &rarr;</a></p>\n<p>Or reach us at <a href=\"tel:+16029001855\">602-900-1855</a> or <a href=\"mailto:tim@iraideas.com\">tim@iraideas.com</a>.</p>\n<p>Best regards,<br>Tim Berry<br>IRA Ideas LLC</p>\n<p style=\"margin-top:24px;font-size:12px;color:#7A7A7A\">You're receiving this because this email address was entered on a contact form at iraideas.com. If that wasn't you, you can ignore this message.</p>`);\n\nreturn [{ json: {\n  name, email, phone, message, page, source, sourceLabel, when,\n  adminSubject: `New website enquiry from ${name || email} (${sourceLabel})`,\n  adminHtml,\n  clientSubject: 'We received your message - IRA Ideas',\n  clientHtml,\n} }];\n"
+      },
+      "id": "a8baa8f1-f5fc-4f3e-9283-d291bf38cbbc",
+      "name": "Build Emails",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        240,
+        0
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "iraideas@gmail.com",
+        "subject": "={{ $json.adminSubject }}",
+        "emailType": "html",
+        "message": "={{ $json.adminHtml }}",
+        "options": {
+          "appendAttribution": false,
+          "senderName": "IRA Ideas Website",
+          "replyTo": "={{ $json.email }}"
+        }
+      },
+      "id": "1eebdfb2-4b66-4358-98f8-88aae9871850",
+      "name": "Notify iraideas@gmail.com",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        500,
+        -100
+      ]
+    },
+    {
+      "parameters": {
+        "sendTo": "={{ $json.email }}",
+        "subject": "={{ $json.clientSubject }}",
+        "emailType": "html",
+        "message": "={{ $json.clientHtml }}",
+        "options": {
+          "appendAttribution": false,
+          "senderName": "IRA Ideas",
+          "replyTo": "tim@iraideas.com"
+        }
+      },
+      "id": "595722b7-9126-435b-8212-21fb09189438",
+      "name": "Confirmation to Client",
+      "type": "n8n-nodes-base.gmail",
+      "typeVersion": 2.1,
+      "position": [
+        500,
+        100
+      ],
+      "onError": "continueRegularOutput"
+    }
+  ],
+  "connections": {
+    "Website Form Webhook": {
+      "main": [
+        [
+          {
+            "node": "Build Emails",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Build Emails": {
+      "main": [
+        [
+          {
+            "node": "Notify iraideas@gmail.com",
+            "type": "main",
+            "index": 0
+          },
+          {
+            "node": "Confirmation to Client",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "pinData": {}
+}
