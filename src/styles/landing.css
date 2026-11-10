@@ -77,8 +77,8 @@ ul,ol { padding-inline-start: var(--theme-list-indent); margin-block-end: var(--
 b,strong { font-weight: bold; }
 small { font-size: 80%; }
 figure,textarea { display: block; }
-a { color: #2872fa; text-decoration: none; }
-a:hover { color: #1559ed; }
+:where(a) { color: #2872fa; text-decoration: none; }
+:where(a:hover) { color: #1559ed; }
 img { max-width: 100%; height: auto; border: none; }
 video,svg { max-width: 100%; }
 select,textarea,input:is([type=url],[type=tel],[type=text],[type=time],[type=date],[type=email],[type=number],[type=search],[type=password]) {
