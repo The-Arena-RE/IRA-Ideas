@@ -96,7 +96,7 @@ npm run check      # type-check
 ## Contact form → n8n
 
 1. In n8n, import **`n8n/website-contact-form.json`** (Workflows → Import from File). It has a **Webhook** trigger
-   (POST `/webhook/website-contact`) and sends two Gmail messages: a notification to **iraideas@gmail.com**
+   (POST `/webhook/iraideas-website-contact`) and sends two Gmail messages: a notification to **iraideas@gmail.com**
    (Reply-To is the visitor) and a confirmation to the visitor (Reply-To tim@iraideas.com). Attach a Gmail
    credential to both Gmail nodes, then activate the workflow. The webhook receives JSON:
    ```json
