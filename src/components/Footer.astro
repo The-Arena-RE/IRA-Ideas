@@ -29,10 +29,6 @@ const year = new Date().getFullYear();
           <Icon name="phone" class="mt-0.5 size-4 shrink-0 text-amber-500" />
           <a href={site.phoneHref} class="hover:text-amber-500">{site.phone}</a>
         </li>
-        <li class="flex gap-4 pl-7">
-          <a href="/blog/" class="text-amber-500 hover:underline">Blog</a>
-          <a href="/privacy-policy/" class="text-amber-500 hover:underline">Privacy Policy</a>
-        </li>
       </ul>
     </div>
 
@@ -46,14 +42,17 @@ const year = new Date().getFullYear();
       © {year} IRA IDEAS LLC | Designed &amp; Powered by
       <a href="https://aireprokit.com/" target="_blank" rel="noopener noreferrer" class="text-amber-500 hover:underline">AireProKit</a>
     </p>
-    <a
-      href={site.youtube}
-      target="_blank"
-      rel="noopener"
-      aria-label="Tim Berry on YouTube"
-      class="grid size-10 place-items-center rounded-full bg-amber-500 text-navy-950 transition hover:scale-105 hover:bg-amber-600"
-    >
-      <Icon name="youtube" class="size-6" />
-    </a>
+    <div class="flex items-center gap-5">
+      <a href="/privacy-policy/" class="whitespace-nowrap text-amber-500 hover:underline">Privacy Policy</a>
+      <a
+        href={site.youtube}
+        target="_blank"
+        rel="noopener"
+        aria-label="Tim Berry on YouTube"
+        class="grid size-10 place-items-center rounded-full bg-amber-500 text-navy-950 transition hover:scale-105 hover:bg-amber-600"
+      >
+        <Icon name="youtube" class="size-6" />
+      </a>
+    </div>
   </div>
 </footer>

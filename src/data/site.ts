@@ -24,6 +24,7 @@ export const nav = [
   { label: 'Services', href: '/#services' },
   { label: 'About', href: '/about-tim-berry/' },
   { label: 'Videos', href: '/videos-ira-401k/' },
+  { label: 'Blog', href: '/blog/' },
   { label: 'Contact', href: '/get-in-touch-ira-401k-attorney/' },
 ];
 
