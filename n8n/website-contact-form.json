@@ -9,7 +9,7 @@
         "options": {}
       },
       "id": "e3b4c4b4-be86-4f58-adfe-723693cc04a0",
-      "name": "Website Form Webhook",
+      "name": "Webhook",
       "type": "n8n-nodes-base.webhook",
       "typeVersion": 2,
       "position": [
@@ -20,63 +20,60 @@
     },
     {
       "parameters": {
-        "jsCode": "// Builds both emails from the website form submission.\n// All user input is HTML-escaped before it goes into the email body.\nconst b = $input.first().json.body || {};\n\nconst esc = (v) => String(v ?? '')\n  .replace(/&/g, '&amp;').replace(/</g, '&lt;').replace(/>/g, '&gt;')\n  .replace(/\"/g, '&quot;').replace(/'/g, '&#39;');\nconst clean = (v, max) => String(v ?? '').trim().slice(0, max);\n\nconst name = clean(b.name, 200);\nconst email = clean(b.email, 254);\nconst phone = clean(b.phone, 50);\nconst message = clean(b.message, 2000);\nconst page = clean(b.page, 500);\nconst source = clean(b.source, 50);\nconst sourceLabel = {\n  'home-quick-contact': 'Homepage - Quick Contact',\n  'contact-page': 'Contact page - Send Us Your Query',\n}[source] || source || 'Website';\n\nlet when = b.submitted_at || new Date().toISOString();\ntry {\n  when = new Date(when).toLocaleString('en-US', { timeZone: 'America/Phoenix', dateStyle: 'medium', timeStyle: 'short' }) + ' (Arizona)';\n} catch (e) {}\n\nconst row = (label, value) => value\n  ? `<tr><td style=\"padding:8px 12px;color:#55646C;font-weight:600;vertical-align:top;white-space:nowrap\">${label}</td><td style=\"padding:8px 12px;color:#2D3A42\">${value}</td></tr>`\n  : '';\n\nconst wrap = (inner) => `<div style=\"font-family:Arial,Helvetica,sans-serif;background:#F5F6F8;padding:24px\">\n<div style=\"max-width:600px;margin:0 auto;background:#ffffff;border-radius:8px;overflow:hidden\">\n<div style=\"background:#003A3A;padding:18px 24px;color:#ffffff;font-size:18px;font-weight:bold\"><span style=\"color:#FFB400\">IRA</span> IDEAS LLC</div>\n<div style=\"padding:24px;color:#2D3A42;font-size:15px;line-height:1.6\">${inner}</div>\n</div></div>`;\n\nconst adminHtml = wrap(`\n<h2 style=\"margin:0 0 12px;font-size:20px;color:#003A3A\">New website enquiry</h2>\n<table style=\"border-collapse:collapse;width:100%;font-size:15px\">\n${row('Name', esc(name))}\n${row('Email', `<a href=\"mailto:${esc(email)}\">${esc(email)}</a>`)}\n${row('Phone', esc(phone))}\n${row('Form', esc(sourceLabel))}\n${row('Page', esc(page))}\n${row('Received', esc(when))}\n${row('Country', esc(b.ip_country))}\n</table>\n<h3 style=\"margin:20px 0 8px;font-size:16px;color:#003A3A\">Message</h3>\n<div style=\"white-space:pre-wrap;background:#F5F6F8;border-left:4px solid #FFB400;padding:12px 16px\">${esc(message)}</div>\n<p style=\"margin-top:20px;font-size:13px;color:#7A7A7A\">Reply to this email to answer ${esc(name || email)} directly.</p>`);\n\nconst firstName = name.split(/\\s+/)[0];\nconst clientHtml = wrap(`\n<p>Hi ${esc(firstName) || 'there'},</p>\n<p>Thank you for contacting IRA Ideas. We've received your message and will get back to you as soon as possible, usually within one business day.</p>\n<p>If your question is time-sensitive, you can book a Retirement Certainty Session with attorney Tim Berry:</p>\n<p><a href=\"https://iraideas.com/retirement-certainty-session/\" style=\"display:inline-block;background:#FFB400;color:#ffffff;text-decoration:none;font-weight:bold;padding:12px 22px;border-radius:4px\">Book An Appointment &rarr;</a></p>\n<p>Or reach us at <a href=\"tel:+16029001855\">602-900-1855</a> or <a href=\"mailto:tim@iraideas.com\">tim@iraideas.com</a>.</p>\n<p>Best regards,<br>Tim Berry<br>IRA Ideas LLC</p>\n<p style=\"margin-top:24px;font-size:12px;color:#7A7A7A\">You're receiving this because this email address was entered on a contact form at iraideas.com. If that wasn't you, you can ignore this message.</p>`);\n\nreturn [{ json: {\n  name, email, phone, message, page, source, sourceLabel, when,\n  adminSubject: `New website enquiry from ${name || email} (${sourceLabel})`,\n  adminHtml,\n  clientSubject: 'We received your message - IRA Ideas',\n  clientHtml,\n} }];\n"
+        "jsCode": "// Code node: \"Build Emails\" (Website contact forms). Mode: Run Once for All Items\nconst SUPPORT_EMAIL = 'consultation@iraideas.com';\nconst ADMIN_TO = 'iraideas@gmail.com';\nconst SITE_URL = 'https://iraideas.com';\nconst BOOK_URL = 'https://iraideas.com/retirement-certainty-session/';\nconst TZ = 'America/Phoenix';\n\nconst body = $('Webhook').first().json.body || {};\n// Strip control characters (incl. CR/LF) so nothing can break out of an email header.\nconst clean = (v, max) => String(v ?? '').replace(/[\\u0000-\\u0009\\u000B-\\u001F\\u007F]/g, '').trim().slice(0, max);\nconst oneLine = (v, max) => clean(v, max).replace(/[\\r\\n]+/g, ' ');\nconst EMAIL_OK = /^[A-Za-z0-9._%+'-]+@[A-Za-z0-9.-]+\\.[A-Za-z]{2,}$/;\n\nconst name = oneLine(body.name, 200);\nconst emailRaw = oneLine(body.email, 254);\nconst email = EMAIL_OK.test(emailRaw) ? emailRaw : '';\nconst phone = oneLine(body.phone, 50);\nconst message = clean(body.message, 2000);\nconst page = oneLine(body.page, 500);\nconst source = oneLine(body.source, 50);\nconst sourceLabel = { 'home-quick-contact': 'Homepage \u00b7 Quick Contact', 'contact-page': 'Contact page \u00b7 Send Us Your Query' }[source] || source || 'Website';\n\nconst esc = s => String(s ?? '').replace(/[&<>\"']/g, c => ({ '&': '&amp;', '<': '&lt;', '>': '&gt;', '\"': '&quot;', \"'\": '&#39;' }[c]));\nconst nl2br = s => esc(s).replace(/\\r?\\n/g, '<br>');\nconst when = new Date(body.submitted_at || Date.now());\nconst fWhen = new Intl.DateTimeFormat('en-US', { timeZone: TZ, weekday: 'long', month: 'long', day: 'numeric', year: 'numeric', hour: 'numeric', minute: '2-digit' }).format(when) + ' (Arizona)';\nconst first = name.split(/\\s+/)[0] || '';\nconst telHref = 'tel:' + phone.replace(/[^\\d+]/g, '');\n\nconst C = { ink: '#141312', ink2: '#46423c', muted: '#7a7469', gold: '#c9a45c', gold2: '#e4c98f', gold3: '#a9843f', ivory: '#f6f2ea', line: '#ebe4d7' };\nconst SERIF = \"Georgia,'Times New Roman',serif\";\nconst SANS = \"-apple-system,'Segoe UI',Roboto,Helvetica,Arial,sans-serif\";\n\nconst layout = ({ preheader, eyebrow, title, intro, body, footerNote }) => `<!doctype html>\n<html lang=\"en\"><head><meta charset=\"utf-8\"><meta name=\"viewport\" content=\"width=device-width,initial-scale=1\"><meta name=\"x-apple-disable-message-reformatting\">\n<title>${esc(title)}</title>\n<style>\n@media (max-width:620px){ .pss-pad{padding-left:22px!important;padding-right:22px!important} .pss-h1{font-size:24px!important} .pss-stack{display:block!important;width:auto!important} .pss-k{padding-bottom:0!important} .pss-v{padding-top:4px!important} .pss-btn{display:block!important;text-align:center!important;margin-bottom:8px!important} }\na{color:${C.gold3}}\n</style></head>\n<body style=\"margin:0;padding:0;background:${C.ivory};\">\n<div style=\"display:none;max-height:0;overflow:hidden;opacity:0;color:transparent\">${esc(preheader)}</div>\n<table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"background:${C.ivory};\">\n<tr><td align=\"center\" style=\"padding:28px 12px;\">\n  <table role=\"presentation\" width=\"600\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"width:100%;max-width:600px;background:#ffffff;border:1px solid ${C.line};border-radius:14px;overflow:hidden;\">\n    <tr><td style=\"background:${C.ink};background-image:linear-gradient(160deg,#221e16,#0d0d0e 70%);padding:24px 34px;\" class=\"pss-pad\">\n      <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\"><tr>\n        <td style=\"font-family:${SERIF};font-size:22px;color:#ffffff;letter-spacing:.3px;\">IRA <span style=\"color:${C.gold2};\">Ideas</span></td>\n        <td align=\"right\" style=\"font-family:${SANS};font-size:11px;letter-spacing:2px;text-transform:uppercase;color:${C.gold};\">Website Enquiry</td>\n      </tr></table>\n    </td></tr>\n    <tr><td style=\"height:3px;line-height:3px;font-size:0;background:${C.gold};background-image:linear-gradient(90deg,${C.gold3},${C.gold2},${C.gold3});\">&nbsp;</td></tr>\n    <tr><td style=\"padding:34px 34px 6px;\" class=\"pss-pad\">\n      <div style=\"font-family:${SANS};font-size:11px;font-weight:700;letter-spacing:2.2px;text-transform:uppercase;color:${C.gold3};\">${eyebrow}</div>\n      <h1 class=\"pss-h1\" style=\"margin:10px 0 0;font-family:${SERIF};font-weight:normal;font-size:28px;line-height:1.25;color:${C.ink};\">${title}</h1>\n      ${intro ? `<p style=\"margin:14px 0 0;font-family:${SANS};font-size:15px;line-height:1.6;color:${C.ink2};\">${intro}</p>` : ''}\n    </td></tr>\n    ${body}\n    <tr><td style=\"padding:22px 34px 30px;border-top:1px solid ${C.line};\" class=\"pss-pad\">\n      ${footerNote ? `<p style=\"margin:0 0 10px;font-family:${SANS};font-size:13px;line-height:1.6;color:${C.ink2};\">${footerNote}</p>` : ''}\n      <p style=\"margin:0;font-family:${SANS};font-size:11.5px;line-height:1.6;color:#9a958b;\">IRA Ideas \u00b7 <a href=\"${SITE_URL}\" style=\"color:#9a958b;\">iraideas.com</a></p>\n    </td></tr>\n  </table>\n</td></tr></table>\n</body></html>`;\n\nconst card = (rows, opts = {}) => `\n    <tr><td style=\"padding:22px 34px 4px;\" class=\"pss-pad\">\n      <table role=\"presentation\" width=\"100%\" cellpadding=\"0\" cellspacing=\"0\" border=\"0\" style=\"background:#fbf8f2;border:1px solid ${C.line};border-left:3px solid ${C.gold};border-radius:10px;\">\n        ${opts.heading ? `<tr><td colspan=\"2\" style=\"padding:16px 20px 2px;font-family:${SANS};font-size:11px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:${C.gold3};\">${opts.heading}</td></tr>` : ''}\n        ${rows.map(([k, v], i) => `<tr>\n          <td class=\"pss-stack pss-k\" valign=\"top\" style=\"padding:${i === 0 && !opts.heading ? 16 : 10}px 12px ${i === rows.length - 1 ? 16 : 10}px 20px;width:150px;font-family:${SANS};font-size:12px;font-weight:700;letter-spacing:.6px;text-transform:uppercase;color:${C.muted};\">${k}</td>\n          <td class=\"pss-stack pss-v\" valign=\"top\" style=\"padding:${i === 0 && !opts.heading ? 16 : 10}px 20px ${i === rows.length - 1 ? 16 : 10}px 20px;font-family:${SANS};font-size:15px;line-height:1.55;color:${C.ink};\">${v}</td>\n        </tr>`).join('')}\n      </table>\n    </td></tr>`;\n\nconst button = (href, label) => `<a href=\"${esc(href)}\" class=\"pss-btn\" style=\"display:inline-block;padding:13px 22px;border-radius:8px;font-family:${SANS};font-size:14px;font-weight:700;text-decoration:none;background:${C.ink};color:${C.gold2};\">${label}</a>`;\n\n// ---------- CLIENT CONFIRMATION ----------\n// The visitor's message is deliberately NOT repeated here: anyone can type someone else's address\n// into the form, and echoing the text would let them send arbitrary content through our Gmail.\nconst client_html = layout({\n  preheader: 'Thanks for contacting IRA Ideas. We will be in touch soon.',\n  eyebrow: 'Message received',\n  title: 'Thank You for Reaching Out',\n  intro: `Hi ${esc(first) || 'there'}, thank you for contacting IRA Ideas. We've received your message and will get back to you as soon as possible, usually within one business day.`,\n  body:\n    `\n    <tr><td style=\"padding:18px 34px 4px;\" class=\"pss-pad\">\n      <p style=\"margin:0 0 16px;font-family:${SANS};font-size:15px;line-height:1.6;color:${C.ink2};\">If your question is time-sensitive, you can book a Retirement Certainty Session: up to 15 minutes with attorney Tim Berry on one self-directed IRA or 401(k) question.</p>\n      ${button(BOOK_URL, 'Book a Retirement Certainty Session')}\n    </td></tr>` +\n    card([\n      ['Email', `<a href=\"mailto:${esc(SUPPORT_EMAIL)}\" style=\"color:${C.gold3};\">${esc(SUPPORT_EMAIL)}</a>`],\n      ['Phone', `<a href=\"tel:+16029001855\" style=\"color:${C.ink};font-weight:700;text-decoration:none;\">602-900-1855</a>`]\n    ], { heading: 'Other ways to reach us' }),\n  footerNote: `You're receiving this because this email address was entered on a contact form at iraideas.com. If that wasn't you, you can ignore this message.`\n});\n\n// ---------- ADMIN NOTIFICATION ----------\nconst admin_html = layout({\n  preheader: `${name || email || 'Website visitor'} \u00b7 ${sourceLabel}`,\n  eyebrow: 'New enquiry',\n  title: 'New Website Contact Form Submission',\n  intro: `<b style=\"color:${C.ink};\">${esc(name || email || 'A visitor')}</b> sent a message from the ${esc(sourceLabel)} form. Reply to this email to answer them directly.`,\n  body:\n    card([\n      ...(name ? [['Name', esc(name)]] : []),\n      ['Email', email ? `<a href=\"mailto:${esc(email)}\" style=\"color:${C.gold3};\">${esc(email)}</a>` : `<span style=\"color:${C.muted};\">${esc(emailRaw) || '-'} (invalid)</span>`],\n      ...(phone ? [['Phone', `<a href=\"${telHref}\" style=\"color:${C.ink};font-weight:700;text-decoration:none;\">${esc(phone)}</a>`]] : [])\n    ], { heading: 'Contact' }) +\n    card([\n      ['Message', nl2br(message || '-')]\n    ], { heading: 'Their message' }) +\n    card([\n      ['Form', esc(sourceLabel)],\n      ['Page', esc(page || '-')],\n      ['Received', esc(fWhen)],\n      ['Country', esc(oneLine(body.ip_country, 10) || '-')]\n    ], { heading: 'Details' }),\n  footerNote: 'Submitted through iraideas.com'\n});\n\nreturn [{\n  json: {\n    client_email: email,\n    client_subject: 'We received your message \u00b7 IRA Ideas',\n    client_html,\n    admin_to: ADMIN_TO,\n    admin_reply_to: email,\n    admin_subject: `New website enquiry: ${name || email || 'visitor'} \u00b7 ${sourceLabel}`,\n    admin_html\n  }\n}];\n"
       },
-      "id": "a8baa8f1-f5fc-4f3e-9283-d291bf38cbbc",
-      "name": "Build Emails",
       "type": "n8n-nodes-base.code",
       "typeVersion": 2,
       "position": [
-        240,
+        224,
         0
-      ]
-    },
-    {
-      "parameters": {
-        "sendTo": "iraideas@gmail.com",
-        "subject": "={{ $json.adminSubject }}",
-        "emailType": "html",
-        "message": "={{ $json.adminHtml }}",
-        "options": {
-          "appendAttribution": false,
-          "senderName": "IRA Ideas Website",
-          "replyTo": "={{ $json.email }}"
-        }
-      },
-      "id": "1eebdfb2-4b66-4358-98f8-88aae9871850",
-      "name": "Notify iraideas@gmail.com",
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        500,
-        -100
-      ]
-    },
-    {
-      "parameters": {
-        "sendTo": "={{ $json.email }}",
-        "subject": "={{ $json.clientSubject }}",
-        "emailType": "html",
-        "message": "={{ $json.clientHtml }}",
-        "options": {
-          "appendAttribution": false,
-          "senderName": "IRA Ideas",
-          "replyTo": "tim@iraideas.com"
-        }
-      },
-      "id": "595722b7-9126-435b-8212-21fb09189438",
-      "name": "Confirmation to Client",
-      "type": "n8n-nodes-base.gmail",
-      "typeVersion": 2.1,
-      "position": [
-        500,
-        100
       ],
+      "id": "7d1c5011-2e74-40ab-a807-7ed984a71b3b",
+      "name": "Build Emails"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Code node: \"Gmail: Prepare Send\" \u2014 builds raw MIME so mail goes out from the alias below.\nconst FROM_NAME  = 'IRA Ideas';\nconst FROM_EMAIL = 'consultation@iraideas.com';   // must be a \"Send mail as\" alias in Gmail\nconst CLIENT_REPLY_TO = 'consultation@iraideas.com';\n\n// ---------------------------------------------------------------------\nconst b64 = s => Buffer.from(s, 'utf8').toString('base64');\nconst enc = s => /^[\\x20-\\x7E]*$/.test(s) ? s : '=?UTF-8?B?' + b64(s) + '?=';   // safe headers (\u00b7, accents)\nconst wrap = s => s.replace(/.{1,76}/g, '$&\\r\\n');\nconst hdr = s => String(s ?? '').replace(/[\\r\\n]+/g, ' ').trim();                  // no header injection\n\nfunction buildRaw(to, replyTo, subject, html) {\n  const lines = [\n    `From: ${enc(FROM_NAME)} <${FROM_EMAIL}>`,\n    `To: ${hdr(to)}`,\n    ...(replyTo ? [`Reply-To: ${hdr(replyTo)}`] : []),\n    `Subject: ${enc(hdr(subject))}`,\n    'MIME-Version: 1.0',\n    'Content-Type: text/html; charset=\"UTF-8\"',\n    'Content-Transfer-Encoding: base64',\n    '',\n    wrap(b64(html))\n  ];\n  return Buffer.from(lines.join('\\r\\n'), 'utf8').toString('base64')\n    .replace(/\\+/g, '-').replace(/\\//g, '_').replace(/=+$/, '');\n}\n\nconst out = [];\nfor (const item of $input.all()) {\n  const j = item.json || {};\n  if (j.admin_to && j.admin_subject && j.admin_html) {\n    out.push({ json: { who: 'admin', to: j.admin_to, raw: buildRaw(j.admin_to, j.admin_reply_to, j.admin_subject, j.admin_html) } });\n  }\n  if (j.client_email && j.client_subject && j.client_html) {\n    out.push({ json: { who: 'client', to: j.client_email, raw: buildRaw(j.client_email, CLIENT_REPLY_TO, j.client_subject, j.client_html) } });\n  }\n}\nreturn out;\n"
+      },
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [
+        448,
+        0
+      ],
+      "id": "331bb375-2fe4-48b9-bb17-6f71f1379667",
+      "name": "Gmail: Prepare Send"
+    },
+    {
+      "parameters": {
+        "method": "POST",
+        "url": "https://gmail.googleapis.com/gmail/v1/users/me/messages/send",
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "gmailOAuth2",
+        "sendBody": true,
+        "specifyBody": "json",
+        "jsonBody": "={{ JSON.stringify({ raw: $json.raw }) }}",
+        "options": {}
+      },
+      "type": "n8n-nodes-base.httpRequest",
+      "typeVersion": 4.5,
+      "position": [
+        672,
+        0
+      ],
+      "id": "ac7ab8bb-ca2a-45d9-a666-ce2a6799aa7d",
+      "name": "Gmail : Send",
+      "credentials": {
+        "gmailOAuth2": {
+          "id": "aj5LRbM1epFRExZA",
+          "name": "IRA IDEAS PRIVATE STRATEGY SESSION CRED GMAIL"
+        }
+      },
       "onError": "continueRegularOutput"
     }
   ],
   "connections": {
-    "Website Form Webhook": {
+    "Webhook": {
       "main": [
         [
           {
@@ -91,12 +88,18 @@
       "main": [
         [
           {
-            "node": "Notify iraideas@gmail.com",
+            "node": "Gmail: Prepare Send",
             "type": "main",
             "index": 0
-          },
+          }
+        ]
+      ]
+    },
+    "Gmail: Prepare Send": {
+      "main": [
+        [
           {
-            "node": "Confirmation to Client",
+            "node": "Gmail : Send",
             "type": "main",
             "index": 0
           }
