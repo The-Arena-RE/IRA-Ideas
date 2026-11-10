@@ -13,7 +13,7 @@
   "vars": {
     // n8n webhook that receives contact-form submissions (Quick Contact + Contact page).
     // Set to your real webhook URL, e.g. https://n8n.coreautomations.org/webhook/iraideas-website-contact
-    "CONTACT_WEBHOOK_URL": ""
+    "CONTACT_WEBHOOK_URL": "https://n8n.coreautomations.org/webhook/iraideas-website-contact"
   },
   "observability": { "enabled": true }
 }
